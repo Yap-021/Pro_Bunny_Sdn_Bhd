@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Probunny | Privacy Policy</title>
+    <link rel="icon" href="image_icon/ProBunny_icon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --gold: #e6c76a;
+            --gold-light: #fdf6e0;
+            --dark-gold: #92650a;
+            --gold-xlight: #fffdf5;
+            --gold-mid: #d4af37;
+            --primary: #0055bb;
+            --primary-dark: #003d8a;
+            --primary-mid: #1a5fb4;
+            --primary-light: #e8f1fd;
+            --primary-xlight: #f0f6ff;
+            --accent: #f97316;
+            --white: #ffffff;
+            --surface: #f7f9fc;
+            --surface-2: #eef3fa;
+            --border: #e2e8f0;
+            --text: #111827;
+            --text-2: #374151;
+            --muted: #64748b;
+            --r-sm: 10px;
+            --r-md: 16px;
+            --r-lg: 24px;
+            --r-xl: 32px;
+            --r-pill: 9999px;
+            --sh-sm: 0 2px 8px rgba(0,55,140,.07);
+            --sh-md: 0 8px 24px rgba(0,55,140,.10);
+            --sh-xl: 0 25px 50px rgba(0,55,140,.15);
+            --ease: all .28s cubic-bezier(.4,0,.2,1);
+        }
+
+        *,*::before,*::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px; 
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: var(--surface);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1,h2,h3,h4,h5 { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            line-height: 1.25; 
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 var(--border);
+            padding: .85rem 0;
+        }
+        .logo-img { 
+            height: 36px; 
+            max-width: 180px; 
+        }
+        .nav-link {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: .88rem;
+            color: var(--muted) !important;
+            padding: .4rem .65rem !important;
+            border-radius: 10px;
+            transition: var(--ease);
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #92650a !important;       
+            background: var(--gold-light);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-gold) 0%, var(--gold) 50%, var(--gold-mid) 100%);
+            padding: 56px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+        }
+        .hero-inner { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            position: relative; 
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: var(--r-pill);
+            padding: 6px 18px;
+            font-size: .76rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: rgba(255,255,255,.9);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem,4vw,2.6rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: -.02em;
+        }
+        .hero p { 
+            font-size: 1rem; 
+            color: rgba(255,255,255,.78); 
+            max-width: 520px; 
+            margin: 0 auto; 
+        }
+
+        /* ── LAYOUT ── */
+        .layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 44px 24px 80px;
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media(max-width:900px) { 
+            .layout { 
+                grid-template-columns: 1fr; 
+            } 
+            .sidebar { 
+                display: none; 
+            } 
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar { 
+            position: sticky; 
+            top: 80px; 
+        }
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 20px;
+            box-shadow: var(--sh-sm);
+        }
+        .sidebar-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+        .toc-link {
+            display: block;
+            padding: 7px 10px;
+            font-size: .8rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            color: var(--text-2);
+            text-decoration: none;
+            border-radius: var(--r-sm);
+            transition: all .18s;
+            border-left: 2px solid transparent;
+        }
+        .toc-link:hover {
+            background: var(--gold-xlight);
+            color: var(--dark-gold);
+            border-left-color: var(--gold);
+        }
+        .sidebar-meta {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border);
+        }
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .75rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .meta-val { 
+            font-weight: 600; 
+            font-size: 10px;
+            color: var(--text-2); 
+        }
+
+        /* ── CARDS ── */
+        .policy-header {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 28px 30px;
+            margin-bottom: 22px;
+            box-shadow: var(--sh-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .policy-icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--r-md);
+            background: var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.35rem;
+        }
+        .policy-header-text h2 { 
+            font-size: 1.4rem; 
+            font-weight: 800; 
+            color: var(--text); 
+            margin-bottom: 4px; 
+        }
+        .policy-header-text p { 
+            font-size: .86rem; 
+            color: var(--muted); 
+        }
+        .policy-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gold-xlight);
+            color: var(--dark-gold);
+            font-size: .73rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            border-radius: var(--r-pill);
+            padding: 3px 11px;
+            margin-top: 8px;
+        }
+        .intro-card {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-xlight));
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            font-size: .88rem;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+        .section-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: var(--sh-sm);
+            transition: box-shadow .2s;
+        }
+        .section-card:hover { 
+            box-shadow: var(--sh-md); 
+        }
+        .section-card-header {
+            padding: 17px 24px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            cursor: pointer;
+            user-select: none;
+            background: var(--white);
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background .15s;
+        }
+        .section-card-header:hover { 
+            background: var(--gold-xlight); 
+        }
+        .section-num {
+            width: 29px;
+            height: 29px;
+            border-radius: 50%;
+            background: var(--gold-light);
+            color: var(--dark-gold);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: .77rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .section-card-title {
+            flex: 1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: .91rem;
+            color: var(--dark-gold);
+        }
+        .chevron { 
+            transition: transform .25s; 
+            color: var(--muted); 
+            font-size: .76rem; 
+        }
+        .section-card.open .chevron { 
+            transform: rotate(180deg); 
+        }
+        .section-card-body {
+            display: none;
+            padding: 4px 24px 20px 66px;
+            font-size: .88rem;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+        .section-card.open .section-card-body { 
+            display: block; 
+        }
+        .section-card-body p { 
+            margin-bottom: 10px; 
+        }
+        .section-card-body p:last-child { 
+            margin-bottom: 0; 
+        }
+        .section-card-body ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 8px 0; 
+        }
+        .section-card-body ul li { 
+            padding: 4px 0 4px 18px; 
+            position: relative; 
+            color: var(--text-2); 
+        }
+        .section-card-body ul li::before { 
+            content: '•'; 
+            position: absolute; 
+            left: 5px; 
+            color: var(--dark-gold); 
+            font-weight: 700; 
+        }
+        .section-card-body strong { 
+            color: var(--text); 
+            font-weight: 600; 
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--white);
+            color: #64748b;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e2e8f0;
+        }
+        footer h6 {
+            color: #111827;
+            font-weight: 700;
+            letter-spacing: .05em;
+            font-size: .8rem;
+            text-transform: uppercase;
+        }
+        footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color .2s;
+        }
+        footer a:hover { 
+            color: var(--dark-gold); 
+        }
+        .footer-divider { 
+            border-color: #e2e8f0; 
+        }
+        .footer-social-link {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #374151;
+            font-size: .8rem;
+            text-decoration: none;
+            transition: all .2s ease;
+        }
+        .footer-social-link.facebook:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+        .footer-social-link.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-color: transparent;
+            color: var(--white);
+        }
+        .footer-social-link.linkedin:hover {
+            background: #0a66c2;
+            border-color: #0a66c2;
+            color: var(--white);
+        }
+        .logo-img-footer {
+            height: 100px;
+            width: auto;
+            max-width: 160px;
+        }
+
+        /* ── Book a Demo Button ── */
+        .btn-book {
+            background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+            color: var(--white);
+            border: none;
+            padding: 12px 28px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: .88rem;
+            border-radius: var(--r-pill);
+            transition: var(--ease);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(123,44,191,0.35);
+        }
+        .btn-book:hover {
+            background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 77, 77, 0.45);
+        }
+
+        /* ── Demo Modal ── */
+        .demo-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+        .demo-modal-overlay.active { 
+            display: flex; 
+        }
+        .demo-modal {
+            background: var(--white);
+            width: 100%;
+            max-width: 420px;
+            max-height: 90vh;
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 32px 64px rgba(0,0,0,.28);
+            animation: modalPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalPop {
+            from { 
+                opacity: 0;
+                transform: scale(0.9) translateY(8px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
+        .demo-modal-header {
+            background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+            color: var(--white);
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .demo-modal-header h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -.01rem;
+        }
+        .demo-modal-close {
+            background: rgba(255,255,255,.18);
+            border: none;
+            color: var(--white);
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .9rem;
+            cursor: pointer;
+            transition: background .2s;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .demo-modal-close:hover { 
+            background: rgba(255,255,255,.32);
+        }
+        .demo-modal-body {
+            padding: 16px 18px 20px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6, #60a5fa);
+            overflow-y: auto;
+            flex: 1;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,255,255,.3) transparent;
+        }
+        .demo-modal-body::-webkit-scrollbar { 
+            width: 4px; 
+        }
+        .demo-modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,.3);
+            border-radius: 2px;
+        }
+        .demo-form-group { 
+            margin-bottom: 11px; 
+        }
+        .demo-form-group label {
+            display: block;
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: rgba(255,255,255,.92);
+            letter-spacing: .02rem;
+        }
+        .demo-form-group input, 
+        .demo-form-group textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1.5px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            font-size: 0.875rem;
+            transition: border-color .2s, box-shadow .2s;
+            background: rgba(255,255,255,.97);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+        }
+        .demo-form-group textarea {
+            resize: vertical;
+            min-height: 64px;
+            max-height: 120px;
+        }
+        .demo-form-group input:focus, 
+        .demo-form-group textarea:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+            background: #fff;
+        }
+        .demo-form-group input::placeholder,
+        .demo-form-group textarea::placeholder {
+            color: #9ca3af;
+            font-size: .83rem;
+        }
+        .demo-form-group .field-error {
+            display: none;
+            font-size: .78rem;
+            color: #ff3b3b;
+            margin-top: 3px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            align-items: center;
+            gap: 4px;
+            line-height: 1.3;
+        }
+        .demo-form-group .field-error.show { 
+            display: flex; 
+        }
+        .demo-form-group .field-error i { 
+            font-size: .62rem; 
+            flex-shrink: 0; 
+        }
+        .demo-form-group input.is-invalid,
+        .demo-form-group textarea.is-invalid {
+            border-color: #fca5a5 !important;
+            box-shadow: 0 0 0 3px rgba(252,165,165,.22) !important;
+            background: #fff5f5 !important;
+        }
+        .demo-form-group input.is-valid {
+            border-color: #86efac !important;
+            box-shadow: 0 0 0 3px rgba(134,239,172,.18) !important;
+        }
+        .btn-demo-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+            color: var(--white);
+            border: none;
+            padding: 11px 16px;
+            border-radius: var(--r-pill);
+            font-weight: 800;
+            font-size: .88rem;
+            transition: var(--ease);
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .btn-demo-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(123,44,191,.45);
+        }
+        .btn-demo-submit:disabled {
+            opacity: .65;
+            cursor: not-allowed;
+            transform: none;
+        }
+        /* Mobile: bottom-sheet style */
+        @media (max-width: 480px) {
+            .demo-modal-overlay {
+                padding: 0;
+                align-items: flex-end;
+            }
+            .demo-modal {
+                max-width: 100%;
+                max-height: 88vh;
+                border-radius: 20px 20px 0 0;
+            }
+        }
+
+        /* ── Custom Select ── */
+        .custom-select {
+            position: relative;
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .select-trigger {
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1.5px solid rgba(255,255,255,.2);
+            background: rgba(255,255,255,.97);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .875rem;
+            color: #9ca3af;
+            transition: var(--ease);
+            user-select: none;
+        }
+        .select-trigger:hover { 
+            border-color: rgba(255,255,255,.5); 
+        }
+        .custom-select.active .select-trigger {
+            border-color: #fff;
+            box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+            color: var(--text);
+        }
+        .cs-chevron {
+            transition: transform .25s ease;
+            opacity: 0.5;
+            font-size: .8rem;
+        }
+        .custom-select.active .cs-chevron {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        .select-trigger.has-value { 
+            color: var(--text); 
+        }
+        .select-options {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 24px rgba(0,0,0,.15);
+            opacity: 0;
+            transform: translateY(-6px);
+            pointer-events: none;
+            transition: all .18s ease;
+            z-index: 200;
+            overflow: hidden;
+        }
+        .custom-select.active .select-options {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .option {
+            padding: 9px 12px;
+            cursor: pointer;
+            font-size: .86rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            transition: background .15s;
+            border-bottom: 1px solid var(--border);
+        }
+        .option:last-child { border-bottom: none; }
+        .option:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .option.selected {
+            background: var(--primary-xlight);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .option .opt-check {
+            font-size: .8rem;
+            opacity: 0;
+            color: var(--primary);
+        }
+        .option.selected .opt-check { 
+            opacity: 1; 
+        }
+
+        /* ── Toast Notification ── */
+        .toast-custom {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+        .toast-custom.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+        .toast-custom.success { border-left: 4px solid #10b981; }
+        .toast-custom.error { border-left: 4px solid #ef4444; }
+        .toast-custom i { font-size: 1.2rem; }
+        .toast-custom.success i { color: #10b981; }
+        .toast-custom.error i { color: #ef4444; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        main { animation: fadeUp .3s ease; }
+
+        @media (max-width: 991px) { .hero { padding: 70px 0 50px; } }
+  </style>
+</head>
+<body>
+
+    <!-- ═══════ NAVBAR ═══════ -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+            <img src="image_icon/Probunny_logo.png" class="logo-img" alt="Probunny"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+                <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:var(--primary);">
+                    Probunny
+                </span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="IoT.html">IoT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-eyebrow">🔒 Legal Document</div>
+            <h1>Privacy Policy</h1>
+            <p>How Pro Bunny Sdn Bhd collects, uses, and protects 
+                your Personal Data under Malaysia's PDPA 2010.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════ MAIN CONTENT ═══════ -->
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-title">On this page</div>
+                <a class="toc-link" href="#s1">Collection of Personal Data</a>
+                <a class="toc-link" href="#s2">Minor's Privacy</a>
+                <a class="toc-link" href="#s3">Setting Up an Account</a>
+                <a class="toc-link" href="#s4">Viewing Website</a>
+                <a class="toc-link" href="#s5">
+                    Purposes of Collection,Use,
+                    Diclosure,Processing
+                </a>
+                <a class="toc-link" href="#s6">
+                    Sharing & Disclosure
+                    of Personal Information
+                </a>
+                <a class="toc-link" href="#s7">
+                    Provision Third-Party 
+                    Personal Data by You
+                </a>
+                <a class="toc-link" href="#s8">
+                    How We Protect &
+                    Manage Personal Data
+                </a>
+                <a class="toc-link" href="#s9">
+                    Requests Access & Correction 
+                    of Personal Data
+                </a>
+                <a class="toc-link" href="#s10">
+                    Request Withdraw Consent
+                </a>
+                <a class="toc-link" href="#s11">Cookies & Mobile Technology</a>
+                <a class="toc-link" href="#s12">Registration Information</a>
+                <a class="toc-link" href="#s13">
+                    Amendment to Privacy Policy
+                </a>
+                <div class="sidebar-meta">
+                    <div class="meta-row">
+                        <span>Company</span>
+                        <span class="meta-val">Pro Bunny Sdn Bhd</span>
+                    </div>
+                    <div class="meta-row">
+                        <span>Updated</span>
+                        <span class="meta-val">23 Apr 2026</span>
+                    </div>
+                    <div class="meta-row">
+                        <span>Law</span>
+                        <span class="meta-val">Malaysia PDPA 2010</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="policy-header">
+                <div class="policy-icon-wrap">🔒</div>
+                <div class="policy-header-text">
+                    <h2>Privacy Policy</h2>
+                    <p>Pro Bunny Sdn Bhd (202301022122 (1516045M)) — compliant 
+                        with Malaysia's Personal Data Protection Act 2010.</p>
+                    <span class="policy-updated">🕐 Updated: 23 Apr 2026</span>
+                </div>
+            </div>
+
+            <div class="intro-card">
+                <p>
+                    Probunny is an intelligent property management solution. This Privacy Policy explains 
+                    how we collect, use, disclose and process your Personal Data in compliance with Malaysia's 
+                    <strong>Personal Data Protection Act 2010 (PDPA)</strong>. By using our App or Site, you 
+                    consent to the practices described herein.
+                </p>
+                <p>
+                    We are an intelligent property management platform (Probunny) offering communication, 
+                    security, management, accounting, marketplace, and convenience services to enhance 
+                    real estate experiences. We may collect and use personal data to provide, personalise, 
+                    and improve our services through our Site, App, and related products.
+                </p>
+                <p>
+                    “Personal Data” refers to any information that can identify an individual, 
+                    including but not limited to name, contact details, date of birth, payment 
+                    information, device information, and usage data.
+                </p>
+                <p>
+                    By using our services or creating an account, you agree to the collection, 
+                    use, and processing of your personal data as described in this Privacy Policy. 
+                    If you do not agree, please do not use our services. We may update this policy 
+                    from time to time, and changes will be posted on our Site or App. This policy is 
+                    governed by Malaysian law.
+                </p>
+            </div>
+
+            <div class="section-card open" id="s1">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">1</span>
+                    <span class="section-card-title">Collection of Personal Data</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>We may collect Personal Data from you through various means, 
+                        including but not limited to instances when you:
+                    </p>
+                    <ul>
+                        <li>
+                            Provide your Personal Data through our App or Site for the purpose
+                            of registering for and creating an account
+                        </li>
+                        <li>
+                            Submit any form, including, but not limited to, application forms
+                            or other forms relating to any of our products and services, whether
+                            online or by way of a physical form
+                        </li>
+                        <li>Download or access the App</li>
+                        <li>Agree for the App to access your location</li>
+                        <li>Scan the Quick Response code ("QR code") on our platform</li>
+                        <li>Participate in a promotions or other website features</li>
+                        <li>
+                            Request for a product or services information or to receive any
+                            marketing, promotional or other types of communications
+                        </li>
+                        <li>Provide your ratings and review of products and/or services</li>
+                        <li>Carry out transactions through our App or Site</li>
+                        <li>Make enquiries or comments</li>
+                        <li>
+                            Interact with our staff or with us or submit your Personal Data
+                            to us for any reason.
+                        </li>
+                        <p>
+                            The above does not purport to be exhaustive and sets out some common 
+                            instances of when Personal Data about you may be collected.
+                        </p>
+                    </ul>
+                    <p>
+                        In addition to the above, we may use variety of technologies, as the
+                        case may be, to automatically collect information about your activities
+                        on the App or Site, such as <strong>cookies; web beacons, clear pixels or pixel
+                        tags; analytical tags; web server logs; geo-location technologies; and 
+                        QR code (each a "Mobile Technology")</strong>
+                    </p>
+                    <p>You have no obligation to provide any of the Personal Data requested by us.
+                        However, depending on cricumstances, it may be the case that if you do not
+                        provide the requested Personal Data, we may not be abke to provide you with
+                        certain products and services, that depend on the collection, use or disclosure
+                        of your Personal Data.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-card" id="s2">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">2</span>
+                    <span class="section-card-title">Minor's Privacy</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>We do not transact through the App or Site directly with 
+                        anyone we know to be <strong>under the age of 18</strong>. 
+                        If you are under the age of 18, you should use the App or Site only 
+                        with involvement of a parent or guardian and should not submit 
+                        any Personal Data to us. By providing any Personal Data to us, you 
+                        declare that you are over the age of 18.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-card" id="s3">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">3</span>
+                    <span class="section-card-title">Setting Up an Account</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>In order to use certain functionalities of the Probunny Product, 
+                        you will have to create a user account which requires you submit
+                        certain Personal Data.
+                    </p>
+                    <p>
+                        When you register and create an account, we require you to provide 
+                        us with your name, conatct number and/or email address as well as a 
+                        user name that you select. We also ask for certain information about 
+                        yourself such as contact number, email address, shipping address, 
+                        photo identification, bank account details, age, date of birth, gender, 
+                        and interests.
+                    </p>
+                    <p>Upon activating an account, you will select a user name and password. 
+                        Your user name and password will be used so you can <strong>securely 
+                        access </strong>and <strong>maintain your account</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-card" id="s4">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">4</span>
+                    <span class="section-card-title">Viewing Website</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>As with most websites, your computer sends information which may
+                        include Personal Data about you that gets logged by a web server
+                        when you browse our Site. 
+                    </p>
+                    <p>
+                        This typically includes <strong>Protocol ("IP") address, operating 
+                        system, browser name/version, the referring website, requetsed page,
+                        date/time, and sometimes a cookie </strong> which can be disable using
+                        your browser preferences, to help the Site remember your last visit.
+                    </p>
+                    <p>
+                        If you are <strong>logged in</strong>, this information is <strong>associated 
+                        with your personal account</strong>. The information is also include in
+                        anonymous statistics to allow us to understand how visitors use our Site. 
+                    </p>
+                </div>
+            </div>
+
+            <div class="section-card" id="s5">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">5</span>
+                    <span class="section-card-title">Purposes for Collection, Use, Disclosure & Processing</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>We will/may collect, use, disclose and/or process your Personal Data for one or more of 
+                        the following purposes:
+                    </p>
+                        <ul>
+                            <li>
+                                Administering, facilitating, processing and/or dealing in any matters
+                                relating to your use or access of the App or Site
+                            </li>
+                            <li>
+                                Monitoring, processing and/or tracking your use of the App or Site 
+                                in order to provide you with a seamless experience, facilitating or
+                                administering your use of App or Site, and/or to assist us in improving
+                                your experience in using the App or Site
+                            </li>
+                            <li>
+                                Scanning or be scanned on a unique QR code made available at the entrance
+                                of the premises to facilitate effective registration process and contact-
+                                tracing of visitors
+                            </li>
+                            <li>
+                                Managing, operating, administering and providing you with as well as to
+                                facilitate the provision of our services, including, without limization,
+                                remembering your preferences
+                            </li>
+                            <li>
+                                Tailoring your experience by displaying content according to your interest
+                                and preferences
+                            </li>
+                            <li>
+                                Assessing and processing your request for the purchase of and/or subscription
+                                to our products and/or services
+                            </li>
+                            <li>
+                                Registering you as a user of Probunny Product and/or to deal with, process and/or 
+                                administer the account that you may open with us, inclucing to faciities your 
+                                transactions or activites on the App or Site; or your transactions or activities
+                                with us
+                            </li>
+                            <li>
+                                Administering and managing your relationship with us, including processing applications, 
+                                orders, payments, and providing requested products or services. If you send purchases 
+                                to a third party, you consent to us sharing your identifying details (e.g., name) 
+                                with them. Delivery may also require disclosing certain personal data 
+                                (such as name and contact details) on parcels or related documents, which may be 
+                                visible to others.
+                            </li>
+                            <li>
+                                Carrying out your instruction or responding to any enquiry given by (or purported to be
+                                given by) you or on your behalf including responding to your customer service enquiries
+                                and complaints; or responding to or dealing with your interactions with us
+                            </li>
+                            <li>
+                                Contacting you via phone, text, email, or mail to manage your account, use of 
+                                the App or Site, relationship with us, and any transactions. This may involve sending 
+                                correspondence or notices that include certain personal data on delivery materials, 
+                                which could be visible on envelopes or packages.
+                            </li>
+                            <li>To prevent or investigate any fraud, unlawful activity or omission or misconduct,
+                                whether or not there is any suspicion of the aforementioned; dealing with and/or
+                                investigating complaints
+                            </li>
+                            <li>
+                                Complying with or as required by any applicable law, governmental or regulatory requirements
+                                of any relevant jurisdiction, including, without limitation, meeting the requirements to make
+                                disclosure under the requirements of any law binding on <strong>RED IDEAS </strong>or on its
+                                related corporations or affiliates
+                            </li>
+                            <li>
+                                Conducting research (e.g., surveys, analytics, and profiling) to improve our 
+                                services and better understand your preferences. This may include contacting 
+                                you via email or mail for surveys or interviews.
+                            </li>
+                            <li>
+                                Storing, hosting, and backing up (whether for disaster recovery or otherwise) 
+                                of your Personal Data
+                            </li>
+                            <li>
+                                For marketing purposes, we may send you promotional information about products, 
+                                services, or events (including those of third parties) via email, push notifications, 
+                                in-app messages, or other technologies (e.g., geo-location), in compliance with the PDPA.
+                            </li>
+                            <li>
+                                To implement and maintain information technology systems, including to store and
+                                process Personal Data in computer database and servers
+                            </li>
+                            <li>To produce statistics and research for internal and statutory reporting and/or 
+                                record-keeping requirements
+                            </li>
+                            <p>
+                                (The purpose set out above shall be collectively referred to as the "Purposes")
+                            </p>
+                        </ul>
+                        <p>
+                            The Purposes for which we will/may collect, use disclose or process your Personal Data
+                            depend on the circumstances. In the event such purpose does not appear above, we will
+                            notify you of such other purpose at the time of obtaining your consent, unless processing
+                            of the applicable data without your consent is permitted bt the PDPA.
+                        </p>
+                    </div>
+                </div>
+
+        <div class="section-card" id="s6">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">6</span>
+                <span class="section-card-title">Sharing & Disclosure of Personal Information</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>In conducting our business, we may/will need to disclose your Personal Data to 
+                    third parties, whether located within or outside Malaysia, for one or more of
+                    the above Purposes. In this regard, you hereby acknowledge, agree and consent that 
+                    we are permitted to disclose your Personal Data to such third parties for one or 
+                    more of the above Purposes and for the said third parties to subsequently collect, 
+                    use, disclose and/or process your Personal Data.
+                </p>
+                    <ul>
+                        <p>
+                            Without limiting the generality of the foregoing, such third parties include:
+                        </p>
+                        <li>Our related corporations and affiliates either in Malaysia or overseas</li>
+                        <li>
+                            Any of our agents, contractors or third-party service providers, including
+                            but not limited to those which provide administrative or other services to
+                            us such as <strong>mailing houses, telecommunication companies, logistics
+                            companies, information technology companies and data centres</strong>
+                        </li>
+                        <li>Our business partners</li>
+                        <li>
+                            Any other person to whom such disclosure is required by law or regulary
+                            requirement or pursuant to a court order.
+                        </li>
+                    </ul>
+                <p>
+                    In the event we need to provide our service providers with the information they need
+                    to perform their services and work with them, we shall require our service providers
+                    to adhere to strict privacy guidelines and not to use your Personal Data for unauthorised
+                    purposes.
+                </p>
+                <p>
+                    For the avoidance of doubt, in the event that PDPA or other applicable laws permit an
+                    organisation such as us to collect, use or disclose your Personal Data without your
+                    consent, such permission granted by the laws shall continue to apply.
+                </p>
+                <p>
+                    Third parties may unlawfully intercept or access Personal Data transmitted to or
+                    contained on the App or Site, technologies may malfunction, or might be accessed, 
+                    abused or misused information through no fault of ours. We will nevertheless deploy
+                    reasonable security arrangements to protect Personal Data as required by the PDPA.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-card" id="s7">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">7</span>
+                <span class="section-card-title">Provision of Third-Party Personal Data by You</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>Should you provide us with Personal Data individual other than yourself, you represent,
+                    warrant and hereby confirm that:</p>
+                <ul>
+                    <li>
+                        Prior to disclosing such Personal Data to us, you would have and had obtained
+                        consent from the individual whose Personal Data are being disclosed to us, to permit
+                        you to disclose the individual's Personal Data for the Purposes; and permit us
+                        to collect, use, diclose and/or process the individual's Personal Data
+                    </li>
+                    <li>Any Personal Data of individual that you disclosed to us is accurate</li>
+                    <li>You are validly acting on behalf of such individual and that you have the authority 
+                        to provide their Personal Data to us</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-card" id="s8">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">8</span>
+                <span class="section-card-title">How We Protect & Manage Personal Data</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>
+                    We endeavour to take all reasonable steps to ensure your Personal Data is kept confidential
+                    and secure, and to take appropriate technical and organizational measures to prevent
+                    unlawful or accidental destruction, accidental loss, unauthorized disclosure or access or
+                    other unlawful forms of processing. We will not rent, trade, distribute or sell any
+                    Personal Data that you give us to any thrid-party unless we receive your prior consent or
+                    applicable law permits the same. However, your Personal Data is accessible by a limited
+                    number of employees who have special access rights to such systems
+                </p>
+                <p>
+                    Your Personal Data is contained behind secured networks and appropriate security
+                    arrangments will be taken to prevent any unauthorized access, collection, use, disclosure, 
+                    copying, modification, leakage, loss, damage and/or alteration of your Personal Data.
+                    However, we cannot assume responsibility for any unauthorized use of your Personal Data by
+                    third parties which are wholly attributable to factors beyond our control
+                </p>
+                <p>
+                    For your convenience, the App includes functionality allowing you to remain logged in to the
+                    App so that you do not have to re-enter your password each time you access the App. If you
+                    choose to remain logged in, you should be aware that anyone with access to your mobile device
+                    will be able to access and make changes to your account. You agree that we will not be responsible
+                    for any unauthorized transactions or activities with us using your App account as we
+                    logically are only in a position to assume that any user of your App account is you.
+                </p>
+                <p>We will retain Personal Data in accordance with the PDPA and/or other applicable laws. We will
+                    destroy or anonymize Personal Data as soon as it is reasonable to assume that:
+                </p>
+                <ul>
+                    <li>
+                        The purpose for which that Personal Data was collected is no longer being served by the
+                        retention of such Personal Data
+                    </li>
+                    <li>
+                        Retention is no longer necessary for any legal or business purposes. If you cease using the
+                        App or Site, or your permission to use the App, Site and/or the storing, using and/or 
+                        disclosing your Personal Data in accordance with this Privacy Policy and our obligations
+                        under the PDPA.
+                    </li>
+                </ul>
+                <p>
+                    Subject to applicable law, we may securely dispose of your Personal Data without prior notice with you.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-card" id="s9">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">9</span>
+                <span class="section-card-title">Request for Access and/or Correction of Personal Data</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>If you have an account with us, you may personally access and/or correct your Personal Data
+                    currently in our possession or contol through the Account Settings page on the App or Site.
+                    If you do not have an account with us, you may request to access and/or correct your Personal 
+                    Data currently in our possession or control submitting a written request to us. We will need
+                    enough information from you in order to ascertain your identity as well as the nature of your
+                    request to enable us to deal with your request. Please submit your written request to 
+                    <strong>hello@probunny.net</strong>.
+                </p>
+                <p>
+                    For a request to access Personal Data, once we have sufficient information from you to deal
+                    with the request, we will seek to provide you with the relevant Personal Data within 
+                    <strong>14 days</strong>. Where we are unable to respond to you within the said <strong>14 days</strong>,
+                    we will notify you of the soonest possible time within which we can provide you with the information
+                    requested. The PDPA exempts certain types of Personal Data from being subject to your access request.
+                </p>
+                <p>
+                    For a request to correct Personal Data, once we have sufficient information from you to deal with the
+                    request, we will deal with your request in compliance with the PDPA, including correcting your Personal
+                    Data within <strong>14 days</strong>. Where we are unable to do so within the said <strong>14 days</strong>,
+                    we will notify you of the soonest practicable time within which we can make the correction. 
+                </p>
+                <p>
+                    We reserve the right to decline the request to correct Personal Data as PDPA exempts certains types of
+                    Personal Data from being subject to your correction request and situations when correction need not be
+                    made by us despite your request
+                </p>
+            </div>
+        </div>
+
+        <div class="section-card" id="s10">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">10</span>
+                <span class="section-card-title">Request to Withdraw Consent</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>You may withdraw your consent for the collection, use and/or disclosure of your Personal Data 
+                    in our possession or under our control by submitting a request to <strong>hello@probunny.net</strong> 
+                    and we will process in accordance with the PDPA and other applicable laws. 
+                </p>
+                <ul>
+                    <li>
+                        We will process your request within a reasonable time once we have verified your
+                        identity and received your clear withdrawal instructions. Your withdrawal of consent
+                        could result in certain legal consequences arising from such withdrawal. 
+                    </li>
+                    <li>
+                        In the regards, depending on the entext of your Personal Data, it may mean that we may not be able to
+                        fulfil the transaction you have entered into with us or continue with your relationship with
+                        us, or send you information that you have requested, as examples depending on the cricumstances.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-card" id="s11">
+            <button class="section-card-header" onclick="toggle(this)">
+                <span class="section-num">11</span>
+                <span class="section-card-title">Cookies & Mobile Technology</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="section-card-body">
+                <p>We use a variety of tracking technologies on our Site and App:</p>
+                    <ul>
+                        <li>
+                            <strong>Cookies:</strong> We may use cookies to identify you and enhance your experience 
+                            on the Site. Cookies are small text files stored on your device to support functionality. 
+                            While security measures are in place, we are not responsible for data breaches beyond our 
+                            control over the Internet. You may disable cookies in your browser, but this may limit 
+                            certain features. Where cookies collect personal data, it will be used for stated purposes. 
+                            By using the Site, you consent to our use of cookies.
+                        </li>
+                        <li>
+                            <strong>Web Beacons:</strong> Web beacons are small graphic images on a website or in an
+                            email that can be used for such things as recording the pages and advertisements clicked
+                            on by users, or tracking the performance of email marketing campaigns.
+                        </li>
+                        <li>
+                            <strong>Analytics Tags:</strong> We use analytical tags to analyse what you like to do and 
+                            the effectiveness of our features. They can also help us customize your browsing experience.
+                            We may use information collected through analytical tags or tracked links in combination with
+                            your Personal Data you provide to us with other Personal Data such as purchase history and
+                            demographic information.
+                        </li>
+                        <li>
+                            <strong>Web Server Logs:</strong> Web server logs are records of activity created by the mobile
+                            device or computer that delivers the webpages you request to your browser. The Web server log also
+                            may record information about your browser, such as your IP address and the cookies set on your browser
+                            by the server.
+                        </li>
+                        <li>
+                            <strong>Geo-Location Technologies:</strong> We may use geo-location technology to determine your location, 
+                            either from information you provide (e.g., postal code) or via your device. You can allow or deny location 
+                            access when prompted. If enabled, we may use this data to send location-based offers. You can opt out anytime 
+                            through your device settings.
+                        </li>
+                        <li>
+                            <strong>QR Codes:</strong> QR code consists of black squares arranged in a square grid on a white
+                            background which can be read by an imaging device such as a camera. QR code is a machine-readable
+                            optical label that contains information about the item to which it is attached. QR codes often contain
+                            data for a locator, identifier, or tracker that points to a website or application. Application
+                            include product tracking, item identification, time tracking, document management,
+                            and general marketing.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+ 
+            <div class="section-card" id="s12">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">12</span>
+                    <span class="section-card-title">Registration Information</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>
+                        Our App and Site contain areas where you can submit information to us such as our
+                        registration service; and also features such as cookies and performance tracking
+                        technology that automatically collect information from the visitors to our App or
+                        Site.
+                    </p>
+                    <p>
+                        During the registration process, you must provide us with a password, your name, 
+                        address and a valid email address, etc. It is your responsibility to keep your 
+                        password <strong>strictly confidential</strong>.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="section-card" id="s13">
+                <button class="section-card-header" onclick="toggle(this)">
+                    <span class="section-num">13</span>
+                    <span class="section-card-title">Amendment to Privacy Policy</span>
+                    <span class="chevron">▼</span>
+                </button>
+                <div class="section-card-body">
+                    <p>
+                        Our privacy practices will be continuously assessed against new technologies, 
+                        business practices, and our users' needs. As we update and diversify our services, 
+                        our Privacy Policy may evolve. We reserve the right to change its Privacy Policy
+                        at any time and notify you by posting an updated version of the policy on the App
+                        and Site.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="py-5" id="contact">
+        <div class="container">
+            <div class="row g-4 pb-4">
+                <div class="col-lg-2 col-md-4">
+                    <div style="max-width:240px;">
+                        <img src="image_icon/ProBunny_footer.png" alt="Probunny" class="logo-img-footer mb-3"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white);">i-Ruma</span>
+                        <p class="small mt-2 mb-3" style="line-height:1.7;">
+                            Leading fully automated property management solution in Malaysia.
+                        </p>
+                        <div class="d-flex gap-2">
+                            <a href="https://www.facebook.com/ProBunny-100088951527968/" class="footer-social-link facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/irumapms/" class="footer-social-link instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/probunny-solutions-374718262/?originalSubdomain=my" class="footer-social-link linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h6 class="mb-3">Explore</h6>
+                    <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h6 class="mb-3">Support</h6>
+                    <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                        <li>
+                            <a href="https://wa.me/60103085693" class="d-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 10-308 5693
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                                <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                            </a>
+                        </li>
+                    </ul>
+                    <h6 class="mt-3">Career</h6>
+                    <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                        <li><a href="career.html">Join us</a></li>
+                    </ul>
+                    <h6 class="mt-3">IoT</h6>
+                    <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                        <li><a href="IoT.html">Probunny IoT</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h6 class="mb-3">Company</h6>
+                    <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                        <li><a href="Refund.html">Refund Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="policy.html">Probunny Policy</a></li>
+                        <li><a href="Terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <h6 class="mb-3">Get in Touch</h6>
+                    <div class="d-flex flex-column gap-2 small mb-4">
+                    <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                        <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                    </a>
+                    <a href="https://wa.me/60193993191" class="d-flex align-items-center gap-2">
+                        <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 19-399 3191
+                    </a>
+                </div>
+                <button onclick="openDemoModal()" class="btn-book" style="padding:11px 24px;font-size:.85rem;">
+                    <i class="fas fa-calendar-check"></i> Book a demo
+                </button>
+            </div>
+        </div>
+
+        <hr class="footer-divider my-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2" style="background:rgba(105, 105, 105);padding:12px 16px;border-radius:12px;">
+                <p class="small mb-0" style="color:rgba(255,255,255,.9);">
+                    © 2026 I Ruma Solutions Sdn. Bhd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════ TOAST ═══════ -->
+    <div class="toast-custom success" id="toastSuccess">
+        <i class="fas fa-check-circle"></i>
+        <span>Message sent! We'll get back to you within 24 hours.</span>
+    </div>
+    <div class="toast-custom error" id="toastError">
+        <i class="fas fa-circle-exclamation"></i>
+        <span id="toastErrorMsg">Oops! Something went wrong. Please try again.</span>
+    </div>
+
+    <!-- ═══════ Demo Modal ═══════ -->
+    <div class="demo-modal-overlay" id="demoModalOverlay">
+        <div class="demo-modal">
+            <div class="demo-modal-header">
+                <h4>Schedule a Demo</h4>
+                <button class="demo-modal-close" onclick="closeDemoModal()">&times;</button>
+            </div>
+            <div class="demo-modal-body">
+                <form id="demoForm" novalidate>
+                    <div class="demo-form-group">
+                        <label for="demo_name">
+                            Name
+                            <span style="color:#fecaca;">*</span>
+                        </label>
+                        <input type="text" id="demo_name" name="name" placeholder="Your full name" autocomplete="name">
+                        <div class="field-error" id="err_demo_name">
+                            <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                            <span>Please enter your full name.</span>
+                        </div>
+                    </div>
+
+                    <div class="demo-form-group">
+                        <label for="demo_phone">
+                            Mobile No
+                            <span style="color:#fecaca;">*</span>
+                        </label>
+                        <input type="tel" id="demo_phone" name="phone" placeholder="+60 12-345 6789" autocomplete="tel">
+                        <div class="field-error" id="err_demo_phone">
+                            <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                            <span>Please enter a valid mobile number.</span>
+                        </div>
+                    </div>
+
+                    <div class="demo-form-group">
+                        <label for="demo_email">
+                            Email
+                            <span style="color:#fecaca;">*</span>
+                        </label>
+                        <input type="email" id="demo_email" name="email" placeholder="name@company.com" autocomplete="email">
+                        <div class="field-error" id="err_demo_email">
+                            <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                            <span>Please enter a valid email address.</span>
+                        </div>
+                    </div>
+
+                    <div class="demo-form-group">
+                        <label>
+                            Entity Type
+                            <span style="color:#fecaca;">*</span>
+                        </label>
+                        <div class="custom-select" id="propSelect">
+                            <div class="select-trigger" id="propTrigger" tabindex="0" role="combobox"
+                                aria-haspopup="listbox" aria-expanded="false">
+
+                                <span id="propLabel">Select entity type...</span>
+                                <i class="fas fa-chevron-down cs-chevron"></i>
+                            </div>
+                            <div class="select-options" role="listbox">
+                                <div class="option" data-value="JMB" role="option">
+                                    Joint Management Body (JMB)
+                                    <i class="fas fa-check opt-check"></i>
+                                </div>
+                                <div class="option" data-value="MC" role="option">
+                                    Management Corporation (MC)
+                                    <i class="fas fa-check opt-check"></i>
+                                </div>
+                                <div class="option" data-value="RA" role="option">
+                                    Residents Association (RA)
+                                    <i class="fas fa-check opt-check"></i>
+                                </div>
+                                <div class="option" data-value="PMC" role="option">
+                                    Property Management Company
+                                    <i class="fas fa-check opt-check"></i>
+                                </div>
+                                <div class="option" data-value="Developer" role="option">
+                                    Property Developer
+                                    <i class="fas fa-check opt-check"></i>
+                                </div>
+                            </div>
+                            <input type="hidden" id="prop_type_hidden" name="property_type">
+                        </div>
+                        <div class="field-error" id="err_prop_type">
+                            <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                            <span>Please select an entity type.</span>
+                        </div>
+                    </div>
+
+                    <div class="demo-form-group">
+                        <label for="demo_message">
+                            Description
+                            <span style="color:var(--white);font-weight:400;font-size:.75rem;">(Optional)</span>
+                        </label>
+                        <textarea id="demo_message" name="message" placeholder="Tell us about your property..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-demo-submit" id="demoSubmitBtn">
+                        <span id="demoBtnText">Book your demo now</span>
+                        <div id="demoSpinner" class="spinner-border spinner-border-sm" style="display: none;" role="status"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Toggle accordion sections
+        function toggle(btn) { 
+            btn.closest('.section-card').classList.toggle('open'); 
+        }
+
+        /* ── Toast helper ── */
+        function showToast(id, duration = 5000) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('show');
+                setTimeout(() => el.classList.remove('show'), duration);
+            }
+        }
+
+        /* ── Demo Modal Logic ── */
+        const demoModal = document.getElementById('demoModalOverlay');
+        const demoForm = document.getElementById('demoForm');
+        const demoBtnText = document.getElementById('demoBtnText');
+        const demoSpinner = document.getElementById('demoSpinner');
+
+        function openDemoModal() {
+            demoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            demoForm.reset();
+            clearAllDemoErrors();
+
+            const hidden = document.getElementById('prop_type_hidden');
+            const label = document.getElementById('propLabel');
+            const trigger = document.getElementById('propTrigger');
+
+            if (hidden) hidden.value = "";
+            if (label) label.textContent = "Select entity type...";
+            if (trigger) trigger.classList.remove('has-value');
+
+            clearDemoErrorForSelect();
+        }
+
+        function closeDemoModal() {
+            demoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showDemoToast(id) {
+            showToast(id);
+        }
+
+        /* ── Phone Auto Format ── */
+        function initDemoPhoneAutoFormat() {
+            const phoneEl = document.getElementById('demo_phone');
+            if (!phoneEl) return;
+
+            function formatFromDigits(allDigits) {
+                if (!allDigits) return '';
+                let d = allDigits.replace(/^60|^0/, '');
+                if (d.length > 9) d = d.slice(0, 9);
+
+                if (d.length <= 2) return '+60 ' + d;
+                if (d.length <= 5) return '+60 ' + d.slice(0, 2) + '-' + d.slice(2);
+                return '+60 ' + d.slice(0, 2) + '-' + d.slice(2, 5) + ' ' + d.slice(5);
+            }
+            phoneEl.addEventListener('input', function () {
+                const all = phoneEl.value.replace(/\D/g, '');
+                const next = formatFromDigits(all);
+                if (phoneEl.value !== next) phoneEl.value = next;
+            });
+        }
+
+        /* ── Validation helpers ── */
+        function showDemoError(inputId, errorId, msg) {
+            const input = document.getElementById(inputId);
+            const err = document.getElementById(errorId);
+            if (input) input.classList.add('is-invalid');
+            if (err) {
+                err.querySelector('span').textContent = msg;
+                err.classList.add('show');
+            }
+        }
+
+        function clearDemoError(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const err = document.getElementById(errorId);
+            if (input) input.classList.remove('is-invalid');
+            if (err) err.classList.remove('show');
+        }
+
+        function markDemoValid(inputId) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            }
+        }
+
+        function clearAllDemoErrors() {
+            ['demo_name', 'demo_phone', 'demo_email'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('is-invalid', 'is-valid');
+            });
+            ['err_demo_name', 'err_demo_phone', 'err_demo_email'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('show');
+            });
+            clearDemoErrorForSelect();
+        }
+
+        function showDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+
+            if (trigger) {
+                trigger.style.borderColor = '#dc2626';
+                trigger.style.boxShadow = '0 0 0 4px rgba(220, 38, 38, 0.1)';
+            }
+            if (err) err.classList.add('show');
+        }
+
+        function clearDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+            if (trigger) {
+                trigger.style.borderColor = '';
+                trigger.style.boxShadow = '';
+            }
+            if (err) err.classList.remove('show');
+        }
+
+        function validateDemoForm() {
+            const name = document.getElementById('demo_name').value.trim();
+            const phone = document.getElementById('demo_phone').value.trim();
+            const email = document.getElementById('demo_email').value.trim();
+            const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+            let valid = true;
+
+            /* Name */
+            if (!name) {
+                showDemoError('demo_name', 'err_demo_name', 'Please enter your full name.');
+                valid = false;
+            } else {
+                markDemoValid('demo_name');
+            }
+
+            /* Phone */
+            const phoneRegex = /^\+60 \d{2}-\d{3} \d{4}$/;
+            if (!phone) {
+                showDemoError('demo_phone', 'err_demo_phone', 'Please enter your phone number.');
+                valid = false;
+            } else if (!phoneRegex.test(phone)) {
+                showDemoError('demo_phone', 'err_demo_phone', 'Format must be: +60 12-345 6789');
+                valid = false;
+            } else {
+                markDemoValid('demo_phone');
+            }
+
+            /* Email */
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                showDemoError('demo_email', 'err_demo_email', 'Please enter your email address.');
+                valid = false;
+            } else if (!emailRegex.test(email)) {
+                showDemoError('demo_email', 'err_demo_email', 'Please enter a valid email address.');
+                valid = false;
+            } else {
+                markDemoValid('demo_email');
+            }
+
+            if (!propType) {
+                showDemoErrorForSelect();
+                valid = false;
+            } else {
+                clearDemoErrorForSelect();
+            }
+
+            return valid;
+        }
+
+        /* Clear errors while typing */
+        document.getElementById('demo_name').addEventListener('input', () => clearDemoError('demo_name', 'err_demo_name'));
+        document.getElementById('demo_email').addEventListener('input', () => clearDemoError('demo_email', 'err_demo_email'));
+        document.getElementById('demo_phone').addEventListener('input', () => clearDemoError('demo_phone', 'err_demo_phone'));
+
+        /* ── Form submit ── */
+        demoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            /* Validate first — stop if any error */
+            if (!validateDemoForm()) return;
+
+            const name = document.getElementById('demo_name').value.trim();
+            const phone = document.getElementById('demo_phone').value.trim();
+            const email = document.getElementById('demo_email').value.trim();
+            const message = document.getElementById('demo_message').value.trim();
+            const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+
+            const entityLabels = { JMB: 'Joint Management Body (JMB)', MC: 'Management Corporation (MC)', RA: 'Residents Association (RA)', PMC: 'Property Management Company (PMC)', Developer: 'Property Developer' };
+            const entityLine = propType ? (entityLabels[propType] || propType) : '—';
+
+            const fullMessage = ['[DEMO REQUEST]', message].filter(Boolean).join('\n');
+
+            demoBtnText.textContent = 'Sending...';
+            demoSpinner.style.display = 'block';
+            document.getElementById('demoSubmitBtn').disabled = true;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        from_name: name,
+                        phone: phone,
+                        reply_to: email,
+                        entity_type: entityLine,
+                        message: fullMessage,
+                        recaptcha: 'bypass'
+                    })
+                });
+
+                let data = {};
+                const text = await response.text();
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch (err) {
+                    console.warn('Contact API returned non-JSON response:', text);
+                    data.error = 'Unexpected server response.';
+                }
+
+                if (response.ok && data.ok) {
+                    showDemoToast('toastSuccess');
+                    demoForm.reset();
+                    clearAllDemoErrors();
+
+                    const propLabel = document.getElementById('propLabel');
+                    const propHidden = document.getElementById('prop_type_hidden');
+                    const propTrigger = document.getElementById('propTrigger'); 
+
+                    if (propLabel) propLabel.textContent = 'Select entity type...';
+                    if (propHidden) propHidden.value = '';
+                    if (propTrigger) propTrigger.classList.remove('has-value');
+
+                    document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
+                    setTimeout(closeDemoModal, 2000);
+                } else {
+                    document.getElementById('toastErrorMsg').textContent = data.error || 'Failed to send request.';
+                    showDemoToast('toastError');
+                }
+            } catch (error) {
+                document.getElementById('toastErrorMsg').textContent = 'Network error. Please try again.';
+                showDemoToast('toastError');
+            } finally {
+                demoBtnText.textContent = 'Book your demo now';
+                demoSpinner.style.display = 'none';
+                document.getElementById('demoSubmitBtn').disabled = false;
+            }
+        });
+
+        /* ── Custom Select Logic ── */
+        (function () {
+            const cs = document.getElementById('propSelect');
+            const trigger = document.getElementById('propTrigger');
+            const label = document.getElementById('propLabel');
+            const hidden = document.getElementById('prop_type_hidden');
+            const modalOverlay = document.getElementById('demoModalOverlay');
+
+            const options = cs.querySelectorAll('.option');
+
+            function closeSelect() {
+                cs.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+
+            function openSelect() {
+                cs.classList.add('active');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            trigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                cs.classList.contains('active') ? closeSelect() : openSelect();
+            });
+
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    cs.classList.contains('active') ? closeSelect() : openSelect();
+                }
+                if (e.key === 'Escape') closeSelect();
+            });
+
+            options.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+
+                    label.textContent = opt.textContent;
+                    hidden.value = opt.dataset.value;
+
+                    trigger.classList.add('has-value');
+
+                    closeSelect();
+                    trigger.focus();
+
+                    clearDemoErrorForSelect();
+                });
+            });
+
+            /* click outside close dropdown */
+            document.addEventListener('click', (e) => {
+                if (!cs.contains(e.target)) closeSelect();
+            });
+
+            /* modal close */
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) closeDemoModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDemoModal();
+            });
+        })();
+
+            /* Close on click outside */
+            demoModal.addEventListener('click', (e) => {
+                if (e.target === demoModal) closeDemoModal();
+            });
+
+            /* Close on ESC */
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDemoModal();
+            });
+
+            // Initialize phone auto-formatting
+            initDemoPhoneAutoFormat();
+        </script>
+    </body>
+</html>

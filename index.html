@@ -1,0 +1,3197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>Probunny | Fully Automated Property Management Solution</title>
+
+        <link rel="icon" href="image_icon/ProBunny_icon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <style>
+            /* ══════════════════════════════════════════════
+               DESIGN TOKENS
+            ══════════════════════════════════════════════ */
+              :root {
+                  --gold: #e7c758;
+                  --gold-light: #fdf6e0;
+                  --dark-gold: #92650a;
+                  --gold-xlight: #fffdf5;
+                  --primary: #0055bb;
+                  --primary-dark: #003d8a;
+                  --primary-mid: #1a5fb4;
+                  --primary-light: #e8f1fd;
+                  --primary-xlight: #f0f6ff;
+                  --accent: #f97316;
+                  --accent-dark: #ea6c0a;
+                  --white: #ffffff;
+                  --surface: #f7f9fc;
+                  --surface-2: #eef3fa;
+                  --border: #e2e8f0;
+                  --border-strong: #c7d8ef;
+                  --text: #111827;
+                  --text-2: #374151;
+                  --muted: #64748b;
+                  --muted-light: #94a3b8;
+                  --r-sm: 10px;
+                  --r-md: 16px;
+                  --r-lg: 24px;
+                  --r-xl: 32px;
+                  --r-pill: 9999px;
+                  --sh-xs: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+                  --sh-sm: 0 2px 8px rgba(0,55,140,.07);
+                  --sh-md: 0 8px 24px rgba(0,55,140,.10);
+                  --sh-lg: 0 16px 48px rgba(0,55,140,.14);
+                  --sh-xl: 0 24px 64px rgba(0,55,140,.18);
+                  --ease: all .28s cubic-bezier(.4,0,.2,1);
+                  --ease-bounce: all .4s cubic-bezier(.34,1.56,.64,1);
+              }
+
+              *, *::before, *::after {
+                  box-sizing: border-box;
+              }
+
+              html {
+                  scroll-padding-top: 80px;
+              }
+
+              body {
+                  font-family: 'DM Sans', sans-serif;
+                  color: var(--text);
+                  scroll-behavior: smooth;
+                  -webkit-font-smoothing: antialiased;
+                  line-height: 1.6;
+              }
+
+              h1, h2, h3, h4, h5, h6 {
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  line-height: 1.2;
+              }
+
+              img {
+                  max-width: 100%;
+              }
+
+              /* ── Navbar ─────────────────────────────────── */
+              .navbar {
+                  background: rgba(255,255,255,.97);
+                  backdrop-filter: blur(12px);
+                  box-shadow: 0 1px 0 var(--border);
+                  padding: .85rem 0;
+                  transition: box-shadow .3s;
+              }
+
+              .logo-img {
+                  height: 36px;
+                  width: auto;
+                  max-width: 180px;
+              }
+
+            .nav-link {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                font-size: .88rem;
+                color: var(--text-2) !important;
+                padding: .4rem .65rem !important;
+                border-radius: var(--r-sm);
+                transition: var(--ease);
+            }
+
+                .nav-link:hover, .nav-link.active {
+                    color: #92650a !important;       
+                    background: var(--gold-light);
+                }
+
+              /* ── Buttons ─────────────────────────────────── */
+              .btn-primary-custom {
+                  background: var(--gold);
+                  color: var(--white);
+                  border: none;
+                  padding: 12px 28px;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-weight: 700;
+                  font-size: .88rem;
+                  border-radius: var(--r-pill);
+                  transition: var(--ease);
+                  cursor: pointer;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  text-decoration: none;
+              }
+
+                  .btn-primary-custom:hover {
+                      background: var(--dark-gold);
+                      color: var(--white);
+                      transform: translateY(-2px);
+                      box-shadow: 0 10px 28px rgba(0,55,140,.30);
+                  }
+
+              .btn-outline-white {
+                  background: transparent;
+                  color: var(--white);
+                  border: 1.5px solid rgba(255,255,255,.55);
+                  padding: 12px 28px;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-weight: 700;
+                  font-size: .88rem;
+                  border-radius: var(--r-pill);
+                  transition: var(--ease);
+                  cursor: pointer;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+              }
+
+                  .btn-outline-white:hover {
+                      background: rgba(255,255,255,.15);
+                      border-color: rgba(255,255,255,.8);
+                      transform: translateY(-2px);
+                  }
+
+                .btn-book {
+                  background: linear-gradient(
+                    135deg,
+                    #7b2cbf,
+                    #c94b8c,
+                    #ff4d4d
+                  );
+                  color: var(--white);
+                  border: none;
+                  padding: 12px 28px;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-weight: 700;
+                  font-size: .88rem;
+                  border-radius: var(--r-pill);
+                  transition: var(--ease);
+                  cursor: pointer;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  text-decoration: none;
+                  box-shadow: 0 6px 18px rgba(123,44,191,0.35);
+              }
+
+                  .btn-book:hover {
+                      background: linear-gradient(
+                        135deg,
+                        #7b2cbf,
+                        #c94b8c,
+                        #ff4d4d
+                      );
+                      color: var(--white);
+                      transform: translateY(-3px);
+                      box-shadow: 0 12px 30px rgba(255, 77, 77, 0.45);
+                  }
+                
+                .btn-accent {
+                    background: linear-gradient(
+                        135deg,
+                        #2563eb,
+                        #3b82f6,
+                        #60a5fa
+                    );
+                    color: var(--white);
+                    border: none;
+                    padding: 12px 28px;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-weight: 700;
+                    font-size: .88rem;
+                    border-radius: var(--r-pill);
+                    transition: all 0.25s ease;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    text-decoration: none;
+                    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+                }
+
+                .btn-accent:hover {
+                    background: linear-gradient(
+                        135deg,
+                        #2563eb,
+                        #3b82f6,
+                        #60a5fa
+                    );
+                    color: var(--white);
+                    transform: translateY(-3px);
+                    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.45);
+                }
+                .btn-group-custom {
+                    display: flex;
+                    gap: 12px;
+                }
+                .btn-group-custom a {
+                    flex: 1;
+                    justify-content: center;
+                    text-align: center;
+                    padding: 12px 28px;     
+                    font-size: .88rem;      
+                    font-weight: 700;       
+                    border-radius: 999px;   
+                }
+                .btn-group-custom .btn-book, .btn-group-custom .btn-accent {
+                    flex: 1;
+                    justify-content: center;
+                    text-align: center;
+                }
+                .btn-book, .btn-accent {
+                    padding: 12px 28px;
+                    font-size: .88rem;
+                }
+                .btn-secondary-custom {
+                    background: transparent;
+                    color: #333;
+                    border: 2px solid #ddd;
+                    padding: 12px 28px;
+                    font-weight: 700;
+                    font-size: .88rem;
+                    border-radius: 999px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    text-decoration: none;
+                }
+                .btn-secondary-custom:hover {
+                    background: rgba(255,255,255,.15);
+                    transform: translateY(-2px);
+                }
+                
+              /* ── Section label ───────────────────────────── */
+              .section-label {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  background: var(--gold-light);
+                  color: var(--dark-gold);
+                  padding: 5px 14px;
+                  border-radius: var(--r-pill);
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: .72rem;
+                  font-weight: 800;
+                  letter-spacing: .8px;
+                  text-transform: uppercase;
+              }
+
+              /* ── Icon box  ← WAS MISSING, caused icons to float ── */
+              .icon-box {
+                  width: 56px;
+                  height: 56px;
+                  background: var(--gold-light);
+                  border-radius: 15px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                  transition: var(--ease);
+              }
+
+              .card-hover:hover .icon-box {
+                  background: var(--gold);
+              }
+
+                  .card-hover:hover .icon-box i {
+                      color: var(--white) !important;
+                  }
+
+              /* ── Hero ────────────────────────────────────── */
+              .hero {
+                  background: 
+                    radial-gradient(ellipse 80% 60% at 70% 120%, rgba(249,115,22,.14) 0%, transparent 60%), 
+                    radial-gradient(ellipse 60% 80% at -10% 20%, rgba(255,255,255,.06) 0%, transparent 55%), 
+                    linear-gradient(135deg, var(--dark-gold) 0%, var(--gold) 45%, #1e7fcb 100%);
+
+                  background-image: url('./image/Banner.png');
+                  background-position: center, center, center, center;
+                  background-size: cover, cover, cover, cover;
+                  background-repeat: no-repeat;
+
+                  padding: 110px 0 100px;
+                  color: var(--white);
+                  position: relative;
+                  overflow: hidden;
+              }
+                  /* Subtle grid texture */
+                  .hero::before {
+                      content: '';
+                      position: absolute;
+                      inset: 0;
+                      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+                      background-size: 48px 48px;
+                      pointer-events: none;
+                  }
+                  /* Ambient orb */
+                  .hero::after {
+                      content: '';
+                      position: absolute;
+                      width: 480px;
+                      height: 480px;
+                      bottom: -160px;
+                      right: -120px;
+                      border-radius: 50%;
+                      background: radial-gradient(circle, rgba(249,115,22,.18) 0%, transparent 70%);
+                      filter: blur(40px);
+                      pointer-events: none;
+                  }
+
+              .hero-badge {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  background: rgba(255,255,255,.12);
+                  backdrop-filter: blur(10px);
+                  border: 1px solid rgba(255,255,255,.22);
+                  color: var(--white);
+                  padding: 7px 16px;
+                  border-radius: var(--r-pill);
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: .78rem;
+                  font-weight: 700;
+                  letter-spacing: .4px;
+                  margin-bottom: 1.5rem;
+              }
+
+              .hero-badge-dot {
+                  width: 7px;
+                  height: 7px;
+                  background: #4ade80;
+                  border-radius: 50%;
+                  box-shadow: 0 0 0 3px rgba(74,222,128,.25);
+                  animation: pulseDot 2s ease infinite;
+              }
+
+              @keyframes pulseDot {
+                  0%,100% {
+                      box-shadow: 0 0 0 3px rgba(74,222,128,.25);
+                  }
+
+                  50% {
+                      box-shadow: 0 0 0 6px rgba(74,222,128,.1);
+                  }
+              }
+
+              .hero h1 {
+                  font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+                  font-weight: 800;
+                  line-height: 1.14;
+                  letter-spacing: -.6px;
+              }
+
+              .hero-lead {
+                  font-size: 1.05rem;
+                  opacity: .88;
+                  max-width: 500px;
+                  line-height: 1.7;
+              }
+
+              .hero-stat-card {
+                  background: rgba(255,255,255,.1);
+                  backdrop-filter: blur(16px);
+                  border: 1px solid rgba(255,255,255,.18);
+                  border-radius: var(--r-xl);
+                  padding: 2.2rem 2rem;
+                  position: relative;
+                  overflow: hidden;
+                  z-index: 1;
+              }
+
+                  .hero-stat-card::before {
+                      content: '';
+                      position: absolute;
+                      top: -40px;
+                      right: -40px;
+                      width: 130px;
+                      height: 130px;
+                      border-radius: 50%;
+                      background: rgba(255,255,255,.06);
+                  }
+
+              .hero-mini-stat {
+                  background: rgba(255,255,255,.14);
+                  border: 1px solid rgba(255,255,255,.12);
+                  border-radius: 16px;
+                  padding: 1.3rem 1rem;
+                  text-align: center;
+                  transition: var(--ease);
+              }
+
+                  .hero-mini-stat:hover {
+                      background: rgba(255,255,255,.22);
+                      transform: translateY(-3px);
+                  }
+
+                  .hero-mini-stat h3 {
+                      font-size: 2rem;
+                      font-weight: 800;
+                      margin: 0;
+                      line-height: 1;
+                      letter-spacing: -.5px;
+                  }
+
+                  .hero-mini-stat small {
+                      opacity: .75;
+                      font-size: .78rem;
+                      display: block;
+                      margin-top: 5px;
+                      font-weight: 500;
+                  }
+                
+                .hero-analytics-graph {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    width: 135px;
+                    height: 92px;
+                    background: rgba(255,255,255,.15);
+                    border: 1px solid rgba(255,255,255,.30);
+                    backdrop-filter: blur(10px);
+                    border-radius: 12px;
+                    padding: 7px;
+                    overflow: hidden;
+                    z-index: 0;
+                    pointer-events: none;
+                    box-shadow: 0 7px 16px rgba(0,0,0,.15)
+                }
+
+                .hero-analytics-graph svg {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                @keyframes growPath {
+                    0% { stroke-dashoffset: 120; }
+                    50% { stroke-dashoffset: 0; }
+                    100% { stroke-dashoffset: 0; }
+                }
+
+                @keyframes plusePoint {
+                    0%, 100% { transform: translateY(0); opacity: 0.65; }
+                    50% { transform: translateY(-6px); opacity: 1; }
+                }
+
+                .hero-analytics-graph .trend-path {
+                    stroke: #45fdff;
+                    stroke-width: 2.4;
+                    fill: none;
+                    stroke-dasharray: 300;
+                    stroke-dashoffset: 300;
+                    animation: growPath 240s ease-out infinite;
+                }
+
+                .hero-analytics-graph .trend-point {
+                    fill: #50e6ff;
+                    animation: plusePoint 10s ease-in-out forwards; 
+                }
+
+              /* ── Section rhythm ──────────────────────────── */
+              .section-py {
+                  padding-top: 88px;
+                  padding-bottom: 88px;
+              }
+
+              .section-py-sm {
+                  padding-top: 36px;
+                  padding-bottom: 36px;
+              }
+
+              .section-ruled {
+                  border-top: 1px solid var(--border);
+              }
+
+              .section-testimonial {
+                padding: 0 0 72px;
+                background: #fff;
+              }
+
+              /* ── Stat cards ──────────────────────────────── */
+              .stat-card {
+                  border-radius: var(--r-lg) !important;
+                  border: 0 !important;
+                  box-shadow: var(--sh-xs) !important;
+                  background: var(--white);
+                  transition: var(--ease);
+                  position: relative;
+                  overflow: hidden;
+              }
+
+                  .stat-card::after {
+                      content: '';
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      height: 3px;
+                      background: linear-gradient(135deg, #C9A24A 0%, #FFD700 50%, #B8962E 100%);
+                      transform: scaleX(0);
+                      transform-origin: left;
+                      transition: transform .35s ease;
+                  }
+
+                  .stat-card:hover {
+                      transform: translateY(-8px);
+                      box-shadow: var(--sh-lg) !important;
+                  }
+
+                      .stat-card:hover::after {
+                          transform: scaleX(1);
+                      }
+
+              .stat-icon-wrap {
+                  width: 120px;
+                  height: 120px;
+                  background: var(--gold-light);
+                  border-radius: 24px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto 1.2rem;
+                  transition: var(--ease);
+              }
+
+                  .stat-icon-wrap img {
+                      width: auto !important;
+                      height: auto !important;
+                      max-width: 88%;
+                      max-height: 88%;
+                      object-fit: contain;
+                      transition: transform .3s ease;
+                  }
+
+              .stat-card:hover .stat-icon-wrap {
+                  background: var(--gold);
+              }
+
+                  .stat-card:hover .stat-icon-wrap img {
+                      filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(185deg) brightness(1.9);
+                      transform: scale(1.06);
+                  }
+
+            .stat-number {
+                font-size: 2.8rem;
+                font-weight: 800;
+                color: var(--gold);
+                line-height: 1;
+                letter-spacing: -.5px;
+                display: inline;
+            }
+
+            .text-gold {
+                color: #e7c758 !important;
+            }
+
+            /* ── Testimonial ──────────────────────────────  */
+            .testimonial {
+                max-width: 820px;
+                margin: 0 auto;
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                border-radius: var(--r-xl);
+                padding: 2.5rem 2.75rem;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.04),
+                            0 4px 10px rgba(0,0,0,0.03);
+                transition: transform .25s ease, box-shadow .25s ease;
+            }
+
+            .testimonial:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(0,0,0,0.06),
+                            0 8px 16px rgba(0,0,0,0.05);
+            }
+
+            .testimonial-accent-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(
+                    90deg,
+                    var(--dark-gold),
+                    var(--gold),
+                    var(--gold-light)
+                );
+            }
+
+            .testimonial-badge {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.6rem;
+            }
+
+            .testimonial-stars {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: var(--gold-light);
+                color: var(--dark-gold);
+                font-family: 'Plus Jakarta Sans', sans-serif; 
+                font-size: .72rem;
+                font-weight: 700;
+                letter-spacing: .6px;
+                text-transform: uppercase;
+                padding: 4px 13px;
+                border-radius: var(--r-pill);
+            }
+
+            .testimonial-rating {
+                margin-left: auto;
+                display: flex;
+                gap: 4px;
+            }
+
+            .testimonial-rating i {
+                color: #f59e0b;
+                font-size: .8rem;
+            }
+
+            .testimonial-quote-text {
+                font-size: 1rem;
+                color: var(--text-2);
+                line-height: 1.9;
+                font-style: italic;
+                margin: 0 0 2rem;
+                position: relative;
+                z-index: 1;
+            }
+
+            .testimonial-quote-text strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+
+            .testimonial-quote-mark {
+                position: absolute;
+                top: 20px;
+                right: 28px;
+                font-size: 100px;
+                color: var(--gold);
+                opacity: 0.06;
+                font-family: Georgia, serif;
+                pointer-events: none;
+            }
+
+              /* ── Trust banner ────────────────────────────── */
+              .trust-banner {
+                  background: linear-gradient(135deg, var(--primary-xlight) 0%, #dbeafe 100%);
+                  border: 1px solid var(--border-strong);
+                  border-radius: var(--r-xl);
+                  position: relative;
+                  overflow: hidden;
+              }
+
+                  .trust-banner::after {
+                      content: '';
+                      position: absolute;
+                      top: -60px;
+                      right: -60px;
+                      width: 200px;
+                      height: 200px;
+                      border-radius: 50%;
+                      background: radial-gradient(circle, rgba(0,85,187,.08) 0%, transparent 70%);
+                  }
+
+              /* ── Cards ───────────────────────────────────── */
+              .card-hover {
+                  border-radius: var(--r-lg) !important;
+                  border: 1px solid var(--border) !important;
+                  box-shadow: var(--sh-xs) !important;
+                  transition: var(--ease);
+              }
+
+                  .card-hover:hover {
+                      transform: translateY(-7px);
+                      box-shadow: var(--sh-lg) !important;
+                      border-color: var(--border-strong) !important;
+                  }
+
+              /* ── Gradient text ───────────────────────────── */
+              .gradient-text {
+                  background: linear-gradient(90deg, var(--primary) 0%, #1a8fd1 60%, var(--accent) 100%);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+                  background-clip: text;
+              }
+
+              /* ── Video placeholder ───────────────────────── */
+              .video-placeholder {
+                  background: #fffdf5;
+                  border: 2px dashed var(--border-strong);
+                  border-radius: var(--r-xl);
+                  cursor: pointer;
+                  transition: var(--ease);
+              }
+
+                  .video-placeholder:hover {
+                      background: var(--gold-light);
+                      border-color: var(--gold);
+                      box-shadow: var(--sh-md);
+                  }
+
+              .play-btn-ring {
+                  width: 80px;
+                  height: 80px;
+                  border-radius: 50%;
+                  background: var(--gold);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto 1.5rem;
+                  box-shadow: 0 0 0 12px rgba(0,85,187,.12), 0 0 0 24px rgba(0,85,187,.06);
+                  transition: var(--ease-bounce);
+              }
+
+              .video-placeholder:hover .play-btn-ring {
+                  transform: scale(1.12);
+                  box-shadow: 0 0 0 16px rgba(0,85,187,.14), 0 0 0 32px rgba(0,85,187,.06);
+              }
+
+              /* ── Automations ─────────────────────────────── */
+              .automations-heading {
+                  font-size: clamp(1.7rem, 3vw, 2.2rem);
+                  font-weight: 800;
+                  color: var(--text);
+                  line-height: 1.18;
+              }
+
+              .automations-heading-underline {
+                  display: block;
+                  width: 44px;
+                  height: 4px;
+                  background: linear-gradient(90deg, var(--accent) 0%, #fb923c 100%);
+                  border-radius: 2px;
+                  margin: 14px 0 22px;
+              }
+
+              .automations-subtitle {
+                  font-size: 1.15rem;
+                  font-weight: 600;
+                  color: #d4a832;
+                  line-height: 1.55;
+                  margin-bottom: 1rem;
+              }
+
+              .automations-body {
+                  color: var(--muted);
+                  font-size: .96rem;
+                  line-height: 1.82;
+              }
+
+              .gradient-card {
+                  background: linear-gradient(135deg, #7c3aed 0%, #c026d3 45%, #f97316 100%);
+                  border-radius: var(--r-xl);
+                  min-height: 340px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  overflow: hidden;
+                  position: relative;
+                  box-shadow: var(--sh-lg);
+              }
+
+                  .gradient-card::before {
+                      content: '';
+                      position: absolute;
+                      inset: 0;
+                      background: radial-gradient(ellipse at 20% 80%, rgba(255,255,255,.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 10%, rgba(255,255,255,.08) 0%, transparent 40%);
+                  }
+
+              .gradient-card-text {
+                  font-size: 3rem;
+                  font-weight: 900;
+                  color: rgba(255,255,255,.5);
+                  letter-spacing: -1.5px;
+                  text-align: center;
+                  padding: 2rem;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  position: relative;
+                  text-shadow: 0 2px 20px rgba(0,0,0,.15);
+              }
+
+              /* ── Media placeholder ───────────────────────── */
+              .media-placeholder-light {
+                  background: var(--surface);
+                  border: 2px dashed var(--border);
+                  border-radius: var(--r-xl);
+                  min-height: 300px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--muted-light);
+                  transition: var(--ease);
+              }
+
+                  .media-placeholder-light:hover {
+                      border-color: var(--border-strong);
+                      color: var(--muted);
+                  }
+
+              /* ── Marquee ─────────────────────────────────── */
+              .marquee-wrapper {
+                  width: 100%;
+                  max-width: 900px;
+                  margin: 0 auto;
+                  overflow: hidden;
+                  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+                  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+              }
+
+              .marquee-track {
+                  display: flex;
+                  width: max-content;
+              }
+
+              .marquee-inner {
+                  display: flex;
+                  gap: 14px;
+                  padding: 6px;
+                  flex-shrink: 0;
+              }
+
+              .marquee-left {
+                  animation: scrollLeft 36s linear infinite;
+              }
+
+                  .marquee-left:hover {
+                      animation-play-state: paused;
+                  }
+
+              .marquee-right {
+                  animation: scrollRight 36s linear infinite;
+              }
+
+                  .marquee-right:hover {
+                      animation-play-state: paused;
+                  }
+
+              @keyframes scrollLeft {
+                  from {
+                      transform: translateX(0);
+                  }
+
+                  to {
+                      transform: translateX(-50%);
+                  }
+              }
+
+              @keyframes scrollRight {
+                  from {
+                      transform: translateX(-50%);
+                  }
+
+                  to {
+                      transform: translateX(0);
+                  }
+              }
+
+              @media (prefers-reduced-motion: reduce) {
+                  .marquee-left, .marquee-right {
+                      animation: none;
+                  }
+              }
+
+              .partner-badge {
+                  background: var(--white);
+                  border: 1px solid var(--border);
+                  border-radius: var(--r-md);
+                  padding: 9px 18px;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-size: .8rem;
+                  font-weight: 700;
+                  color: var(--text-2);
+                  white-space: nowrap;
+                  transition: var(--ease);
+                  box-shadow: var(--sh-xs);
+              }
+
+                  .partner-badge:hover {
+                      border-color: var(--gold);
+                      color: var(--gold);
+                      box-shadow: var(--sh-sm);
+                      transform: translateY(-2px);
+                  }
+
+              .partner-logo {
+                  width: 110px;
+                  height: 55px;
+                  object-fit: contain;
+                  border-radius: 10px;
+                  border: 1px solid var(--border);
+                  background: var(--white);
+                  box-shadow: var(--sh-xs);
+                  transition: var(--ease);
+              }
+
+                  .partner-logo:hover {
+                      box-shadow: var(--sh-md);
+                      transform: translateY(-2px);
+                  }
+
+            /* ===== NEW ICON GRID ===== */
+
+            .icon-grid-wrap {
+                position: absolute;
+                top: 0;
+                right: -60px;
+                height: 100%;
+                width: 520px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                pointer-events: none;
+                overflow: visible;
+            }
+
+            .icon-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 110px);
+                gap: 18px;
+                transform: rotate(-18deg) scale(1.05);
+                transform-origin: center center;
+                opacity: 0;
+                translate: 220px 0;
+                transition: 
+                    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                    translate 0.85s cubic-bezier(0.34, 1.2, 0.64, 1); 
+            }
+
+            .icon-grid.in-view {
+                opacity: 1;
+                translate: 0 0;
+            }
+
+            .icon-card {
+                width: 110px;
+                height: 110px;
+                border-radius: 22px;
+                background: rgba(255,255,255,0.07);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow:
+                    0 12px 30px rgba(0,0,0,.45),
+                    inset 0 0 0 1px rgba(255,255,255,.1);
+                opacity: 0;
+                transform: translateX(40px) scale(0.88);
+                transition:
+                    opacity 0.5s ease,
+                    transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1),
+                    box-shadow 0.3s ease;
+            }
+
+            .icon-grid.in-view .icon-card:nth-child(1) { opacity:1; transform:none; transition-delay: 0.05s; }
+            .icon-grid.in-view .icon-card:nth-child(2) { opacity:1; transform:none; transition-delay: 0.12s; }
+            .icon-grid.in-view .icon-card:nth-child(3) { opacity:1; transform:none; transition-delay: 0.19s; }
+            .icon-grid.in-view .icon-card:nth-child(4) { opacity:1; transform:none; transition-delay: 0.26s; }
+            .icon-grid.in-view .icon-card:nth-child(5) { opacity:1; transform:none; transition-delay: 0.33s; }
+            .icon-grid.in-view .icon-card:nth-child(6) { opacity:1; transform:none; transition-delay: 0.40s; }
+            .icon-grid.in-view .icon-card:nth-child(7) { opacity:1; transform:none; transition-delay: 0.47s; }
+            .icon-grid.in-view .icon-card:nth-child(8) { opacity:1; transform:none; transition-delay: 0.54s; }
+            .icon-grid.in-view .icon-card:nth-child(9) { opacity:1; transform:none; transition-delay: 0.61s; }
+
+            .icon-card i {
+                font-size: 28px;
+                color: rgba(255,255,255,0.85);
+            }
+
+            .icon-card:hover {
+                box-shadow:
+                    0 20px 45px rgba(0,0,0,.6),
+                    inset 0 0 0 1px rgba(255,255,255,.18);
+                pointer-events: all;
+            }
+
+            .icon-grid-wrap::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 35%;
+                height: 100%;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            @media (max-width: 992px) {
+                .icon-grid-wrap {
+                    display: flex;
+                    position: absolute;
+                    right: -20px;
+                    left: -20px;
+                    top: 0;
+                    bottom: 0;
+                    width: auto;
+                    height: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0.25;
+                    z-index: 0;
+                }
+
+                .icon-grid-wrap::before {
+                    display: none;
+                }
+
+                .icon-grid {
+                    grid-template-columns: repeat(3, 90px);
+                    gap: 14px;
+                }
+
+                .icon-card {
+                    width: 90px;
+                    height: 90px;
+                }
+
+                .icon-card i {
+                    font-size: 22px;
+                }
+            }
+
+              /* ── App download ────────────────────────────── */
+              .app-download-section {
+                  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, #1e7fcb 100%);
+                  position: relative;
+                  overflow: hidden;
+                  padding: 80px 0;
+              }
+
+                  .app-download-section::before {
+                      content: '';
+                      position: absolute;
+                      inset: 0;
+                      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+                      background-size: 40px 40px;
+                  }
+
+                  .app-download-section::after {
+                      content: '';
+                      position: absolute;
+                      width: 400px;
+                      height: 400px;
+                      top: -100px;
+                      right: -80px;
+                      border-radius: 50%;
+                      background: radial-gradient(circle, rgba(249,115,22,.18) 0%, transparent 65%);
+                      filter: blur(40px);
+                      pointer-events: none;
+                  }
+
+              .app-store-btn {
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 12px;
+                  padding: 12px 20px;
+                  min-height: 64px;
+                  color: var(--white);
+                  text-decoration: none;
+                  transition: var(--ease);
+                  min-width: 170px;
+                  font-weight: 700;
+              }
+
+              .app-store-btn img {
+                  height: 46px;
+                  width: auto;
+              }
+
+              .app-store-btn .store-icon {
+                  font-size: 1.8rem;
+                  line-height: 1;
+              }
+
+              .app-store-btn .store-text {
+                  text-align: left;
+              }
+
+              .app-store-btn .sub {
+                  display: block;
+                  font-size: .68rem;
+                  opacity: .75;
+                  font-weight: 400;
+              }
+
+              .app-store-btn .main {
+                  display: block;
+                  font-size: .92rem;
+                  font-weight: 700;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+              }
+
+              .app-rating-badge {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  background: rgba(255,255,255,.1);
+                  border: 1px solid rgba(255,255,255,.15);
+                  border-radius: var(--r-pill);
+                  padding: 5px 14px;
+                  font-size: .78rem;
+                  color: rgba(255,255,255,.85);
+                  font-weight: 600;
+              }
+
+                  .app-rating-badge .stars {
+                      color: #fbbf24;
+                  }
+
+                /* ── Footer ──────────────────────────────────── */
+                footer {
+                    background: var(--white);
+                    color: #64748b;
+                    position: relative;
+                }
+
+                footer::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: #e2e8f0;
+                }
+
+                footer h6 {
+                    color: #111827;
+                    font-weight: 700;
+                    letter-spacing: .05em;
+                    font-size: .8rem;
+                    text-transform: uppercase;
+                }
+
+                footer a {
+                    color: #64748b;
+                    text-decoration: none;
+                    transition: color .2s;
+                }
+
+                footer a:hover {
+                    color: var(--dark-gold);
+                }
+
+                .footer-divider {
+                    border-color: #e2e8f0;
+                }
+
+                .footer-social-link {
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 8px;
+                    background: transparent;
+                    border: 1px solid #e2e8f0;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #374151;
+                    font-size: .8rem;
+                    text-decoration: none;
+                    transition: all .2s ease;
+                }
+
+                .footer-social-link.facebook:hover {
+                    background: #1877f2;
+                    border-color: #1877f2;
+                    color: var(--white);
+                    transform: translateY(-2px);
+                }
+
+                .footer-social-link.instagram:hover {
+                    background: linear-gradient(
+                        45deg,
+                        #f09433,
+                        #e6683c,
+                        #dc2743,
+                        #cc2366,
+                        #bc1888
+                    );
+                    border-color: transparent;
+                    color: var(--white);
+                }
+
+                .footer-social-link.linkedin:hover {
+                    background: #0a66c2;
+                    border-color: #0a66c2;
+                    color: var(--white);
+                }
+
+                .logo-img-footer {
+                    height: 100px;
+                    width: auto;
+                    max-width: 160px;
+                }
+
+              /* ── Scroll reveal ───────────────────────────── */
+              .reveal {
+                  opacity: 0;
+                  transform: translateY(24px);
+                  transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+              }
+
+                  .reveal.visible {
+                      opacity: 1;
+                      transform: none;
+                  }
+
+              /* ── Mobile ──────────────────────────────────── */
+              @media (max-width: 767.98px) {
+                  .hero {
+                      padding: 70px 0 60px;
+                  }
+
+                  .section-py {
+                      padding-top: 60px;
+                      padding-bottom: 60px;
+                  }
+
+                  .hero h1 {
+                      font-size: 2rem;
+                  }
+
+                  .app-store-btn {
+                      min-width: 140px;
+                  }
+              }
+
+              .icon-box i {
+                  transition: transform .3s;
+              }
+
+              .card-hover:hover .icon-box i {
+                  transform: scale(1.2);
+              }
+
+              button:active {
+                  transform: scale(0.97);
+              }
+
+              /* ── Demo Modal ──────────────────────────────── */
+               .demo-modal-overlay {
+                   position: fixed;
+                   inset: 0;
+                   background: rgba(0,0,0,.55);
+                   backdrop-filter: blur(6px);
+                   display: none;
+                   align-items: center;
+                   justify-content: center;
+                   z-index: 2000;
+                   padding: 16px;
+               }
+               .demo-modal-overlay.active {
+                   display: flex;
+               }
+               .demo-modal {
+                   background: var(--white);
+                   width: 100%;
+                   max-width: 420px;
+                   max-height: 90vh;
+                   border-radius: var(--r-xl);
+                   overflow: hidden;
+                   display: flex;
+                   flex-direction: column;
+                   box-shadow: 0 32px 64px rgba(0,0,0,.28);
+                   animation: modalPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+               }
+               @keyframes modalPop {
+                   from { opacity: 0; transform: scale(0.93) translateY(8px); }
+                   to   { opacity: 1; transform: scale(1)    translateY(0); }
+               }
+               .demo-modal-header {
+                   background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+                   color: var(--white);
+                   padding: 14px 18px;
+                   display: flex;
+                   justify-content: space-between;
+                   align-items: center;
+                   flex-shrink: 0;
+               }
+               .demo-modal-header h4 {
+                   margin: 0;
+                   font-size: 1rem;
+                   font-weight: 800;
+                   letter-spacing: -.01em;
+               }
+               .demo-modal-close {
+                   background: rgba(255,255,255,.18);
+                   border: none;
+                   color: var(--white);
+                   width: 26px;
+                   height: 26px;
+                   border-radius: 7px;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   font-size: .9rem;
+                   cursor: pointer;
+                   transition: background .2s;
+                   flex-shrink: 0;
+                   line-height: 1;
+               }
+               .demo-modal-close:hover {
+                   background: rgba(255,255,255,.32);
+               }
+               .demo-modal-body {
+                   padding: 16px 18px 20px;
+                   background: linear-gradient(160deg, #2563eb 0%, #3b82f6 60%, #60a5fa 100%);
+                   overflow-y: auto;
+                   flex: 1;
+                   scrollbar-width: thin;
+                   scrollbar-color: rgba(255,255,255,.3) transparent;
+               }
+               .demo-modal-body::-webkit-scrollbar { width: 4px; }
+               .demo-modal-body::-webkit-scrollbar-thumb {
+                   background: rgba(255,255,255,.3);
+                   border-radius: 2px;
+               }
+               .demo-form-group {
+                   margin-bottom: 11px;
+               }
+               .demo-form-group label {
+                   display: block;
+                   font-size: 0.76rem;
+                   font-weight: 700;
+                   margin-bottom: 5px;
+                   color: rgba(255,255,255,.92);
+                   letter-spacing: .02em;
+               }
+               .demo-form-group input, 
+               .demo-form-group textarea {
+                   width: 100%;
+                   padding: 9px 12px;
+                   border: 1.5px solid rgba(255,255,255,.2);
+                   border-radius: 10px;
+                   font-size: 0.875rem;
+                   transition: border-color .2s, box-shadow .2s;
+                   background: rgba(255,255,255,.97);
+                   color: var(--text);
+                   font-family: 'DM Sans', sans-serif;
+               }
+               .demo-form-group textarea {
+                   resize: vertical;
+                   min-height: 64px;
+                   max-height: 120px;
+               }
+               .demo-form-group input:focus, 
+               .demo-form-group textarea:focus {
+                   outline: none;
+                   border-color: #fff;
+                   box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+                   background: #fff;
+               }
+               .demo-form-group input::placeholder,
+               .demo-form-group textarea::placeholder {
+                   color: #9ca3af;
+                   font-size: .83rem;
+               }
+               .demo-form-group .field-error {
+                    display: none;
+                    font-size: .7rem;
+                    color: #ff3b3b;
+                    margin-top: 3px;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-weight: 600;
+                    align-items: center;
+                    gap: 4px;
+                    line-height: 1.3;
+               }
+               .demo-form-group .field-error.show {
+                    display: flex;
+               }
+               .demo-form-group .field-error i { font-size: .62rem; flex-shrink: 0; }
+               .demo-form-group input.is-invalid,
+               .demo-form-group textarea.is-invalid {
+                    border-color: #fca5a5 !important;
+                    box-shadow: 0 0 0 3px rgba(252,165,165,.22) !important;
+                    background: #fff5f5 !important;
+               }
+               .demo-form-group input.is-valid {
+                    border-color: #86efac !important;
+                    box-shadow: 0 0 0 3px rgba(134,239,172,.18) !important;
+               }
+               .btn-demo-submit {
+                   width: 100%;
+                   background: linear-gradient(135deg, #7b2cbf, #c94b8c, #ff4d4d);
+                   color: var(--white);
+                   border: none;
+                   padding: 11px 16px;
+                   border-radius: var(--r-pill);
+                   font-weight: 800;
+                   font-size: .88rem;
+                   transition: var(--ease);
+                   margin-top: 14px;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   gap: 8px;
+                   cursor: pointer;
+               }
+               .btn-demo-submit:hover {
+                   transform: translateY(-2px);
+                   box-shadow: 0 8px 24px rgba(123,44,191,.45);
+               }
+               .btn-demo-submit:disabled {
+                   opacity: .65;
+                   cursor: not-allowed;
+                   transform: none;
+               }
+               /* Mobile: bottom-sheet style */
+               @media (max-width: 480px) {
+                   .demo-modal-overlay {
+                       padding: 0;
+                       align-items: flex-end;
+                   }
+                   .demo-modal {
+                       max-width: 100%;
+                       max-height: 88vh;
+                       border-radius: 20px 20px 0 0;
+                   }
+               }
+               
+               /* ── Toast ── */
+               .toast-custom {
+                   position: fixed;
+                   bottom: 24px;
+                   right: 24px;
+                   padding: 16px 24px;
+                   border-radius: 12px;
+                   background: var(--white);
+                   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                   display: flex;
+                   align-items: center;
+                   gap: 12px;
+                   z-index: 3000;
+                   transform: translateY(100px);
+                   opacity: 0;
+                   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                   pointer-events: none;
+               }
+               .toast-custom.show {
+                   transform: translateY(0);
+                   opacity: 1;
+                   pointer-events: all;
+               }
+               .toast-custom.success { border-left: 4px solid #10b981; }
+               .toast-custom.error { border-left: 4px solid #ef4444; }
+               .toast-custom i { font-size: 1.2rem; }
+               .toast-custom.success i { color: #10b981; }
+               .toast-custom.error i { color: #ef4444; }
+
+               .custom-select {
+                    position: relative;
+                    width: 100%;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+               }
+
+               .select-trigger {
+                    padding: 9px 12px;
+                    border-radius: 10px;
+                    border: 1.5px solid rgba(255,255,255,.2);
+                    background: rgba(255,255,255,.97);
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: .875rem;
+                    color: #9ca3af;
+                    transition: var(--ease);
+                    user-select: none;
+               }
+               .select-trigger:hover {
+                    border-color: rgba(255,255,255,.5);
+               }
+               .custom-select.active .select-trigger {
+                    border-color: #fff;
+                    box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+                    color: var(--text);
+               }
+               .cs-chevron {
+                    transition: transform .25s ease;
+                    opacity: 0.5;
+                    font-size: .8rem;
+               }
+               .custom-select.active .cs-chevron {
+                    transform: rotate(180deg);
+                    opacity: 1;
+               }
+               .select-trigger.has-value {
+                    color: var(--text);
+               }
+
+               .select-options {
+                    position: absolute;
+                    top: calc(100% + 6px);
+                    left: 0;
+                    width: 100%;
+                    background: var(--white);
+                    border-radius: 10px;
+                    border: 1px solid var(--border);
+                    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+                    opacity: 0;
+                    transform: translateY(-6px);
+                    pointer-events: none;
+                    transition: all .18s ease;
+                    z-index: 200;
+                    overflow: hidden;
+               }
+               .custom-select.active .select-options {
+                    opacity: 1;
+                    transform: translateY(0);
+                    pointer-events: all;
+               }
+
+               .option {
+                    padding: 9px 12px;
+                    cursor: pointer;
+                    font-size: .86rem;
+                    color: var(--text);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    transition: background .15s;
+                    border-bottom: 1px solid var(--border);
+               }
+               .option:last-child {
+                    border-bottom: none;
+               }
+               .option:hover {
+                    background: var(--gold-light);
+                    color: var(--gold);
+               }
+               .option.selected {
+                    background: var(--gold-xlight);
+                    color: var(--gold);
+                    font-weight: 600;
+               }
+               .option .opt-check {
+                    font-size: .8rem;
+                    opacity: 0;
+                    color: var(--gold)
+               }
+               .option.selected .opt-check {
+                    opacity: 1;
+               }
+
+               /* ── Section image style ──────────────────────── */
+              .section-img {
+                  width: 100%;
+                  border-radius: var(--r-xl);
+                  box-shadow: var(--sh-lg);
+                  object-fit: cover;
+                  display: block;
+              }
+              .section-img-wrap {
+                  border-radius: var(--r-xl);
+                  overflow: hidden;
+                  box-shadow: var(--sh-lg);
+              }
+
+            #ytWrap:hover #ytThumb { 
+                transform: scale(1.03); 
+            }
+            #ytWrap:hover #ytOverlay { 
+                background: rgba(0,0,0,.45); 
+            }
+            #ytWrap:hover .play-btn-ring { 
+                transform: scale(1.12); 
+                box-shadow: 0 0 0 16px rgba(0,85,187,.14), 0 0 0 32px rgba(0,85,187,.06); 
+            }
+
+            .badge-group {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-end;
+            }
+
+            .badge-group .badge {
+                width: 100%;
+                max-width: 300px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .profile-card {
+                border-top: 1px solid var(--border);
+                padding-top: 1.25rem;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+            }
+
+            .profile-avatar {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: var(--gold-light);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .profile-avatar img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .profile-info-title {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 0.9rem;
+                color: var(--text);
+            }
+
+            .profile-info-sub {
+                font-size: 0.78rem;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+
+            .profile-badge {
+                margin-left: auto;
+                background: var(--gold-light);
+                border: 1px solid #c7d8ef;
+                border-radius: 999px;
+                padding: 5px 12px;
+                font-size: 0.72rem;
+                color: var(--dark-gold);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                white-space: nowrap;
+                transition: all 0.2s ease;
+            }
+
+            .profile-badge i {
+                font-size: 0.65rem;
+            }
+
+            .profile-badge:hover {
+                background: var(--dark-gold);
+                color: white;
+                border-color: var(--dark-gold);
+            }
+
+            .ts-carousel {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ts-track {
+                display: flex;
+                transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+            }
+
+            .ts-card {
+                min-width: 100%;
+                box-sizing: border-box;
+                padding: 0 2px;
+            }
+
+            .ts-controls {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                margin-top: 28px;
+            }
+
+            .ts-dots {
+                display: flex;
+                gap: 7px;
+                align-items: center;
+            }
+
+            .ts-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--border-strong);
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .ts-dot.active {
+                width: 22px;
+                border-radius: 4px;
+                background: var(--gold);
+            }
+
+            .ts-arrow-btn {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                border: 1.5px solid var(--border-strong);
+                background: var(--white);
+                color: var(--muted);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: .85rem;
+                transition: var(--ease);
+            }
+
+            .ts-arrow-btn:hover {
+                color: var(--gold);
+                border-color: var(--gold);
+            }
+
+            .ts-arrow-btn:active {
+                transform: scale(0.95);
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <!-- ═══════ NAVBAR ═══════════════════════════════════════════════════════════ -->
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="image_icon/Probunny_logo.png" alt="ProBunny" class="logo-img"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+                    <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:var(--gold);">Probunny</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center gap-1">
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="IoT.html">IoT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                        <li class="ms-3">
+                            <button onclick="openDemoModal()" class="btn-book" style="padding:11px 24px;font-size:.85rem;">
+                                <i class="fas fa-calendar-check" style="font-size:.8rem;"></i> Book a demo
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ═══════ HERO ══════════════════════════════════════════════════════════════ -->
+        <section class="hero" id="home">
+            <div class="container position-relative" style="z-index:1;">
+                <div class="row align-items-center g-5">
+
+                    <div class="col-lg-7 reveal">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            🇲🇾 &nbsp;#1 PropTech Platform in Malaysia
+                        </div>
+                        <h1>LEADING fully automated<br>property management<br>solution</h1>
+                        <p class="hero-lead mt-4">
+                            Successfully manage over <strong>300 strata properties</strong> &amp; empower
+                            <strong>3,500+ property managers</strong> across Malaysia.
+                        </p>
+                        <div class="mt-5 d-flex flex-wrap gap-3 btn-group-custom">
+                            <button onclick="openDemoModal()" class="btn-book">
+                                <i class="fas fa-calendar-check" style="font-size:.8rem;"></i> Book a demo — it's free
+                            </button>
+                            <a href="#services" class="btn-accent">
+                                Explore more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ STATS ══════════════════════════════════════════════════════════════ -->
+        <section class="section-py bg-white section-ruled" id="services">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <div class="section-label mx-auto mb-3">By the numbers</div>
+                    <h2 class="display-6 fw-bold">Trusted across Malaysia</h2>
+                </div>
+                <div class="row g-4 text-center">
+
+                    <div class="col-md-4 reveal">
+                        <div class="card stat-card h-100">
+                            <div class="card-body py-5 d-flex flex-column align-items-center">
+                                <div class="stat-icon-wrap">
+                                    <img src="image/Buildings.png" alt="Properties"
+                                         style="width:150px;height:150px;object-fit:contain;"
+                                         onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-building fa-lg text-gold'}))">
+                                </div>
+                                <div class="d-flex align-items-baseline gap-1">
+                                    <span class="stat-number count-up" data-target="200">0</span>
+                                    <span class="fw-bold text-gold fs-4">+</span>
+                                </div>
+                                <p class="text-muted mt-2 mb-0 small">Strata properties subscribed to Probunny</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 reveal" style="transition-delay:.1s">
+                        <div class="card stat-card h-100">
+                            <div class="card-body py-5 d-flex flex-column align-items-center">
+                                <div class="stat-icon-wrap">
+                                    <img src="image/Resident.png" alt="Residents"
+                                         style="width:200px;height:200px;object-fit:contain;"
+                                         onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-users fa-lg text-gold'}))">
+                                </div>
+                                <div class="d-flex align-items-baseline gap-1">
+                                    <span class="stat-number count-up" data-target="100">0</span>
+                                    <span class="fw-bold text-gold fs-4">+</span>
+                                </div>
+                                <p class="text-muted mt-2 mb-0 small">Resident associations subscribed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 reveal" style="transition-delay:.2s">
+                        <div class="card stat-card h-100">
+                            <div class="card-body py-5 d-flex flex-column align-items-center">
+                                <div class="stat-icon-wrap">
+                                    <img src="image/Partner.png" alt="Partners"
+                                         style="width:130px;height:130px;object-fit:contain;"
+                                         onerror="this.replaceWith(Object.assign(document.createElement('i'),{className:'fas fa-handshake fa-lg text-gold'}))">
+                                </div>
+                                <div class="d-flex align-items-baseline gap-1">
+                                    <span class="stat-number count-up" data-target="80">0</span>
+                                    <span class="fw-bold text-gold fs-4">+</span>
+                                </div>
+                                <p class="text-muted mt-2 mb-0 small">Partners &amp; integrations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-testimonial">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <div class="section-label mx-auto mb-3">
+                        <i class="fas fa-star" style="font-size:.65rem"></i>
+                        Client Stories
+                    </div>
+                    <h2 class="display-6 fw-bold">
+                        Trusted by property managers 
+                        <span class="gradient-text">
+                            across Malaysia
+                        </span>
+                    </h2>
+                </div>
+
+                <div class="ts-carousel reveal" style="max-width:860px;margin:0 auto;">
+                    <div class="ts-track" id="tsTrack">
+                        <div class="ts-card">
+                            <div class="testimonial">
+                                <div class="testimonial-accent-bar"></div>
+                                <div class="testimonial-quote-mark"></div>
+                                <div class="testimonial-badge">
+                                    <span class="testimonial-stars">
+                                        <i class="fas fa-shield-halved"></i>
+                                        Testimonial from the Chairman of the Management Committee
+                                    </span>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="testimonial-quote-text">
+                                    "As Chairman of the Management Committee, I've seen firsthand how challenging 
+                                    it can be to <strong>balance the needs of residents, owners, and service providers</strong> 
+                                    while keeping operations transparent and costs under control. Since adopting 
+                                    <strong>Pro Bunny</strong>, that challenge has all but disappeared.
+                                    <br><br>
+                                    From automated monthly billing and instant payment reconciliation to digital maintenance 
+                                    tracking and real-time reporting, Pro Bunny has turned our day-to-day administration into 
+                                    a seamless, almost hands-off process. Our committee no longer drowns in paperwork or chases 
+                                    down late fees manually—everything is handled automatically and, most importantly, transparently. 
+                                    Residents love the self-service portal where they can <strong>log requests, view financials, and book 
+                                    facilities</strong> anytime, and we love the clarity it brings to every decision we make.
+                                    <br><br>
+                                    Pro Bunny hasn't just streamlined our operations; it has genuinely transformed the way our 
+                                    community functions. I wholeheartedly recommend it to any management committee looking for 
+                                    a fully automated, reliable, and professional property management solution."
+                                </p>
+                                <div class="profile-card">
+                                    <div class="profile-avatar">
+                                        <img src="image/avatar1.png" alt="avatar">
+                                    </div>
+                                    <div>
+                                        <div class="profile-info-title">
+                                            Ng
+                                        </div>
+                                        <div class="profile-info-sub">
+                                            A chairman Hijauan Puteri Condominium
+                                        </div>
+                                    </div>
+                                    <span class="profile-badge">
+                                        <i class="fas fa-chess-king"></i>
+                                            Chairman
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ts-card">
+                            <div class="testimonial">
+                                <div class="testimonial-accent-bar"></div>
+                                <div class="testimonial-quote-mark"></div>
+                                <div class="testimonial-badge">
+                                    <span class="testimonial-stars">
+                                        <i class="fas fa-shield-halved"></i>
+                                        Testimonial from Property Management Company
+                                    </span>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="testimonial-quote-text">
+                                    "As a professional property management company overseeing multiple stratified and landed 
+                                    communities, we are always looking for solutions that reduce manual work without compromising 
+                                    service quality. <strong>Pro Bunny</strong> has exceeded every expectation.
+                                    <br><br>
+                                    The fully automated system has completely transformed our workflows. <strong>Monthly billing, payment 
+                                    reconciliation, arrears tracking, maintenance job assignments, and committee reporting</strong> now run 
+                                    seamlessly in the background with minimal human intervention. What used to take our team days—like 
+                                    generating pre-AGM financial reports or chasing overdue accounts—is now done accurately in a few 
+                                    clicks.
+                                    <br><br>
+                                    The real-time dashboard gives our building managers full visibility across all sites, and the 
+                                    automated owner and tenant portals have dramatically reduced inbound queries. Our clients' management 
+                                    committees are happier, our internal efficiency has soared, and we've been able to reallocate 
+                                    staff to higher-value tasks like preventive maintenance and community engagement.
+                                    <br><br>
+                                    Pro Bunny isn't just software; it's a true operations partner. We strongly recommend it to any 
+                                    property management firm that wants to scale professionally without scaling their headaches."
+                                </p>
+                                <div class="profile-card">
+                                    <div class="profile-avatar">
+                                        <img src="image/avatar4.jpg" alt="avatar">
+                                    </div>
+                                    <div>
+                                        <div class="profile-info-title">
+                                            Shafel
+                                        </div>
+                                        <div class="profile-info-sub">
+                                            Oriental Property Management
+                                        </div>
+                                    </div>
+                                    <span class="profile-badge">
+                                        <i class="fas fa-user-shield"></i>
+                                            Property Management
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ts-card">
+                            <div class="testimonial">
+                                <div class="testimonial-accent-bar"></div>
+                                <div class="testimonial-quote-mark"></div>
+                                <div class="testimonial-badge">
+                                    <span class="testimonial-stars">
+                                        <i class="fas fa-shield-halved"></i>
+                                        Testimonial from a Resident
+                                    </span>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <p class="testimonial-quote-text">
+                                    "Living in a managed community used to mean stacks of paper notices, bouncing between WhatsApp groups, 
+                                    and chasing the management office just to check if my maintenance request was seen. Ever since our 
+                                    property switched to <strong>Pro Bunny</strong>, everything has changed for the better. 
+                                    <br><br>
+                                    I can pay my maintenance fees in seconds through the <strong>app, book the gym or barbecue pit</strong> without any 
+                                    <strong>back-and-forth, and submit defect reports</strong> that actually get tracked and resolved quickly. The self-service 
+                                    portal shows me my account balance and payment history instantly—no more guessing. 
+                                    <br><br>
+                                    It's simple, it's transparent, and honestly, it's made community living feel effortless. I absolutely love it."
+                                </p>
+                                <div class="profile-card">
+                                    <div class="profile-avatar">
+                                        <img src="image/avatar2.jpg" alt="avatar">
+                                    </div>
+                                    <div>
+                                        <div class="profile-info-title">
+                                            Sarah L.
+                                        </div>
+                                        <div class="profile-info-sub">
+                                            Resident
+                                        </div>
+                                    </div>
+                                    <span class="profile-badge">
+                                        <i class="fas fa-user-tie"></i>
+                                            Resident
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ts-controls">
+                        <button class="ts-arrow-btn" id="tsPrev" aria-label="Previous">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    <div class="ts-dots" id="tsDots"></div>
+                        <button class="ts-arrow-btn" id="tsNext" aria-label="Next">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ TRUST BANNER ════════════════════════════════════════════════════════ -->
+        <section class="section-py-sm bg-surface section-ruled">
+            <div class="container">
+                <div class="trust-banner p-5 reveal">
+                    <div class="row align-items-center g-4 position-relative" style="z-index:1;">
+                        <div class="col-lg-7">
+                            <h2 class="display-6 fw-bold text-dark mb-3 lh-sm">
+                                Most popular online card-based fully automated
+                                <span class="gradient-text">property management solution</span>
+                            </h2>
+                            <p class="fs-5 mb-0 fw-semibold" style="color:var(--gold);">
+                                Trusted by <strong>3,500+</strong> property managers across Malaysia
+                            </p>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="d-flex flex-column gap-2 align-items-lg-end badge-group">
+                                <span class="badge fs-6 px-4 py-2" style="background:var(--primary);border-radius:var(--r-sm);">
+                                    ⭐ Rated #1 PropTech Platform
+                                </span>
+                                <span class="badge fs-6 px-4 py-2 bg-warning text-dark" style="border-radius:var(--r-sm);">
+                                    🏆 Best PropTech Malaysia 2024
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ ABOUT / WHY iRUMA ═══════════════════════════════════════════════════ -->
+        <section class="section-py bg-white section-ruled" id="about">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <div class="section-label mx-auto mb-3">Why Probunny</div>
+                    <h2 class="display-5 fw-bold">Why choose Probunny?</h2>
+                    <p class="text-muted mt-3 mx-auto" style="max-width:620px;line-height:1.75;">
+                        Whether you're managing 50 or 5,000 properties, Probunny is the
+                        <strong class="gradient-text">cloud-based property management system</strong> built to scale.
+                        <br>With powerful features for
+                        <strong>leasing</strong>, <strong>inspections</strong>, <strong>maintenance</strong>
+                        and property management accounting software — it's everything you need in one platform.
+                        <br>The key benefits of using Malaysia's best property management software include:
+                    </p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 reveal">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-5 d-flex flex-column">
+                                <div class="icon-box mb-4">
+                                    <i class="fas fa-dollar-sign fa-lg text-gold"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Reduced Costs</h5>
+                                <p class="text-muted mb-0 flex-grow-1">
+                                    Data is stored securely in the cloud, saving you thousands in hardware and labour costs alone.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.1s">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-5 d-flex flex-column">
+                                <div class="icon-box mb-4">
+                                    <i class="fas fa-chart-line fa-lg text-gold"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Scalability</h5>
+                                <p class="text-muted mb-0 flex-grow-1">
+                                    Automated solutions and trust accounting tools mean you'll have plenty of time to focus on growing your portfolio across Malaysia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.2s">
+                        <div class="card card-hover h-100">
+                            <div class="card-body p-5 d-flex flex-column">
+                                <div class="icon-box mb-4">
+                                    <i class="fas fa-lock fa-lg text-gold"></i>
+                                </div>
+                                <h5 class="fw-bold mb-2">Accessibility &amp; Security</h5>
+                                <p class="text-muted mb-0 flex-grow-1">
+                                    Access property data online in real-time from anywhere. Advanced security measures ensure total peace of mind.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-center reveal">
+                    <button onclick="openDemoModal()" class="btn-book" style="padding:11px 24px;font-size:.85rem;">
+                        <i class="fas fa-calendar-check"></i> Book a demo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ VIDEO ═══════════════════════════════════════════════════════════════ -->
+        <section class="section-py bg-surface section-ruled">
+            <div class="container text-center">
+                <div class="section-label mx-auto mb-3">See it in action</div>
+                <h2 class="display-5 fw-bold mb-2">Malaysia's best fully automated</h2>
+                <h2 class="display-5 fw-bold mb-5">property management solution</h2>
+
+                <div class="yt-wrap mx-auto reveal" style="max-width:1100px;position:relative;
+                    border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-xl);
+                    cursor:pointer;background:#000;aspect-ratio:16/9;" id="ytWrap" onclick="loadYT()">
+
+                    <img id="ytThumb"
+                        src="https://img.youtube.com/vi/0-b04wBN214/maxresdefault.jpg"
+                        alt="ProBunny Platform Overview"
+                        style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;"
+                        onerror="this.src='https://img.youtube.com/vi/0-b04wBN214/hqdefault.jpg'">
+
+                    <div id="ytOverlay" style="position:absolute;inset:0;background:rgba(0,0,0,.30);transition:background .3s;"></div>
+                    <div id="ytPlayBtn" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:2;">
+
+                        <div class="play-btn-ring">
+                            <i class="fas fa-play text-white" style="font-size:1.3rem;margin-left:3px;"></i>
+                        </div>
+                    </div>
+                    <div id="ytIframe" style="display:none;position:absolute;inset:0;z-index:3;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ AUTOMATIONS ══════════════════════════════════════════════════════════ -->
+        <section class="section-py bg-white section-ruled">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 reveal">
+                        <div class="section-label mb-3">Automations</div>
+                        <h2 class="automations-heading">Say goodbye to<br>admin fatigue</h2>
+                        <span class="automations-heading-underline"></span>
+                        <p class="automations-subtitle">
+                            Your workflow. Your projects. Your rules.<br>Without lifting a finger.
+                        </p>
+                        <p class="automations-body mb-3">
+                            With Automations, you stay firmly in control — just without the manual effort.
+                            You decide when things happen, how they happen, and what gets sent or done at each step.
+                        </p>
+                        <p class="automations-body mb-4">
+                            Whether it's assigning tasks, sending updates, or progressing checklists, everything
+                            runs exactly the way you've set it — consistently, reliably, hands-free.
+                        </p>
+                        <button onclick="openDemoModal()" class="btn-accent">
+                            Explore Automations →
+                        </button>
+                    </div>
+                    <div class="col-lg-6 reveal" style="transition-delay:.15s">
+                        <div class="section-img-wrap">
+                            <img src="image/Automation_Say_Goodbye.png" alt="ProBunny Automation — Say Goodbye to Admin Fatigue"
+                                class="section-img" style="max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ VALUE STATEMENT ═════════════════════════════════════════════════════ -->
+        <section class="section-py" style="background: linear-gradient(135deg, #06112a 0%, #0f2f5f 100%); position: relative; overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center" style="min-height: 360px; position: relative;">
+
+                    <div class="col-lg-7 col-12" style="position: relative; z-index: 1;">
+                        <h2 style="color: #fff; font-size: clamp(1.9rem, 5vw, 3.4rem); line-height: 1.15; font-weight: 800; margin-bottom: .8rem;">
+                            <span style="font-weight:900;">Automate</span> your portfolio.<br>
+                            <span style="font-weight:900;">Drive</span> your profit.<br>
+                            <span style="font-weight:900;">Elevate</span> your agency.
+                        </h2>
+                        <p class="value-tagline" style="font-size: clamp(1.2rem, 2.4vw, 1.75rem); font-weight: 800; margin-top: 0; margin-bottom: 0.8rem; background: linear-gradient(90deg, #2a65f4, #a63af8, #f56f49); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">Without lifting a finger.</p>
+                    </div>
+
+                    <div class="icon-grid-wrap">
+                        <div class="icon-grid" id="valueIconGrid">
+                            <div class="icon-card"><i class="fas fa-home"></i></div>
+                            <div class="icon-card"><i class="fas fa-qrcode"></i></div>
+                            <div class="icon-card"><i class="fas fa-list"></i></div>
+
+                            <div class="icon-card"><i class="fas fa-tshirt"></i></div>
+                            <div class="icon-card"><i class="fas fa-heart"></i></div>
+                            <div class="icon-card"><i class="fas fa-briefcase"></i></div>
+
+                            <div class="icon-card"><i class="fas fa-cogs"></i></div>
+                            <div class="icon-card"><i class="fas fa-user"></i></div>
+                            <div class="icon-card"><i class="fas fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ PARTNER CATEGORIES ═══════════════════════════════════════════════════ -->
+        <section class="section-py-sm bg-surface section-ruled">
+            <div class="container">
+                <div class="text-center mb-3 reveal">
+                    <div class="section-label mx-auto mb-2">Trusted By</div>
+                    <h2 class="display-6 fw-bold">Join 20+ companies that are growing with Probunny</h2>
+                </div>
+
+                <div class="marquee-wrapper mb-2">
+                    <div class="marquee-track marquee-left">
+                        <div class="marquee-inner d-flex align-items-center gap-3">
+                            <img class="partner-logo" src="partners/logo11.png" />
+                            <img class="partner-logo" src="partners/logo12.png" />
+                            <img class="partner-logo" src="partners/logo18.png" />
+                            <img class="partner-logo" src="partners/logo27.png" />
+                            <img class="partner-logo" src="partners/logo1.png" />
+                        </div>
+                        <div class="marquee-inner d-flex align-items-center gap-3" aria-hidden="true">
+                            <img class="partner-logo" src="partners/logo11.png" />
+                            <img class="partner-logo" src="partners/logo12.png" />
+                            <img class="partner-logo" src="partners/logo18.png" />
+                            <img class="partner-logo" src="partners/logo27.png" />
+                            <img class="partner-logo" src="partners/logo1.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-wrapper mb-2">
+                    <div class="marquee-track marquee-right">
+                        <div class="marquee-inner d-flex align-items-center gap-3">
+                            <img class="partner-logo" src="partners/logo13.png" />
+                            <img class="partner-logo" src="partners/logo9.png" />
+                            <img class="partner-logo" src="partners/logo28.png" />
+                            <img class="partner-logo" src="partners/logo8.png" />
+                            <img class="partner-logo" src="partners/logo3.png" />
+                        </div>
+                        <div class="marquee-inner d-flex align-items-center gap-3" aria-hidden="true">
+                            <img class="partner-logo" src="partners/logo13.png" />
+                            <img class="partner-logo" src="partners/logo9.png" />
+                            <img class="partner-logo" src="partners/logo28.png" />
+                            <img class="partner-logo" src="partners/logo8.png" />
+                            <img class="partner-logo" src="partners/logo3.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-wrapper mb-2">
+                    <div class="marquee-track marquee-left">
+                        <div class="marquee-inner d-flex align-items-center gap-3">
+                            <img class="partner-logo" src="partners/logo14.png" />
+                            <img class="partner-logo" src="partners/logo26.png" />
+                            <img class="partner-logo" src="partners/logo30.png" />
+                            <img class="partner-logo" src="partners/logo25.png" />
+                            <img class="partner-logo" src="partners/logo16.png" />
+                        </div>
+                        <div class="marquee-inner d-flex align-items-center gap-3" aria-hidden="true">
+                            <img class="partner-logo" src="partners/logo14.png" />
+                            <img class="partner-logo" src="partners/logo26.png" />
+                            <img class="partner-logo" src="partners/logo30.png" />
+                            <img class="partner-logo" src="partners/logo25.png" />
+                            <img class="partner-logo" src="partners/logo16.png" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="marquee-wrapper mb-3">
+                    <div class="marquee-track marquee-right">
+                        <div class="marquee-inner d-flex align-items-center gap-3">
+                            <img class="partner-logo" src="partners/logo20.png" />
+                            <img class="partner-logo" src="partners/logo2.png" />
+                            <img class="partner-logo" src="partners/logo10.png" />
+                            <img class="partner-logo" src="partners/logo23.png" />
+                            <img class="partner-logo" src="partners/logo22.png" />
+                        </div>
+                        <div class="marquee-inner d-flex align-items-center gap-3" aria-hidden="true">
+                            <img class="partner-logo" src="partners/logo20.png" />
+                            <img class="partner-logo" src="partners/logo2.png" />
+                            <img class="partner-logo" src="partners/logo10.png" />
+                            <img class="partner-logo" src="partners/logo23.png" />
+                            <img class="partner-logo" src="partners/logo22.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ REAL-TIME DASHBOARD ═════════════════════════════════════════════════ -->
+        <section class="section-py bg-white section-ruled">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 order-lg-2 reveal">
+                        <div class="section-label mb-4">Real-Time Dashboard</div>
+                        <h2 class="display-5 fw-bold mb-4">All the data you need,<br>in real-time</h2>
+                        <p class="text-muted fs-5 mb-3">
+                            Property management changes by the minute. Stay ahead with live insights.
+                        </p>
+                        <p class="text-muted mb-4">
+                            With <strong>20 dashboard widgets</strong> and <strong>56 live stats</strong>, you're perfectly
+                            positioned to keep oversight of your portfolio and pivot where needed.
+                        </p>
+                        <div class="d-flex flex-wrap gap-4">
+                            <div><div class="fw-bold fs-4 text-gold">20</div><div class="text-muted small">Widgets</div></div>
+                            <div style="width:1px;background:var(--border);"></div>
+                            <div><div class="fw-bold fs-4 text-gold">56</div><div class="text-muted small">Live stats</div></div>
+                            <div style="width:1px;background:var(--border);"></div>
+                            <div><div class="fw-bold fs-4 text-gold">24/7</div><div class="text-muted small">Uptime</div></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1 reveal" style="transition-delay:.1s">
+                        <div class="section-img-wrap">
+                            <img src="image/Real_Time_Dashboard.png" alt="ProBunny Real-Time Dashboard" class="section-img"
+                                onerror="this.parentElement.innerHTML=
+                                    '<div class=\'media-placeholder-light p-5\'><i class=\'fas fa-film fa-3x mb-3 text-gold\' style=\'opacity:.3;\'></i><p class=\'mb-0 fw-semibold\'>Dashboard preview</p></div>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SUPPORT ══════════════════════════════════════════════════════════════ -->
+        <section class="section-py bg-surface section-ruled">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 reveal">
+                        <div class="section-label mb-4">Support</div>
+                        <h2 class="display-5 fw-bold mb-4">All the support<br>you need</h2>
+                        <p class="text-muted fs-5 mb-3">
+                            Behind every great property management team, there's a great support team.
+                            With Probunny, you can expect top-notch assistance whenever you need it.
+                        </p>
+                        <p class="text-muted mb-4">
+                            All our support options are included in your monthly subscription — no hidden fees.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3 btn-group-custom">
+                            <a href="https://wa.me/60103085693" class="btn-primary-custom">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Us
+                            </a>
+                            <a href="mailto:hello@probunny.net" class="btn-secondary-custom">
+                                <i class="fas fa-envelope"></i> Email Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 reveal" style="transition-delay:.1s">
+                        <div class="section-img-wrap">
+                            <img src="image/Support.png" alt="ProBunny Tech Support" class="section-img"
+                                onerror="this.parentElement.innerHTML=
+                                '<div class=\'media-placeholder-light p-5\'><i class=\'fas fa-headset fa-3x mb-3 text-gold\'style=\'opacity:.3;\'></i><p class=\'mb-0 fw-semibold\'>Support team photo</p></div>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ APP DOWNLOAD ═════════════════════════════════════════════════════════
+             Replaces the broken call-to-action-inner-style with a proper styled section
+        ══════════════════════════════════════════════════════════════════════════════ -->
+        <section class="app-download-section">
+            <div class="container position-relative" style="z-index:1;">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7 reveal">
+                        <div class="section-label mb-3" style="background:rgba(255,255,255,.15);color:var(--white);">
+                            <i class="fas fa-mobile-alt me-1"></i> Mobile App
+                        </div>
+                        <h2 class="display-5 fw-bold text-white mb-3">
+                            App is available on<br>Google Play &amp; App Store
+                        </h2>
+                        <p class="mb-4" style="color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.7;">
+                            Manage your property from anywhere. The Probunny resident app is available on
+                            Google Play, the App Store, and as a direct APK download for Android.
+                        </p>
+                        <div class="d-flex align-items-center gap-3 mb-5 flex-wrap">
+                            <div class="app-rating-badge">
+                                <span class="stars">★★★★★</span>
+                                <span>4.8 / 5</span>
+                            </div>
+                            <div class="app-rating-badge">
+                                <i class="fas fa-download me-1"></i>
+                                10,000+ installs
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3" style="flex-wrap: nowrap;">
+                            <a href="https://play.google.com/store/apps/details?id=com.iruma_app_resident"
+                               target="_blank" rel="noopener" class="app-store-btn google" style="flex:1;min-width:0;padding:0;">
+                                <img src="asset/googlePlay-button.png" alt="Google Play" style="width:100%;height:auto;object-fit:contain;" />
+                            </a>
+                            <a href="https://apps.apple.com/app/id1625059081"
+                               target="_blank" rel="noopener" class="app-store-btn apple" style="flex:1;min-width:0;padding:0;">
+                                <img src="asset/appStore-button.png" alt="App Store" style="width:100%;height:auto;object-fit:contain;" />
+                            </a>
+                            <a href="https://www.i-ruma.com/apk/APK-PMS/iRuma_Resident.apk"
+                               target="_blank" rel="noopener" class="app-store-btn apk" style="flex:1;min-width:0;padding:0;">
+                                <img src="asset/apk-button.png" alt="APK Download" style="width:100%;height:auto;object-fit:contain;" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center reveal" style="transition-delay:.15s">
+                        <div class="section-img-wrap">
+                            <img src="asset/Mobile-App.png"
+                                alt="ProBunny Mobile Apps"
+                                class="section-img"
+                                onerror="this.outerHTML=
+                                '<div style=\'background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-xl);padding:2.5rem;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;\'><i class=\'fas fa-mobile-screen-button fa-5x mb-3\' style=\'color:rgba(255,255,255,.3);\'></i><p class=\'mb-0 fw-semibold\' style=\'color:rgba(255,255,255,.55);\'>App screenshot</p></div>'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ FOOTER ═══════════════════════════════════════════════════════════════ -->
+        <footer class="py-5" id="contact">
+            <div class="container">
+                <div class="row g-4 pb-4">
+                    <div class="col-lg-2 col-md-4">
+                        <div style="max-width:240px;">
+                            <img src="image_icon/ProBunny_footer.png" alt="ProBunny" class="logo-img-footer mb-3"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white);">Probunny</span>
+                            <p class="small mt-2 mb-3" style="line-height:1.7;">
+                                Leading fully automated property management solution in Malaysia.
+                            </p>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.facebook.com/ProBunny-100088951527968/" class="footer-social-link facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/irumapms/" class="footer-social-link instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/probunny-solutions-374718262/?originalSubdomain=my" class="footer-social-link linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Explore</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Support</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li>
+                                <a href="https://wa.me/60103085693" class="d-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 10-308 5693
+                            </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                                    <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 class="mt-3">Career</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="career.html">Join us</a></li>
+                        </ul>
+                        <h6 class="mt-3">IoT</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="IoT.html">Probunny IoT</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Company</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="Refund.html">Refund Policy</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="policy.html">Probunny Policy</a></li>
+                            <li><a href="Terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Get in Touch</h6>
+                        <div class="d-flex flex-column gap-2 small mb-4">
+                            <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                                <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                            </a>
+                            <a href="https://wa.me/60193993191" class="d-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 19-399 3191
+                            </a>
+                        </div>
+                        <button onclick="openDemoModal()" class="btn-book" style="padding:11px 24px;font-size:.85rem;">
+                            <i class="fas fa-calendar-check"></i> Book a demo
+                        </button>
+                    </div>
+                </div>
+
+                <hr class="footer-divider my-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2" style="background:rgba(105, 105, 105);padding:12px 16px;border-radius:12px;">
+                    <p class="small mb-0" style="color:rgba(255,255,255,.9);">
+                        © 2026 Pro Bunny Sdn. Bhd. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ── Toast ── -->
+        <div class="toast-custom success" id="toastSuccess">
+            <i class="fas fa-check-circle"></i>
+            <span>Message sent! We'll get back to you within 24 hours.</span>
+        </div>
+        <div class="toast-custom error" id="toastError">
+            <i class="fas fa-circle-exclamation"></i>
+            <span id="toastErrorMsg">Oops! Something went wrong. Please try again.</span>
+        </div>
+
+        <!-- ── Demo Modal ──────────────────────────────── -->
+        <div class="demo-modal-overlay" id="demoModalOverlay">
+            <div class="demo-modal">
+                <div class="demo-modal-header">
+                    <h4>Schedule a Demo</h4>
+                    <button class="demo-modal-close" onclick="closeDemoModal()">&times;</button>
+                </div>
+                <div class="demo-modal-body">
+                    <form id="demoForm" novalidate>
+
+                        <div class="demo-form-group">
+                            <label for="demo_name">
+                                Name
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="text" id="demo_name" name="name" placeholder="Your full name" autocomplete="name">
+                            <div class="field-error" id="err_name">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter your full name.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_phone">Mobile No
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="tel" id="demo_phone" name="phone" placeholder="+60 12-345 6789" autocomplete="tel">
+                            <div class="field-error" id="err_phone">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter a valid mobile number.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_email">Email
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="email" id="demo_email" name="email" placeholder="name@company.com" autocomplete="email">
+                            <div class="field-error" id="err_email">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter a valid email address.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label>Entity Type
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <div class="custom-select" id="propSelect">
+                                <div class="select-trigger" id="propTrigger" tabindex="0" role="combobox"
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span id="propLabel">Select entity type...</span>
+                                    <i class="fas fa-chevron-down cs-chevron"></i>
+                                </div>
+                                <div class="select-options" role="listbox">
+                                    <div class="option" data-value="JMB" role="option">
+                                        Joint Management Body (JMB)
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="MC" role="option">
+                                        Management Corporation (MC) 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="RA" role="option">
+                                        Residents Association (RA) 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="PMC" role="option">
+                                        Property Management Company
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="Developer" role="option">
+                                        Property Developer 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="prop_type_hidden" name="property_type">
+                            </div>
+                            <div class="field-error" id="err_prop_type">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please select an entity type.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_message">Description
+                                <span style="color:var(--white);font-weight:400;font-size:.75rem;">(Optional)</span>
+                            </label>
+                            <textarea id="demo_message" name="message" placeholder="Tell us about your property..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-demo-submit" id="demoSubmitBtn">
+                            <span id="demoBtnText">Book your demo now</span>
+                            <div id="demoSpinner" class="spinner-border spinner-border-sm" style="display: none;" role="status"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+      /* ── Scroll reveal ─────────────────────────────── */
+      const revealObs = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+        }),
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+      /* ── Animated counter ──────────────────────────── */
+      function animateCount(el) {
+        const target = parseInt(el.dataset.target, 10);
+        const duration = 1400;
+        const start = performance.now();
+        (function step(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 3); // ease-out cubic
+          el.textContent = Math.round(ease * target);
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        })(start);
+      }
+
+      const countObs = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); }
+        }),
+        { threshold: 0.5 }
+      );
+      document.querySelectorAll('.count-up').forEach(el => countObs.observe(el));
+
+      /* ── Navbar elevation on scroll ────────────────── */
+      const nav = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        nav.style.boxShadow = window.scrollY > 20
+          ? '0 2px 20px rgba(0,55,140,.12)'
+          : '0 1px 0 var(--border)';
+      }, { passive: true });
+
+      document.addEventListener('DOMContentLoaded',() => {
+        const counters = document.querySelectorAll(".count-up");
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            let count = 0;
+
+            const update = () => {
+                const increment = target / 100;
+
+                if (count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    requestAnimationFrame(update);
+                }else {
+                    counter.innerText = target;
+                }
+            };
+
+            update();
+        });
+      });
+
+      const reveals = document.querySelectorAll('.reveal');
+
+      function revealOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        reveals.forEach(el => {
+            const top = el.getBoundingClientRect().top;
+
+            if (top < triggerBottom) {
+                el.classList.add("visible");
+            }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll();
+      
+      const valueGrid = document.getElementById('valueIconGrid');
+      if (valueGrid) {
+        const gridObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    valueGrid.classList.add('in-view');
+                    gridObs.unobserve(valueGrid);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        gridObs.observe(valueGrid);
+      }
+
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector(".navbar");
+
+          if (window.scrollY > 50){
+              nav.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+          } else {
+              nav.style.boxShadow = "0 1px 0 var(--border)";
+            }
+          });
+
+         /* ── Demo Modal Logic ──────────────────────────── */
+        const demoModal   = document.getElementById('demoModalOverlay');
+        const demoForm    = document.getElementById('demoForm');
+        const demoBtnText = document.getElementById('demoBtnText');
+        const demoSpinner = document.getElementById('demoSpinner');
+
+        function openDemoModal() {
+            demoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            demoForm.reset();
+            clearAllDemoErrors();
+
+            const hidden = document.getElementById('prop_type_hidden');
+            const label = document.getElementById('propLabel');
+            const trigger = document.getElementById('propTrigger');
+
+            if (hidden) hidden.value = "";
+            if (label) label.textContent = "Select entity type...";
+            if (trigger) trigger.classList.remove('has-value');
+
+            clearDemoErrorForSelect();
+        }
+
+        function closeDemoModal() {
+            demoModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function showDemoToast(id) {
+            const toast = document.getElementById(id);
+            if (!toast) return;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 5000);
+        }
+
+        /* ── Phone auto-format  +60 12-345 6789 ── */
+        (function() {
+            const phoneEl = document.getElementById('demo_phone');
+            if (!phoneEl) return;
+
+            function formatFromDigits(allDigits) {
+                if (!allDigits) return '';
+                if (allDigits === '0') return '+60';
+                let d = allDigits;
+                if (d.startsWith('60'))     d = d.slice(2);
+                else if (d.startsWith('0')) d = d.slice(1);
+                if (d.length > 9) d = d.slice(0, 9);
+                if (!d && allDigits === '60') return '';
+                if (!d) return '';
+                if (d.length <= 2) return '+60 ' + d;
+                if (d.length <= 5) return '+60 ' + d.slice(0,2) + '-' + d.slice(2);
+                return '+60 ' + d.slice(0,2) + '-' + d.slice(2,5) + ' ' + d.slice(5);
+            }
+
+            phoneEl.addEventListener('input', function() {
+                const all  = phoneEl.value.replace(/\D/g, '');
+                const next = formatFromDigits(all);
+                if (phoneEl.value !== next) phoneEl.value = next;
+                clearDemoError('demo_phone', 'err_phone');
+            });
+        })();
+
+        /* ── Validation helpers ── */
+        function showDemoError(inputId, errorId, msg) {
+            const input = document.getElementById(inputId);
+            const err   = document.getElementById(errorId);
+            if (!input || !err) return;
+            input.classList.add('is-invalid');
+            input.classList.remove('is-valid');
+            const span = err.querySelector('span');
+            if (msg && span) span.textContent = msg;
+            err.classList.add('show');
+        }
+
+        function clearDemoError(inputId, errorId) {
+            const input = document.getElementById(inputId);
+            const err   = document.getElementById(errorId);
+            if (input) { input.classList.remove('is-invalid'); }
+            if (err)   { err.classList.remove('show'); }
+        }
+
+        function markDemoValid(inputId) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            }
+        }
+
+        function clearAllDemoErrors() {
+            ['demo_name','demo_phone','demo_email'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('is-invalid','is-valid');
+            });
+            ['err_name','err_phone','err_email'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('show');
+            });
+
+            clearDemoErrorForSelect();
+        }
+
+        function validateDemoForm() {
+            const name  = document.getElementById('demo_name').value.trim();
+            const phone = document.getElementById('demo_phone').value.trim();
+            const email = document.getElementById('demo_email').value.trim();
+            const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+            let valid   = true;
+
+            /* Name */
+            if (!name) {
+                showDemoError('demo_name', 'err_name', 'Please enter your full name.');
+                valid = false;
+            } else {
+                markDemoValid('demo_name');
+            }
+
+            /* Phone */
+            const phoneRegex = /^\+60 \d{2}-\d{3} \d{4}$/;
+            if (!phone) {
+                showDemoError('demo_phone', 'err_phone', 'Please enter your phone number.');
+                valid = false;
+            } else if (!phoneRegex.test(phone)) {
+                showDemoError('demo_phone', 'err_phone', 'Format must be: +60 12-345 6789');
+                valid = false;
+            } else {
+                markDemoValid('demo_phone');
+            }
+
+            /* Email */
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                showDemoError('demo_email', 'err_email', 'Please enter your email address.');
+                valid = false;
+            } else if (!emailRegex.test(email)) {
+                showDemoError('demo_email', 'err_email', 'Please enter a valid email address.');
+                valid = false;
+            } else {
+                markDemoValid('demo_email');
+            }
+
+            if (!propType) {
+                showDemoErrorForSelect();
+                valid = false;
+            } else {
+                clearDemoErrorForSelect();
+            }
+
+            return valid;
+        }
+
+        function showDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+
+            if(trigger) {
+                trigger.style.borderColor = '#dc2626';
+                trigger.style.boxShadow = '0 0 0 4px rgba(220, 38, 38, 0.1)';
+            }
+            if (err) err.classList.add('show');
+        }
+
+        function clearDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+            if(trigger) {
+                trigger.style.borderColor = '';
+                trigger.style.boxShadow = '';
+            }
+            if (err) err.classList.remove('show');
+        }
+
+        /* Clear errors while typing */
+        const demoNameInput = document.getElementById('demo_name');
+        if (demoNameInput) {
+            demoNameInput.addEventListener('input',
+                () => clearDemoError('demo_name', 'err_name'));
+        }
+
+        const demoEmailInput = document.getElementById('demo_email');
+        if (demoEmailInput) {
+            demoEmailInput.addEventListener('input',
+                () => clearDemoError('demo_email', 'err_email'));
+        }
+
+        /* ── Form submit ── */
+        if (demoForm) {
+            demoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            /* Validate first — stop if any error */
+            if (!validateDemoForm()) return;
+
+            const name    = document.getElementById('demo_name').value.trim();
+            const phone   = document.getElementById('demo_phone').value.trim();
+            const email   = document.getElementById('demo_email').value.trim();
+            const message = document.getElementById('demo_message').value.trim();
+            const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+
+            const entityLabels = { JMB: 'Joint Management Body (JMB)', MC: 'Management Corporation (MC)', RA: 'Residents Association (RA)', PMC: 'Property Management Company (PMC)', Developer: 'Property Developer' };
+            const entityLine = propType ? (entityLabels[propType] || propType) : '—';
+ 
+            const fullMessage = ['[DEMO REQUEST]', message].filter(Boolean).join('\n');
+
+            demoBtnText.textContent = 'Sending...';
+            demoSpinner.style.display = 'block';
+            document.getElementById('demoSubmitBtn').disabled = true;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        from_name: name, 
+                        phone: phone,
+                        reply_to: email, 
+                        entity_type: entityLine,
+                        message: fullMessage, 
+                        recaptcha: 'bypass' 
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.ok) {
+                    showDemoToast('toastSuccess');
+                    demoForm.reset();
+                    clearAllDemoErrors();
+
+                    const propLabel = document.getElementById('propLabel');
+                    const propHidden = document.getElementById('prop_type_hidden');
+                    const propTrigger = document.getElementById('propTrigger'); 
+
+                    if (propLabel) propLabel.textContent = 'Select entity type...';
+                    if (propHidden) propHidden.value = '';
+                    if (propTrigger) propTrigger.classList.remove('has-value');
+
+                    document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
+                    setTimeout(closeDemoModal, 2000);
+                } else {
+                    const errEl = document.getElementById('toastErrorMsg');
+                    if (errEl) errEl.textContent = data.error || 'Failed to send request.';
+                    showDemoToast('toastError');
+                }
+            } catch (error) {
+                const errEl = document.getElementById('toastErrorMsg');
+                if (errEl) errEl.textContent = 'Network error. Please try again.';
+                showDemoToast('toastError');
+            } finally {
+                demoBtnText.textContent = 'Book your demo now';
+                demoSpinner.style.display = 'none';
+                document.getElementById('demoSubmitBtn').disabled = false;
+            }
+        });
+        }
+
+        (function () {
+            const cs = document.getElementById('propSelect');
+            const trigger = document.getElementById('propTrigger');
+            const label = document.getElementById('propLabel');
+            const hidden = document.getElementById('prop_type_hidden');
+            const modalOverlay = document.getElementById('demoModalOverlay');
+
+            if (!cs || !trigger) return;
+            const options = cs.querySelectorAll('.option');
+
+            function closeSelect() {
+                cs.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+
+            function openSelect() {
+                cs.classList.add('active');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            trigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                cs.classList.contains('active') ? closeSelect() : openSelect();
+            });
+
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    cs.classList.contains('active') ? closeSelect() : openSelect();
+                }
+                if (e.key === 'Escape') closeSelect();
+            });
+
+            options.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+
+                    label.textContent = opt.textContent;
+                    hidden.value = opt.dataset.value;
+
+                    trigger.classList.add('has-value');
+
+                    closeSelect();
+                    trigger.focus();
+
+                    clearDemoErrorForSelect();
+                });
+            });
+
+            /* click outside close dropdown */
+            document.addEventListener('click', (e) => {
+                if (!cs.contains(e.target)) closeSelect();
+            });
+
+            /* modal close */
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) closeDemoModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDemoModal();
+            });
+        })();
+
+            /* Close on click outside */
+            demoModal.addEventListener('click', (e) => {
+                if (e.target === demoModal) closeDemoModal();
+            });
+
+            /* Close on ESC */
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDemoModal();
+            });
+
+            function loadYT() {
+                var wrap = document.getElementById('ytWrap');
+
+                if (wrap.dataset.playing) return;
+
+                wrap.dataset.playing = '1';
+                wrap.style.cursor = 'default';
+
+                document.getElementById('ytThumb').style.display = 'none';
+                document.getElementById('ytOverlay').style.display = 'none';
+                document.getElementById('ytPlayBtn').style.display = 'none';
+
+                var iframeDiv = document.getElementById('ytIframe');
+                
+                iframeDiv.style.display = 'block';
+                iframeDiv.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/0-b04wBN214?autoplay=1&rel=0&modestbranding=1" title="ProBunny Platform Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>';
+            }
+
+            (function () {
+                const track = document.getElementById('tsTrack');
+                const dotsWrap = document.getElementById('tsDots');
+                if (!track || !dotsWrap) return;
+
+                const cards = track.querySelectorAll('.ts-card');
+                const total = cards.length;
+                let cur = 0;
+                let timer;
+
+                cards.forEach((_, i) => {
+                    const d = document.createElement('button');
+                    d.className = 'ts-dot' + (i === 0 ? ' active' : '');
+                    d.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+                    d.addEventListener('click', () => goTo(i));
+                    dotsWrap.appendChild(d);
+                });
+
+                function goTo(n) {
+                    cur = ((n % total) + total) % total;
+                    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+                    dotsWrap.querySelectorAll('.ts-dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === cur);
+                    });
+                    resetTimer();
+                }
+
+                document.getElementById('tsPrev').addEventListener('click', () => goTo(cur - 1));
+                document.getElementById('tsNext').addEventListener('click', () => goTo(cur + 1));
+
+                let touchStartX = 0;
+                track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+                track.addEventListener('touchend', e => {
+                    const diff = touchStartX - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+                }, { passive: true });
+
+                function resetTimer() {
+                    clearInterval(timer);
+                    timer = setInterval(() => goTo(cur + 1), 5500);
+                }
+                resetTimer();
+            })();
+
+            /* ── Active nav link on scroll ── */
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const sectionsIds = ['services', 'about', 'iot', 'career', 'contact'];
+            const visibleSections = new Set();
+
+            const sectionObs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.isIntersecting) {
+                        visibleSections.add(id);
+                    } else {
+                        visibleSections.delete(id);
+                    }
+                });
+
+                navLinks.forEach(link => link.classList.remove('active'));
+
+                visibleSections.forEach( id => {
+                    const activeLink = document.querySelector(`.navbar-nav a[href="#${id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                })
+            }, {
+                threshold: 0.2,
+                rootMargin: '-80px 0px 0px 0px'
+            });
+
+            sectionsIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) sectionObs.observe(el);
+            });
+        </script>
+    </body>
+</html>

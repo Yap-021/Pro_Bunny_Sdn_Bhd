@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>Probunny | Contact</title>
+
+        <link rel="icon" href="image_icon/ProBunny_icon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+        <!-- Google reCAPTCHA v2 -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <style>
+            :root {
+                --gold: #e6c76a;
+                --gold-light: #fdf6e0;
+                --dark-gold: #92650a;
+                --gold-xlight: #fffdf5;
+                --primary: #0055bb;
+                --primary-dark: #003d8a;
+                --primary-light: #e8f1fd;
+                --accent: #f97316;
+                --surface: #f7f9fc;
+                --border: #e2e8f0;
+                --text: #111827;
+                --muted: #64748b;
+                --white: #fff;
+                --red: #ef4444;
+                --red-dark: #dc2626;
+                --r-pill: 9999px;
+                --r-xl: 32px;
+                --r-md: 16px;
+                --sh-md: 0 8px 24px rgba(0,55,140,.10);
+                --ease: all .28s cubic-bezier(.4,0,.2,1);
+            }
+
+            * { box-sizing: border-box; }
+
+            body {
+                margin: 0;
+                font-family: 'DM Sans', sans-serif;
+                color: var(--text);
+                background: #fff;
+            }
+
+            /* ── NAVBAR ── */
+            .navbar {
+                background: rgba(255,255,255,.97);
+                backdrop-filter: blur(12px);
+                box-shadow: 0 1px 0 var(--border);
+                padding: .85rem 0;
+            }
+            .logo-img { 
+                height: 36px; 
+                max-width: 180px; 
+            }
+            .nav-link {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                font-size: .88rem;
+                color: var(--muted) !important;
+                padding: .4rem .65rem !important;
+                border-radius: 10px;
+                transition: var(--ease);
+            }
+
+            .nav-link:hover, .nav-link.active {
+                color: #92650a !important;       
+                background: var(--gold-light);
+            }              
+
+            /* ── HERO ── */
+            .hero {
+                background: linear-gradient(140deg,#04102b 0%,#071f4a 40%,#0a2d6a 70%,#0a3d8a 100%);
+                color: #fff;
+                padding: 90px 0 70px;
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                opacity: .35;
+                background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+                filter: blur(2px);
+            }
+            .hero .container { 
+                position: relative; 
+                z-index: 1; 
+            }
+            .hero h1 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: clamp(2.2rem,5vw,3.6rem);
+                font-weight: 800;
+            }
+            .hero p { font-size: 1.05rem; opacity: .9; max-width: 560px; }
+
+            /* ── CONTACT CARDS ── */
+            .contact-card {
+                background: #fff;
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                box-shadow: var(--sh-md);
+                transition: var(--ease);
+                padding: 2rem;
+                text-align: center;
+            }
+            .contact-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 14px 30px rgba(0,55,140,.15);
+            }
+            .contact-card i {
+                width: 72px; height: 72px;
+                border-radius: 22px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.6rem;
+                background: #fdf6e0;
+                color: var(--gold);
+                margin: 0 auto 1rem;
+            }
+            .contact-card h4 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 800;
+                margin-bottom: .65rem;
+            }
+            .contact-card p { margin-bottom: .3rem; color: var(--muted); }
+            .contact-card a { color: var(--gold); font-weight: 700; font-size: .95rem; }
+
+            /* ── SECTION LABEL ── */
+            .section-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: var(--gold-light);
+                color: var(--dark-gold);
+                padding: 6px 14px;
+                border-radius: 999px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: .74rem;
+                font-weight: 700;
+                letter-spacing: .8px;
+                text-transform: uppercase;
+            }
+
+            /* ── FORM ── */
+            .form-label {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                font-size: .85rem;
+                margin-bottom: 6px;
+                display: block;
+            }
+            .form-control {
+                border-radius: 12px;
+                border: 1.5px solid var(--border);
+                padding: .92rem 1rem;
+                font-family: 'DM Sans', sans-serif;
+                font-size: .92rem;
+                color: var(--text);
+                width: 100%;
+                outline: none;
+                transition: border-color .2s, box-shadow .2s;
+                background: #fff;
+            }
+            .form-control:focus {
+                border-color: var(--gold);
+                box-shadow: 0 0 0 3px rgba(0,85,187,.1);
+            }
+            .form-control::placeholder { color: #b0bec8; }
+
+            .field-error {
+                display: none;
+                font-size: .78rem;
+                color: #dc2626;
+                margin-top: 6px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                align-items: center;
+                gap: 6px;
+            }
+            .field-error.show {
+                display: flex;
+            }
+            .field-error i {
+                font-size: .75rem;
+            }
+
+            .form-control.is-invalid {
+                border-color: #dc2626 !important;
+                box-shadow: 0 0 0 3px rgba(220,38,38,0.1) !important;
+            }
+
+            .btn-primary-custom {
+                background: var(--gold);
+                color: var(--white);
+                border: none;
+                padding: 12px 28px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: .95rem;
+                border-radius: var(--r-pill);
+                transition: var(--ease);
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .btn-primary-custom:hover {
+                background: var(--dark-gold);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 28px rgba(0,85,187,.3);
+            }
+            .btn-primary-custom:disabled {
+                opacity: .65;
+                cursor: not-allowed;
+                transform: none;
+            }
+                
+                .btn-book {
+                  background: linear-gradient(
+                    135deg,
+                    #7b2cbf,
+                    #c94b8c,
+                    #ff4d4d
+                  );
+                  color: var(--white);
+                  border: none;
+                  padding: 12px 28px;
+                  font-family: 'Plus Jakarta Sans', sans-serif;
+                  font-weight: 700;
+                  font-size: .88rem;
+                  border-radius: var(--r-pill);
+                  transition: var(--ease);
+                  cursor: pointer;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  text-decoration: none;
+                  box-shadow: 0 6px 18px rgba(123,44,191,0.35);
+              }
+
+                  .btn-book:hover {
+                      background: linear-gradient(
+                        135deg,
+                        #7b2cbf,
+                        #c94b8c,
+                        #ff4d4d
+                      );
+                      color: var(--white);
+                      transform: translateY(-3px);
+                      box-shadow: 0 12px 30px rgba(255, 77, 77, 0.45);
+                  }
+
+            /* ── CAPTCHA BOX ── */
+            .captcha-box {
+                border: 1.5px solid var(--border);
+                border-radius: 12px;
+                padding: 12px 16px;
+                background: #fff;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 16px;
+                font-size: .88rem;
+                color: var(--muted);
+            }
+            .captcha-box input[type=checkbox] {
+                width: 18px; height: 18px;
+                accent-color: var(--gold);
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            .captcha-box label {
+                margin: 0;
+                font-weight: 400;
+                font-size: .88rem;
+                cursor: pointer;
+            }
+
+            /* ── TOAST NOTIFICATION ── */
+            .toast-custom {
+                position: fixed;
+                bottom: 32px; right: 32px;
+                z-index: 9999;
+                padding: 14px 22px;
+                border-radius: 14px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+                font-size: .88rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 12px 36px rgba(0,0,0,.2);
+                transform: translateY(80px);
+                opacity: 0;
+                transition: all .4s cubic-bezier(.4,0,.2,1);
+                pointer-events: none;
+                max-width: 340px;
+            }
+            .toast-custom.show { transform: translateY(0); opacity: 1; }
+            .toast-custom.success { background: #111827; color: #fff; }
+            .toast-custom.success i { color: #4ade80; }
+            .toast-custom.error { background: #fff1f2; color: #9f1239; border: 1px solid #fecdd3; }
+            .toast-custom.error i { color: #e11d48; }
+
+            /* ── SPINNER ── */
+            .spinner {
+                width: 16px; height: 16px;
+                border: 2px solid rgba(255,255,255,.4);
+                border-top-color: #fff;
+                border-radius: 50%;
+                animation: spin .7s linear infinite;
+                display: none;
+            }
+            @keyframes spin { to { transform: rotate(360deg); } }
+
+            /* ── MAP ── */
+            .map-wrapper {
+                height: 360px;
+                border-radius: 1rem;
+                overflow: hidden;
+                border: 1px solid var(--border);
+                box-shadow: var(--sh-md);
+            }
+
+                /* ── Footer ──────────────────────────────────── */
+                footer {
+                    background: var(--white);
+                    color: #64748b;
+                    position: relative;
+                }
+
+                footer::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1px;
+                    background: #e2e8f0;
+                }
+
+                footer h6 {
+                    color: #111827;
+                    font-weight: 700;
+                    letter-spacing: .05em;
+                    font-size: .8rem;
+                    text-transform: uppercase;
+                }
+
+                footer a {
+                    color: #64748b;
+                    text-decoration: none;
+                    transition: color .2s;
+                }
+
+                footer a:hover {
+                    color: var(--dark-gold);
+                }
+
+                .footer-divider {
+                    border-color: #e2e8f0;
+                }
+
+                .footer-social-link {
+                    width: 34px;
+                    height: 34px;
+                    border-radius: 8px;
+                    background: transparent;
+                    border: 1px solid #e2e8f0;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #374151;
+                    font-size: .8rem;
+                    text-decoration: none;
+                    transition: all .2s ease;
+                }
+
+                .footer-social-link.facebook:hover {
+                    background: #1877f2;
+                    border-color: #1877f2;
+                    color: var(--white);
+                    transform: translateY(-2px);
+                }
+
+                .footer-social-link.instagram:hover {
+                    background: linear-gradient(
+                        45deg,
+                        #f09433,
+                        #e6683c,
+                        #dc2743,
+                        #cc2366,
+                        #bc1888
+                    );
+                    border-color: transparent;
+                    color: var(--white);
+                }
+
+                .footer-social-link.linkedin:hover {
+                    background: #0a66c2;
+                    border-color: #0a66c2;
+                    color: var(--white);
+                }
+
+                .logo-img-footer {
+                    height: 100px;
+                    width: auto;
+                    max-width: 160px;
+                }
+
+            @media (max-width: 991px) { .hero { padding: 70px 0 50px; } }
+
+            .api-info-box {
+                background: linear-gradient(135deg, #f0f6ff, #e8f1fd);
+                border: 1px solid #c7d8ef;
+                border-radius: 14px;
+                padding: 1.2rem 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .api-info-box .api-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: var(--gold);
+                color: #fff;
+                padding: 3px 10px;
+                border-radius: 999px;
+                font-size: .72rem;
+                font-weight: 400;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                margin-bottom: .5rem;
+            }
+            /* ── Demo Modal ──────────────────────────────── */
+               .demo-modal-overlay {
+                   position: fixed;
+                   inset: 0;
+                   background: rgba(0, 0, 0, 0.55);
+                   backdrop-filter: blur(6px);
+                   display: none;
+                   align-items: center;
+                   justify-content: center;
+                   z-index: 2000;
+                   padding: 16px;
+               }
+               .demo-modal-overlay.active {
+                   display: flex;
+               }
+               .demo-modal {
+                   background: var(--white);
+                   width: 100%;
+                   max-width:420px;
+                   max-height: 90vh;
+                   border-radius: var(--r-xl);
+                   overflow: hidden;
+                   display: flex;
+                   flex-direction: column;
+                   box-shadow: 0 32px 64px rgba(0,0,0,.28);
+                   animation: modalPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+               }
+               @keyframes modalPop {
+                   from { opacity: 0; transform: scale(0.9) translateY(8px); }
+                   to { opacity: 1; transform: scale(1) translateY(0); }
+               }
+               .demo-modal-header {
+                   background: linear-gradient(
+                        135deg,
+                        #7b2cbf,
+                        #c94b8c,
+                        #ff4d4d
+                    );
+                   color: var(--white);
+                   padding: 14px 18px;
+                   display: flex;
+                   justify-content: space-between;
+                   align-items: center;
+                   flex-shrink: 0;
+               }
+               .demo-modal-header h4 {
+                   margin: 0;
+                   font-size: 1rem;
+                   font-weight: 800;
+                   letter-spacing: -.01rem;
+               }
+               .demo-modal-close {
+                   background: rgba(255,255,255,.18);
+                   border: none;
+                   color: var(--white);
+                   width: 26px;
+                   height: 26px;
+                   border-radius: 7px;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   font-size: .9rem;
+                   cursor: pointer;
+                   transition: background .2s;
+                   flex-shrink: 0;
+                   line-height: 1;
+               }
+               .demo-modal-close:hover {
+                   background: rgba(255,255,255,.32);
+               }
+               .demo-modal-body {
+                   padding: 16px 18px 20px;
+                   background: linear-gradient(
+                        135deg,
+                        #2563eb,
+                        #3b82f6,
+                        #60a5fa
+                    );
+                    overflow-y: auto;
+                    flex: 1;
+                    scrollbar-width: thin;
+                    scrollbar-color: rgba(255,255,255,.3) transparent;
+                }
+                .demo-modal-body::-webkit-scrollbar { 
+                    width: 4px; 
+                }
+                .demo-modal-body::-webkit-scrollbar-thumb {
+                    background: rgba(255,255,255,.3);
+                    border-radius: 2px;
+                }
+
+                .demo-form-group {
+                    margin-bottom: 11px;
+                }
+               .demo-form-group label {
+                   display: block;
+                   font-size: 0.76rem;
+                   font-weight: 700;
+                   margin-bottom: 5px;
+                   color: rgba(255,255,255,.92);
+                   letter-spacing: .02em;
+               }
+               .demo-form-group input, 
+               .demo-form-group textarea {
+                   width: 100%;
+                   padding: 9px 12px;
+                   border: 1.5px solid rgba(255,255,255,.2);
+                   border-radius: 10px;
+                   font-size: 0.875rem;
+                   transition: border-color .2s, box-shadow .2s;
+                   background: rgba(255,255,255,.97);
+                   color: var(--text);
+                   font-family: 'DM Sans', sans-serif;
+               }
+                .demo-form-group textarea {
+                    resize: vertical;
+                    min-height: 64px;
+                    max-height: 120px;
+                }
+               .demo-form-group input:focus, 
+               .demo-form-group textarea:focus {
+                    outline: none;
+                    border-color: #fff;
+                    box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+                    background: #fff;
+                }
+                .demo-form-group input::placeholder,
+                .demo-form-group textarea::placeholder {
+                    color: #9ca3af;
+                    font-size: .83rem;
+                }
+               .demo-form-group .field-error {
+                    display: none;
+                    font-size: .7rem;
+                    color: #ff3b3b;
+                    margin-top: 3px;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-weight: 600;
+                    align-items: center;
+                    gap: 4px;
+                    line-height: 1.3;
+               }
+               .demo-form-group .field-error.show {
+                    display: flex;
+               }
+               .demo-form-group .field-error i { 
+                    font-size: .62rem; 
+                    flex-shrink: 0; 
+                }
+               .demo-form-group input.is-invalid,
+               .demo-form-group textarea.is-invalid {
+                    border-color: #fca5a5 !important;
+                    box-shadow: 0 0 0 3px rgba(252,165,165,.22) !important;
+                    background: #fff5f5 !important;
+               }
+               .demo-form-group input.is-valid {
+                    border-color: #86efac !important;
+                    box-shadow: 0 0 0 3px rgba(134,239,172,.18) !important;
+               }
+               .btn-demo-submit {
+                   width: 100%;
+                   background: linear-gradient(
+                        135deg,
+                        #7b2cbf,
+                        #c94b8c,
+                        #ff4d4d
+                    );
+                   color: var(--white);
+                   border: none;
+                   padding: 11px 16px;
+                   border-radius: var(--r-pill);
+                   font-weight: 800;
+                   font-size: .88rem;
+                   transition: var(--ease);
+                   margin-top: 14px;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   gap: 8px;
+                   cursor: pointer;
+               }
+               .btn-demo-submit:hover {
+                   background: linear-gradient(
+                        135deg,
+                        #7b2cbf,
+                        #c94b8c,
+                        #ff4d4d
+                    );
+                   transform: translateY(-2px);
+                   box-shadow: 0 8px 24px rgba(123,44,191,.45);
+               }
+               .btn-demo-submit:disabled {
+                   opacity: .65;
+                   cursor: not-allowed;
+                   transform: none;
+               }
+               /* Mobile: bottom-sheet style */
+               @media (max-width: 480px) {
+                   .demo-modal-overlay {
+                       padding: 0;
+                       align-items: flex-end;
+                   }
+                   .demo-modal {
+                       max-width: 100%;
+                       max-height: 88vh;
+                       border-radius: 20px 20px 0 0;
+                   }
+               }
+               
+               /* ── Toast ── */
+               .toast-custom {
+                   position: fixed;
+                   bottom: 24px;
+                   right: 24px;
+                   padding: 16px 24px;
+                   border-radius: 12px;
+                   background: var(--white);
+                   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                   display: flex;
+                   align-items: center;
+                   gap: 12px;
+                   z-index: 3000;
+                   transform: translateY(100px);
+                   opacity: 0;
+                   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                   pointer-events: none;
+               }
+               .toast-custom.show {
+                   transform: translateY(0);
+                   opacity: 1;
+                   pointer-events: all;
+               }
+               .toast-custom.success { border-left: 4px solid #10b981; }
+               .toast-custom.error { border-left: 4px solid #ef4444; }
+               .toast-custom i { font-size: 1.2rem; }
+               .toast-custom.success i { color: #10b981; }
+               .toast-custom.error i { color: #ef4444; }
+
+               .custom-select {
+                    position: relative;
+                    width: 100%;
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+               }
+
+               .select-trigger {
+                    padding: 9px 12px;
+                    border-radius: 10px;
+                    border: 1.5px solid rgba(255,255,255,.2);
+                    background: rgba(255,255,255,.97);
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: .875rem;
+                    color: #9ca3af;
+                    transition: var(--ease);
+                    user-select: none;
+               }
+               .select-trigger:hover {
+                    border-color: rgba(255,255,255,.5);
+               }
+               .custom-select.active .select-trigger {
+                    border-color: #fff;
+                    box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+                    color: var(--text);
+               }
+               .cs-chevron {
+                    transition: transform .25s ease;
+                    opacity: 0.5;
+                    font-size: .8rem;
+               }
+               .custom-select.active .cs-chevron {
+                    transform: rotate(180deg);
+                    opacity: 1;
+               }
+               .select-trigger.has-value {
+                    color: var(--text);
+               }
+
+               .select-options {
+                    position: absolute;
+                    top: calc(100% + 6px);
+                    left: 0;
+                    width: 100%;
+                    background: var(--white);
+                    border-radius: 10px;
+                    border: 1px solid var(--border);
+                    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+                    opacity: 0;
+                    transform: translateY(-6px);
+                    pointer-events: none;
+                    transition: all .18s ease;
+                    z-index: 200;
+                    overflow: hidden;
+               }
+               .custom-select.active .select-options {
+                    opacity: 1;
+                    transform: translateY(0);
+                    pointer-events: all;
+               }
+
+               .option {
+                    padding: 9px 12px;
+                    cursor: pointer;
+                    font-size: .86rem;
+                    color: var(--text);
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    transition: background .15s;
+                    border-bottom: 1px solid var(--border);
+               }
+               .option:last-child {
+                    border-bottom: none;
+               }
+               .option:hover {
+                    background: var(--gold-light);
+                    color: var(--gold);
+               }
+               .option.selected {
+                    background: var(--gold-xlight);
+                    color: var(--gold);
+                    font-weight: 600;
+               }
+               .option .opt-check {
+                    font-size: .8rem;
+                    opacity: 0;
+                    color: var(--gold)
+               }
+               .option.selected .opt-check {
+                    opacity: 1;
+               }
+        </style>
+    </head>
+    <body>
+
+        <!-- ═══════ NAVBAR ═══════ -->
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="image_icon/Probunny_logo.png" class="logo-img" alt="ProBunny"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+                    <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:var(--gold);">Probunny</span>
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center gap-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#about">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="IoT.html">IoT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ═══════ HERO ═══════ -->
+        <section class="hero">
+            <div class="container text-center">
+                <div class="section-label mb-2">Contact us</div>
+                <h1 class="mt-3 mb-3">We would love to hear from you</h1>
+                <p class="mx-auto">Questions about integration, tech support, partnership or career? Reach out and we'll respond within 24 hours.</p>
+            </div>
+        </section>
+
+        <!-- ═══════ MAIN CONTENT ═══════ -->
+        <section style="padding:60px 0; background:var(--surface);">
+            <div class="container">
+
+                <!-- Contact Cards -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <h4>Sales</h4>
+                            <p>For sales enquiries</p>
+                            <p>Phone: <a href="https://wa.me/60193993191">+60 19-399 3191</a></p>
+                            <p>Email: <a href="mailto:hello@probunny.net">hello@probunny.net</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="contact-card">
+                            <i class="fas fa-headset"></i>
+                            <h4>Support</h4>
+                            <p>Technical &amp; General Support</p>
+                            <p>Phone: <a href="https://wa.me/60103085693">+60 10-308 5639</a></p>
+                            <p>Email: <a href="mailto:hello@probunny.net">hello@probunny.net</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="contact-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>Careers</h4>
+                            <p>For career enquiries</p>
+                            <p>Phone: <a href="https://wa.me/60193993191">+60 19-399 3191</a></p>
+                            <p>Email: <a href="mailto:hello@probunny.net">hello@probunny.net</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form + Map -->
+                <div class="row g-5 align-items-start">
+
+                    <!-- ── CONTACT FORM ── -->
+                    <div class="col-lg-6">
+                        <div class="section-label mb-3">Leave us a message</div>
+                        <h2 class="fw-bold mb-3">Get in touch</h2>
+
+                        <form id="contactForm" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="from_name">Name*</label>
+                                <input type="text" id="from_name" name="from_name" class="form-control" placeholder="Your full name" required>
+                                <div class="field-error" id="err_name">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Please enter your full name.</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="phone">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789" required 
+                                    pattern="^\+60\s\d{2}-\d{3}\s\d{4}$" title="Format: +60 12-345 6789">
+                                
+                                    <div class="field-error" id="err_phone">
+                                        <i class="fas fa-circle-exclamation"></i>
+                                        <span>Please enter a valid phone number.</span>
+                                    </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="reply_to">Business Email*</label>
+                                <input type="email" id="reply_to" name="reply_to" class="form-control" placeholder="you@company.com" required>
+                                <div class="field-error" id="err_email">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Please enter a valid email address.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Entity Type
+                                </label>
+                                <div class="custom-select" id="contactEntitySelect">
+                                    <div class="select-trigger" id="contactEntityTrigger" tabindex="0" role="combobox" 
+                                        aria-haspopup="listbox" aria-expanded="false">
+                                    
+                                        <span id="contactEntityLabel">Select entity type...</span>
+                                        <i class="fas fa-chevron-down cs-chevron"></i>
+                                    </div>
+                                    <div class="select-options" role="listbox">
+                                        <div class="option" data-value="JMB" role="option">
+                                            Joint Management Body (JMB)
+                                            <i class="fas fa-check opt-check"></i>
+                                        </div>
+                                        <div class="option" data-value="MC" role="option">
+                                            Management Corporation (MC)
+                                            <i class="fas fa-check opt-check"></i>
+                                        </div>
+                                        <div class="option" data-value="RA" role="option">
+                                            Residents Association (RA)
+                                            <i class="fas fa-check opt-check"></i>
+                                        </div>
+                                        <div class="option" data-value="PMC" role="option">
+                                            Property Management Company (PMC)
+                                            <i class="fas fa-check opt-check"></i>
+                                        </div>
+                                        <div class="option" data-value="Developer" role="option">
+                                            Property Developer
+                                            <i class="fas fa-check opt-check"></i>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="entity_type" name="entity_type">
+                                </div>
+                                <div class="field-error" id="err_entity_type">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Please select an entity type.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="message">Message*</label>
+                                <textarea id="message" name="message" class="form-control" rows="6" placeholder="Tell us how we can help..." required></textarea>
+                                <div class="field-error" id="err_message">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Please enter your message.</span>
+                                </div>
+                            </div>
+
+                            <!-- Google reCAPTCHA v2 -->
+                            <div class="mb-4" style="margin-bottom: 1.5rem;">
+                                <div class="g-recaptcha" 
+                                    data-sitekey="6Ldzt6IsAAAAAIZftr41ug9FqyfvNlcr6bCC-DPC"
+                                    data-theme="light"
+                                    data-size="normal"
+                                    data-callback="onRecaptchaSuccess">
+                                </div>
+                                <div class="field-error" id="err_recaptcha">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Please complete the reCAPTCHA.</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary-custom" id="submitBtn">
+                                <span class="spinner" id="spinner"></span>
+                                <i class="fas fa-paper-plane" id="btnIcon"></i>
+                                <span id="btnText">Send message</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- ── MAP ── -->
+                    <div class="col-lg-6">
+                        <div class="section-label mb-3">Find us</div>
+                        <h2 class="fw-bold mb-3">Head office</h2>
+                        <p style="color:var(--muted);margin-bottom:1rem;">
+                           28, Jalan Tiara 1, Usj 2,<br> 
+                           47600 Subang Jaya, Selangor
+                        </p>
+                        <div id="map" class="map-wrapper mb-4" style="height: 420px;width:100%;border-radius: 12px;box-shadow: 0 4px 20px rgba(0,0,0,0.06);overflow: hidden;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ FOOTER ═══════════════════════════════════════════════════════════════ -->
+        <footer class="py-5" id="contact">
+            <div class="container">
+                <div class="row g-4 pb-4">
+                    <div class="col-lg-2 col-md-4">
+                        <div style="max-width:240px;">
+                            <img src="image_icon/ProBunny_footer.png" alt="ProBunny" class="logo-img-footer mb-3"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white);">Probunny</span>
+                            <p class="small mt-2 mb-3" style="line-height:1.7;">
+                                Leading fully automated property management solution in Malaysia.
+                            </p>
+                            <div class="d-flex gap-2">
+                                <a href="https://www.facebook.com/ProBunny-100088951527968/" class="footer-social-link facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/irumapms/" class="footer-social-link instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/probunny-solutions-374718262/?originalSubdomain=my" class="footer-social-link linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Explore</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="Contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Support</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li>
+                                <a href="https://wa.me/60103085693" class="d-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 10-308 5693
+                            </a>
+                            </li>
+                            <li>
+                                <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                                    <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 class="mt-3">Career</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="career.html">Join us</a></li>
+                        </ul>
+                        <h6 class="mt-3">IoT</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="IoT.html">Probunny IoT</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Company</h6>
+                        <ul class="list-unstyled small" style="line-height:2.3; margin-bottom:0;">
+                            <li><a href="Refund.html">Refund Policy</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="policy.html">Probunny Policy</a></li>
+                            <li><a href="Terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <h6 class="mb-3">Get in Touch</h6>
+                        <div class="d-flex flex-column gap-2 small mb-4">
+                            <a href="mailto:hello@probunny.net" class="d-flex align-items-center gap-2">
+                                <i class="fas fa-envelope" style="width:16px;opacity:.5;"></i> hello@probunny.net
+                            </a>
+                            <a href="https://wa.me/60193993191" class="d-flex align-items-center gap-2">
+                                <i class="fab fa-whatsapp" style="width:16px;opacity:.5;"></i> +60 19-399 3191
+                            </a>
+                        </div>
+                        <button onclick="openDemoModal()" class="btn-book" style="padding:11px 24px;font-size:.85rem;">
+                            <i class="fas fa-calendar-check"></i> Book a demo
+                        </button>
+                    </div>
+                </div>
+
+                <hr class="footer-divider my-4">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2" style="background:rgba(105, 105, 105);padding:12px 16px;border-radius:12px;">
+                    <p class="small mb-0" style="color:rgba(255,255,255,.9);">
+                        © 2026 Pro Bunny Sdn. Bhd. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ═══════ TOAST ═══════ -->
+        <div class="toast-custom success" id="toastSuccess">
+            <i class="fas fa-check-circle"></i>
+            <span>Message sent! We'll get back to you within 24 hours.</span>
+        </div>
+        <div class="toast-custom error" id="toastError">
+            <i class="fas fa-circle-exclamation"></i>
+            <span id="toastErrorMsg">Oops! Something went wrong. Please try again.</span>
+        </div>
+
+        <!-- ── Demo Modal ──────────────────────────────── -->
+        <div class="demo-modal-overlay" id="demoModalOverlay">
+            <div class="demo-modal">
+                <div class="demo-modal-header">
+                    <h4>Schedule a Demo</h4>
+                    <button class="demo-modal-close" onclick="closeDemoModal()">&times;</button>
+                </div>
+                <div class="demo-modal-body">
+                    <form id="demoForm" novalidate>
+
+                        <div class="demo-form-group">
+                            <label for="demo_name">
+                                Name
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="text" id="demo_name" name="name" placeholder="Your full name" autocomplete="name">
+                            <div class="field-error" id="err_demo_name">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter your full name.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_phone">Mobile No
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="tel" id="demo_phone" name="phone" placeholder="+60 12-345 6789" autocomplete="tel">
+                            <div class="field-error" id="err_demo_phone">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter a valid mobile number.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_email">Email
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <input type="email" id="demo_email" name="email" placeholder="name@company.com" autocomplete="email">
+                            <div class="field-error" id="err_demo_email">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please enter a valid email address.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label>Entity Type
+                                <span style="color:#dc2626;">*</span>
+                            </label>
+                            <div class="custom-select" id="propSelect">
+                                <div class="select-trigger" id="propTrigger" tabindex="0" role="combobox"
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span id="propLabel">Select entity type...</span>
+                                    <i class="fas fa-chevron-down cs-chevron"></i>
+                                </div>
+                                <div class="select-options" role="listbox">
+                                    <div class="option" data-value="JMB" role="option">
+                                        Joint Management Body (JMB)
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="MC" role="option">
+                                        Management Corporation (MC) 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="RA" role="option">
+                                        Residents Association (RA) 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="PMC" role="option">
+                                        Property Management Company
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                    <div class="option" data-value="Developer" role="option">
+                                        Property Developer 
+                                        <i class="fas fa-check opt-check"></i>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="prop_type_hidden" name="property_type">
+                            </div>
+                            <div class="field-error" id="err_prop_type">
+                                <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
+                                <span>Please select an entity type.</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-form-group">
+                            <label for="demo_message">Description
+                                <span style="color:var(--white);font-weight:400;font-size:.75rem;">(Optional)</span>
+                            </label>
+                            <textarea id="demo_message" name="message" placeholder="Tell us about your property..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-demo-submit" id="demoSubmitBtn">
+                            <span id="demoBtnText">Book your demo now</span>
+                            <div id="demoSpinner" class="spinner-border spinner-border-sm" style="display: none;" role="status"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            function initMap() {
+                const officeLocation = {
+                    lat: 3.04478,
+                    lng: 101.5676
+                }; 
+
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 17.5,
+                    center: officeLocation,
+                    mapTypeId: 'roadmap',
+                    disableDeafultUI: false,
+                    zoomControl: true,
+                    mapTypeControl: false,
+                    streetViewControl: true,
+                    fullscreenControl: true,
+                    styles: [
+                        {
+                            "featureType": "poi",
+                            "elementType": "labels",
+                            "stylers": [{ "visibility": "off" }]
+                        }
+                    ]
+                });
+
+                const marker = new google.maps.Marker({
+                    position: officeLocation,
+                    map: map,
+                    title: "Pro Bunny Sdn. Bhd.",
+                    animation: google.maps.Animation.DROP,
+                    icon: {
+                        url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",  // 紅色圖釘
+                        scaledSize: new google.maps.Size(40, 40)
+                    }
+                });
+
+                const infoContent =  `
+                        <div style="font-family: system-ui, sans-serif; padding: 8px 4px;">
+                            <strong style="font-size: 1.1em;">Head Office</strong><br><br>
+                            28, Jalan Tiara 1,<br>
+                            Usj 2, 47600 Subang Jaya, Selangor
+                        </div>`
+                
+                const infoWindow = new google.maps.InfoWindow({
+                    content: infoContent
+                });
+                
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+    
+                });
+
+                infoWindow.open(map, marker);
+            }
+        </script>
+
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANry9IXbcW1ib_7894zKMHVJAz0A8bsMk&callback=initMap" referrerpolicy="no-referrer-when-downgrade"></script>
+
+        <script>
+            const API_BASE = '';
+
+            /* ── Malaysia mobile: auto-format to match pattern +60 XX-XXX XXXX ── */
+            function initPhoneAutoFormat() {
+                const phoneEl = document.getElementById('phone');
+                if (!phoneEl) return;
+
+                function formatFromDigits(allDigits) {
+                    if (!allDigits) return '';
+                    let d = allDigits.replace(/^60|^0/, '');
+                    if (d.length > 9) d = d.slice(0, 9);
+
+                    if (d.length <= 2) return '+60 ' + d;
+                    if (d.length <= 5) return '+60 ' + d.slice(0, 2) + '-' + d.slice(2);
+                    return '+60 ' + d.slice(0, 2) + '-' + d.slice(2, 5) + ' ' + d.slice(5);
+                }
+                phoneEl.addEventListener('input', function () {
+                    const all = phoneEl.value.replace(/\D/g, '');
+                    const next = formatFromDigits(all);
+                    if (phoneEl.value !== next) phoneEl.value = next;
+                });
+            }
+
+            (function () {
+                const cs      = document.getElementById('contactEntitySelect');
+                const trigger = document.getElementById('contactEntityTrigger');
+                const label   = document.getElementById('contactEntityLabel');
+                const hidden  = document.getElementById('entity_type');
+
+                const options = cs.querySelectorAll('.option');
+
+                function closeSelect() {
+                    cs.classList.remove('active');
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+                function openSelect() {
+                    cs.classList.add('active');
+                    trigger.setAttribute('aria-expanded', 'true');
+                }
+
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cs.classList.contains('active') ? closeSelect() : openSelect();
+                });
+
+                trigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cs.classList.contains('active') ? closeSelect() : openSelect(); }
+                    if (e.key === 'Escape') closeSelect();
+                });
+
+                options.forEach(opt => {
+                    opt.addEventListener('click', () => {
+                        options.forEach(o => o.classList.remove('selected'));
+                        opt.classList.add('selected');
+                        label.textContent = opt.textContent.trim().replace(/\s+/g, ' ');
+                        hidden.value = opt.dataset.value;
+                        trigger.classList.add('has-value');
+
+                        const errEntity = document.getElementById('err_entity_type');
+                        if (errEntity) errEntity.classList.remove('show');
+                        trigger.style.borderColor = '';
+                        trigger.style.boxShadow = '';
+
+                        closeSelect();
+                        trigger.focus();
+                    });
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!cs.contains(e.target)) closeSelect();
+                });
+            })();
+ 
+            /* ── Toast helper ── */
+            function showToast(id, duration = 5000) {
+                const el = document.getElementById(id);
+                if (el){
+                    el.classList.add('show');
+                    setTimeout(() => el.classList.remove('show'), duration);
+                }
+            }
+ 
+            /* ── Button loading state ── */
+            function setLoading(isLoading) {
+                const btn     = document.getElementById('submitBtn');
+                const spinner = document.getElementById('spinner');
+                const icon    = document.getElementById('btnIcon');
+                const text    = document.getElementById('btnText');
+                btn.disabled          = isLoading;
+                spinner.style.display = isLoading ? 'inline-block' : 'none';
+                icon.style.display    = isLoading ? 'none' : 'inline';
+                text.textContent      = isLoading ? 'Sending…' : 'Send message';
+            }
+
+            function showError(fieldId, errorId, message){
+                const input = document.getElementById(fieldId);
+                const err = document.getElementById(errorId);
+                if (input) input.classList.add('is-invalid');
+                if (err) {
+                    err.querySelector('span').textContent = message;
+                    err.classList.add('show');
+                }
+            }
+
+            function clearError(fieldId, errorId){
+                const input = document.getElementById(fieldId);
+                const err = document.getElementById(errorId);
+                if (input) input.classList.remove('is-invalid');
+                if (err) err.classList.remove('show');
+            }
+
+            function onRecaptchaSuccess() {
+                const errRecp = document.getElementById('err_recaptcha');
+                if (errRecp) errRecp.classList.remove('show');
+            }
+
+            function validateContactForm() {
+                let valid = true;
+
+                // Name
+                const name = document.getElementById('from_name').value.trim();
+                if (!name || name.length < 2) {
+                    showError('from_name', 'err_name', 'Please enter your full name (min 2 characters).');
+                    valid = false;
+                } else clearError('from_name', 'err_name');
+
+                const phone = document.getElementById('phone').value.trim();
+                const phoneRegex = /^\+60\s\d{2}-\d{3}\s\d{4}$/;
+                if (!phone) {
+                    showError('phone', 'err_phone', 'Phone number is required.');
+                    valid = false;
+                } else if (!phoneRegex.test(phone)) {
+                    showError('phone', 'err_phone', 'Format: +60 12-345 6789');
+                    valid = false;
+                } else clearError('phone', 'err_phone');
+
+                const email = document.getElementById('reply_to').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email) {
+                    showError('reply_to', 'err_email', 'Email is required.');
+                    valid = false;
+                } else if (!emailRegex.test(email)){
+                    showError('reply_to', 'err_email', 'Please enter a valid email address.');
+                    valid = false;
+                } else clearError('reply_to', 'err_email');
+
+                const entityVal = document.getElementById('entity_type').value.trim();
+                const errEntity = document.getElementById('err_entity_type');
+                const entityTrigger = document.getElementById('contactEntityTrigger');
+                if (!entityVal) {
+                    if (errEntity) errEntity.classList.add('show');
+                    if (entityTrigger) {
+                        entityTrigger.style.borderColor = '#dc2626';
+                        entityTrigger.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.1)';
+                    }
+                    valid = false;
+                } else {
+                    if (errEntity) errEntity.classList.remove('show');
+                    if (entityTrigger) {
+                        entityTrigger.style.borderColor = '';
+                        entityTrigger.style.boxShadow = '';
+                    }
+                }
+
+                const recaptchaResponse = grecaptcha.getResponse();
+                console.log('recaptcha response:', recaptchaResponse);
+                const errRecap = document.getElementById('err_recaptcha');
+                if (!recaptchaResponse) {
+                    if (errRecap) errRecap.classList.add('show');
+                    valid = false;
+                } else {
+                    if (errRecap) errRecap.classList.remove('show');
+                }
+
+                return valid;
+            }
+ 
+            /* ── Form submit → POST /api/contact ── */
+            document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if (!validateContactForm()) return;
+
+                const recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) return;
+ 
+                setLoading(true);
+
+                const entityLabels = { 
+                    JMB: 'Joint Management Body (JMB)', 
+                    MC: 'Management Corporation (MC)', 
+                    RA: 'Residents Association (RA)', 
+                    PMC: 'Property Management Company (PMC)', 
+                    Developer: 'Property Developer' 
+                };
+                const rawEntity = document.getElementById('entity_type').value.trim();
+
+                const payload = {
+                    from_name : document.getElementById('from_name').value.trim(),
+                    phone     : document.getElementById('phone').value.trim(),
+                    reply_to  : document.getElementById('reply_to').value.trim(),
+                    entity_type : entityLabels[rawEntity] || rawEntity,
+                    message   : document.getElementById('message').value.trim(),
+                    recaptcha : 'bypass'
+                };
+ 
+                try {
+                    const res  = await fetch(`${API_BASE}/api/contact`, {
+                        method : 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body   : JSON.stringify(payload),
+                    });
+
+                    let data = {};
+                    const raw = await res.text();
+                    try {
+                        data = raw ? JSON.parse(raw) : {};
+                    } catch (jsonErr) {
+                        console.warn('Contact API returned non-JSON:', raw);
+                        data.error = 'Unexpected server response.';
+                    }
+ 
+                    if (res.ok && data.ok) {
+                        this.reset();
+                        grecaptcha.reset();
+                        // Reset contact entity type custom select
+                        const contactLabel = document.getElementById('contactEntityLabel');
+                        const contactHidden = document.getElementById('entity_type');
+                        const contactTrigger = document.getElementById('contactEntityTrigger');
+                        if (contactLabel) contactLabel.textContent = 'Select entity type...';
+                        if (contactHidden) contactHidden.value = '';
+                        if (contactTrigger) contactTrigger.classList.remove('has-value');
+                        document.querySelectorAll('#contactEntitySelect .option')
+                            .forEach(o => o.classList.remove('selected'));
+                        showToast('toastSuccess');
+                    } else {
+                        document.getElementById('toastErrorMsg').textContent = data.error || 'Something went wrong.';
+                        showToast('toastError');
+                        grecaptcha.reset();
+                    }
+                } catch (err) {
+                    console.error(err);
+                    document.getElementById('toastErrorMsg').textContent = 'Network error. Please try again.';
+                    showToast('toastError');
+                    grecaptcha.reset();
+                } finally {
+                    setLoading(false);
+                }
+            });
+
+            const fields = [
+                { input: 'from_name', err: 'err_name' },
+                { input: 'phone', err: 'err_phone' },
+                { input: 'reply_to', err: 'err_email' },
+                { input: 'message', err: 'err_message' }
+            ];
+
+            fields.forEach(f => {
+                const el = document.getElementById(f.input);
+                if (el) el.addEventListener('input', () => clearError(f.input, f.err));
+            });
+
+            /* ── Demo Modal Logic ──────────────────────────── */
+            const demoModal   = document.getElementById('demoModalOverlay');
+            const demoForm    = document.getElementById('demoForm');
+            const demoBtnText = document.getElementById('demoBtnText');
+            const demoSpinner = document.getElementById('demoSpinner');
+
+            function openDemoModal() {
+                demoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                demoForm.reset();
+                clearAllDemoErrors();
+
+                const hidden = document.getElementById('prop_type_hidden');
+                const label = document.getElementById('propLabel');
+                const trigger = document.getElementById('propTrigger');
+
+                if (hidden) hidden.value = "";
+                if (label) label.textContent = "Select entity type...";
+                if (trigger) trigger.classList.remove('has-value');
+
+                clearDemoErrorForSelect();
+            }
+
+            function closeDemoModal() {
+                demoModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function showDemoToast(id) {
+                showToast(id);
+            }
+
+            initPhoneAutoFormat('demo_phone');
+
+            /* ── Validation helpers ── */
+            function showDemoError(inputId, errorId, msg) {
+                const input = document.getElementById(inputId);
+                const err   = document.getElementById(errorId);
+                if (input) input.classList.add('is-invalid');
+                if (err) {
+                    err.querySelector('span').textContent = msg;
+                    err.classList.add('show');
+                }
+            }
+
+            function clearDemoError(inputId, errorId) {
+                const input = document.getElementById(inputId);
+                const err   = document.getElementById(errorId);
+                if (input) input.classList.remove('is-invalid');
+                if (err) err.classList.remove('show');
+            }
+
+            function markDemoValid(inputId) {
+                const input = document.getElementById(inputId);
+                if (input) {
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
+                }
+            }
+
+            function clearAllDemoErrors() {
+                ['demo_name','demo_phone','demo_email'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.classList.remove('is-invalid','is-valid');
+                        el.style.borderColor = '';
+                        el.style.boxShadow = '';
+                        el.style.background = '';
+                    }
+                });
+                ['err_demo_name','err_demo_phone','err_demo_email','err_prop_type'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.remove('show');
+                });
+
+                clearDemoErrorForSelect();
+            }
+
+            function validateDemoForm() {
+                const name  = document.getElementById('demo_name').value.trim();
+                const phone = document.getElementById('demo_phone').value.trim();
+                const email = document.getElementById('demo_email').value.trim();
+                const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+                let valid   = true;
+
+                /* Name */
+                if (!name) {
+                    showDemoError('demo_name', 'err_demo_name', 'Please enter your full name.');
+                    valid = false;
+                } else {
+                    markDemoValid('demo_name');
+                }
+
+                /* Phone */
+                const phoneRegex = /^\+60 \d{2}-\d{3} \d{4}$/;
+                if (!phone) {
+                    showDemoError('demo_phone', 'err_demo_phone', 'Please enter your phone number.');
+                    valid = false;
+                } else if (!phoneRegex.test(phone)) {
+                    showDemoError('demo_phone', 'err_demo_phone', 'Format must be: +60 12-345 6789');
+                    valid = false;
+                } else {
+                    markDemoValid('demo_phone');
+                }
+
+                /* Email */
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email) {
+                    showDemoError('demo_email', 'err_demo_email', 'Please enter your email address.');
+                    valid = false;
+                } else if (!emailRegex.test(email)) {
+                    showDemoError('demo_email', 'err_demo_email', 'Please enter a valid email address.');
+                    valid = false;
+                } else {
+                    markDemoValid('demo_email');
+                }
+
+                if (!propType) {
+                    showDemoErrorForSelect();
+                    valid = false;
+                } else {
+                    clearDemoErrorForSelect();
+                }
+
+                return valid;
+            }
+        
+        function showDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+
+            if(trigger) {
+                trigger.style.borderColor = '#dc2626';
+                trigger.style.boxShadow = '0 0 0 4px rgba(220, 38, 38, 0.1)';
+            }
+            if (err) err.classList.add('show');
+        }
+
+        function clearDemoErrorForSelect() {
+            const trigger = document.getElementById('propTrigger');
+            const err = document.getElementById('err_prop_type');
+            if(trigger) {
+                trigger.style.borderColor = '';
+                trigger.style.boxShadow = '';
+            }
+            if (err) err.classList.remove('show');
+        }
+
+        /* Clear errors while typing */
+        document.getElementById('demo_name').addEventListener('input',
+            () => clearDemoError('demo_name', 'err_demo_name'));
+        document.getElementById('demo_email').addEventListener('input',
+            () => clearDemoError('demo_email', 'err_demo_email'));
+
+        /* ── Form submit ── */
+        demoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            /* Validate first — stop if any error */
+            if (!validateDemoForm()) return;
+
+            const name    = document.getElementById('demo_name').value.trim();
+            const phone   = document.getElementById('demo_phone').value.trim();
+            const email   = document.getElementById('demo_email').value.trim();
+            const message = document.getElementById('demo_message').value.trim();
+            const propType = document.getElementById('prop_type_hidden') ? document.getElementById('prop_type_hidden').value.trim() : '';
+
+            const entityLabels = { JMB: 'Joint Management Body (JMB)', MC: 'Management Corporation (MC)', RA: 'Residents Association (RA)', PMC: 'Property Management Company (PMC)', Developer: 'Property Developer' };
+            const entityLine = propType ? (entityLabels[propType] || propType) : '—';
+ 
+            const fullMessage = ['[DEMO REQUEST]', message].filter(Boolean).join('\n');
+
+            demoBtnText.textContent = 'Sending...';
+            demoSpinner.style.display = 'block';
+            document.getElementById('demoSubmitBtn').disabled = true;
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        from_name: name, 
+                        phone: phone,
+                        reply_to: email, 
+                        entity_type: entityLine,
+                        message: fullMessage, 
+                        recaptcha: 'bypass' 
+                    })
+                });
+
+                let data = {};
+                const text = await response.text();
+                try {
+                    data = text ? JSON.parse(text) : {};
+                } catch (err) {
+                    console.warn('Contact API returned non-JSON response:', text);
+                    data.error = 'Unexpected server response.';
+                }
+
+                if (response.ok && data.ok) {
+                    showDemoToast('toastSuccess');
+                    demoForm.reset();
+                    clearAllDemoErrors();
+
+                    const propLabel = document.getElementById('propLabel');
+                    const propHidden = document.getElementById('prop_type_hidden');
+                    const propTrigger = document.getElementById('propTrigger');
+
+                    if (propLabel) propLabel.textContent = 'Select entity type...';
+                    if (propHidden) propHidden.value = '';
+                    if (propTrigger) propTrigger.classList.remove('has-value');
+
+                    document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
+                    setTimeout(closeDemoModal, 2000);
+                } else {
+                    document.getElementById('toastErrorMsg').textContent = data.error || 'Failed to send request.';
+                    showDemoToast('toastError');
+                }
+            } catch (error) {
+                document.getElementById('toastErrorMsg').textContent = 'Network error. Please try again.';
+                showDemoToast('toastError');
+            } finally {
+                demoBtnText.textContent = 'Book your demo now';
+                demoSpinner.style.display = 'none';
+                document.getElementById('demoSubmitBtn').disabled = false;
+            }
+        });
+
+        (function () {
+            const cs = document.getElementById('propSelect');
+            const trigger = document.getElementById('propTrigger');
+            const label = document.getElementById('propLabel');
+            const hidden = document.getElementById('prop_type_hidden');
+            const modalOverlay = document.getElementById('demoModalOverlay');
+
+            const options = cs.querySelectorAll('.option');
+
+            function closeSelect() {
+                cs.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+
+            function openSelect() {
+                cs.classList.add('active');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            trigger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                cs.classList.contains('active') ? closeSelect() : openSelect();
+            });
+
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    cs.classList.contains('active') ? closeSelect() : openSelect();
+                }
+                if (e.key === 'Escape') closeSelect();
+            });
+
+            options.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
+
+                    label.textContent = opt.textContent;
+                    hidden.value = opt.dataset.value;
+
+                    trigger.classList.add('has-value');
+
+                    closeSelect();
+                    trigger.focus();
+
+                    clearDemoErrorForSelect();
+                });
+            });
+
+            /* click outside close dropdown */
+            document.addEventListener('click', (e) => {
+                if (!cs.contains(e.target)) closeSelect();
+            });
+
+            /* modal close */
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) closeDemoModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeDemoModal();
+            });
+        })();
+
+        /* Close on click outside */
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) closeDemoModal();
+        });
+
+        /* Close on ESC */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDemoModal();
+        });
+
+        // Initialize Malaysia phone input auto-formatting
+        initPhoneAutoFormat();
+        </script>
+    </body>
+</html>
