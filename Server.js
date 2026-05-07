@@ -23,6 +23,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
+app.use(express.static(path.join(__dirname)));
+
+// HTML routes
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'Contact.html')));
+app.get('/career', (req, res) => res.sendFile(path.join(__dirname, 'career.html')));
+app.get('/iot', (req, res) => res.sendFile(path.join(__dirname, 'IoT.html')));
+app.get('/terms', (req, res) => res.sendFile(path.join(__dirname, 'Terms.html')));
+app.get('/refund', (req, res) => res.sendFile(path.join(__dirname, 'Refund.html')));
+app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname, 'privacy.html')));
+app.get('/policy', (req, res) => res.sendFile(path.join(__dirname, 'policy.html')));
+
 
 /* ── Multer — in-memory file storage ───────────────────────── */
 const upload = multer({
