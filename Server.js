@@ -23,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
-app.use(express.static(path.join(__dirname)));
-
 // HTML routes
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'Contact.html')));
