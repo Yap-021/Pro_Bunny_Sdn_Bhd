@@ -75,7 +75,7 @@ function emailShell(innerHtml) {
 <body style="margin:0;padding:0;background:#CD950C;font-family:Arial,Helvetica,sans-serif;color:#202124;">
 
   <!-- Outer wrapper -->
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#CD950C;padding:32px 0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;padding:32px 0;">
     <tr>
       <td align="center">
 
