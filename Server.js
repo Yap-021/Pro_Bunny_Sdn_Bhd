@@ -70,7 +70,7 @@ function emailShell(innerHtml) {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Pro Bunnyi-Ruma</title>
+  <title>Probunny receiver email</title>
 </head>
 <body style="margin:0;padding:0;background:#CD950C;font-family:Arial,Helvetica,sans-serif;color:#202124;">
 
@@ -116,7 +116,7 @@ function emailShell(innerHtml) {
           <tr>
             <td style="padding:20px 32px 28px;background:#f8f9fa;border-top:none;">
               <p style="margin:0 0 6px;font-size:12px;color:#80868b;">
-                This email was sent by <strong>Pro Bunny Sdn. Bhd.</strong>
+                This email was sent by <strong>Pro Bunnys Sdn Bhd</strong>
               </p>
               <p style="margin:0 0 6px;font-size:12px;color:#80868b;">
                 28, Jalan Tiara 1, Usj 2, 47600 Subang Jaya, Selangor
