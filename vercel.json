@@ -5,6 +5,19 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "Server.js" },
-    { "src": "/(.*)", "dest": "/$1" }
+    { "src": "/index.html", "dest": "/index.html" },
+    { "src": "/Contact.html", "dest": "/Contact.html" },
+    { "src": "/career.html", "dest": "/career.html" },
+    { "src": "/IoT.html", "dest": "/IoT.html" },
+    { "src": "/Terms.html", "dest": "/Terms.html" },
+    { "src": "/Refund.html", "dest": "/Refund.html" },
+    { "src": "/privacy.html", "dest": "/privacy.html" },
+    { "src": "/policy.html", "dest": "/policy.html" },
+    { "src": "/image/(.*)", "dest": "/image/$1" },
+    { "src": "/image_icon/(.*)", "dest": "/image_icon/$1" },
+    { "src": "/asset/(.*)", "dest": "/asset/$1" },
+    { "src": "/partners/(.*)", "dest": "/partners/$1" },
+    { "src": "/IoT/(.*)", "dest": "/IoT/$1" },
+    { "src": "/", "dest": "/index.html" }
   ]
 }
