@@ -2945,7 +2945,7 @@
 
         /* ── Form submit ── */
         if (demoForm) {
-            demoForm.addEventListener('submit', async (e) => {
+            demoForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             /* Validate first — stop if any error */
@@ -2959,58 +2959,66 @@
 
             const entityLabels = { JMB: 'Joint Management Body (JMB)', MC: 'Management Corporation (MC)', RA: 'Residents Association (RA)', PMC: 'Property Management Company (PMC)', Developer: 'Property Developer' };
             const entityLine = propType ? (entityLabels[propType] || propType) : '—';
- 
-            const fullMessage = ['[DEMO REQUEST]', message].filter(Boolean).join('\n');
+            const now = new Date().toLocaleString('en-MY', {timeZone: 'Asia/Kuala_Lumpur', dateStyle: 'full', timeStyle: 'short'});
 
-            demoBtnText.textContent = 'Sending...';
-            demoSpinner.style.display = 'block';
-            document.getElementById('demoSubmitBtn').disabled = true;
+            /* Build mailto body */
+            const bodyLines = [
+                '===================================================================',
+                '🐰  Pro Bunnys — DEMO REQUEST',
+                '===================================================================',
+                '',
+                'You have a new demo booking!',
+                '',
+                'Someone has sent a message via the Probunnys website contact form.',
+                'Here are the details:',
+                '',
+                '--------------------------------------------------------------------',
+                'CONTACT DETAILS',
+                '-------------------------------------------------------------------',
+                'Name        : ' + name,
+                'Phone       : ' + phone,
+                'Email       : ' + email,
+                'Entity Type : ' + entityLine,
+                '',
+                'MESSAGE',
+                '-------------------------------------------------------------------',
+                (message || '(No message provided)'),
+                '',
+                '===================================================================',
+                'This email was sent by Pro Bunnys Sdn. Bhd.',
+                '28, Jalan Tiara 1',
+                'Usj 2, 47600 Subang Jaya, Selangor',
+                'Submitted on ' + now + ' (MYT)',
+                '===================================================================',
+            ];
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        from_name: name, 
-                        phone: phone,
-                        reply_to: email, 
-                        entity_type: entityLine,
-                        message: fullMessage, 
-                        recaptcha: 'bypass' 
-                    })
-                });
+            const mailtoUrl =
+                `mailto:hello@probunny.net` +
+                `?subject=${encodeURIComponent('🐰 Demo Request — ' + name + ' (' + entityLine + ')')}` +
+                `&body=${encodeURIComponent(bodyLines.join('\n'))}`;
 
-                const data = await response.json();
+            /* Open mail client without navigating away from the page */
+            const mailLink = document.createElement('a');
+            mailLink.href = mailtoUrl;
+            mailLink.style.display = 'none';
+            document.body.appendChild(mailLink);
+            mailLink.click();
+            document.body.removeChild(mailLink);
 
-                if (data.ok) {
-                    showDemoToast('toastSuccess');
-                    demoForm.reset();
-                    clearAllDemoErrors();
+            /* Reset form & show toast immediately */
+            showDemoToast('toastSuccess');
+            demoForm.reset();
+            clearAllDemoErrors();
 
-                    const propLabel = document.getElementById('propLabel');
-                    const propHidden = document.getElementById('prop_type_hidden');
-                    const propTrigger = document.getElementById('propTrigger'); 
+            const propLabel   = document.getElementById('propLabel');
+            const propHidden  = document.getElementById('prop_type_hidden');
+            const propTrigger = document.getElementById('propTrigger');
+            if (propLabel)   propLabel.textContent = 'Select entity type...';
+            if (propHidden)  propHidden.value = '';
+            if (propTrigger) propTrigger.classList.remove('has-value');
+            document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
 
-                    if (propLabel) propLabel.textContent = 'Select entity type...';
-                    if (propHidden) propHidden.value = '';
-                    if (propTrigger) propTrigger.classList.remove('has-value');
-
-                    document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
-                    setTimeout(closeDemoModal, 2000);
-                } else {
-                    const errEl = document.getElementById('toastErrorMsg');
-                    if (errEl) errEl.textContent = data.error || 'Failed to send request.';
-                    showDemoToast('toastError');
-                }
-            } catch (error) {
-                const errEl = document.getElementById('toastErrorMsg');
-                if (errEl) errEl.textContent = 'Network error. Please try again.';
-                showDemoToast('toastError');
-            } finally {
-                demoBtnText.textContent = 'Book your demo now';
-                demoSpinner.style.display = 'none';
-                document.getElementById('demoSubmitBtn').disabled = false;
-            }
+            setTimeout(closeDemoModal, 2000);
         });
         }
 

@@ -2899,84 +2899,79 @@
                 el.classList.remove('show');
             }
 
-            async function submitApplication() {
+            function submitApplication() {
                 clearError();
- 
+
                 const email   = document.getElementById('composeEmail').value.trim();
                 const name    = document.getElementById('composeName').value.trim();
                 const subject = document.getElementById('composeSubject').value.trim();
                 const message = document.getElementById('composeMessage').value.trim();
                 const file    = document.getElementById('resumeInput').files[0];
- 
+
                 /* Validation */
                 if (!name || !email) {
                     showError('Please fill in your name and email address.');
                     return;
                 }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    showError('Please enter a valid email address. Follow the format: abc123@email.com');
+                    showError('Please enter a valid email address.');
                     return;
                 }
-                if (!file) {
-                    showError('Please attach your resume before sending.');
-                    return;
-                }
- 
-                /* Build multipart form data (supports file upload) */
-                const formData = new FormData();
-                formData.append('applicant_name',  name);
-                formData.append('applicant_email', email);
-                formData.append('job_title',       subject.replace('Application: ', ''));
-                formData.append('message',         message);
-                if (file) formData.append('resume', file);
- 
 
-                /* Loading state */
-                const sendBtn     = document.getElementById('composeSendBtn');
-                const sendSpinner = document.getElementById('composeSendSpinner');
-                const sendIcon    = document.getElementById('composeSendIcon');
-                const sendText    = document.getElementById('composeSendText');
-                sendBtn.disabled          = true;
-                sendSpinner.style.display = 'block';
-                sendIcon.style.display    = 'none';
-                sendText.textContent      = 'Sending…';
- 
-                try {
-                    const res  = await fetch(`${API_BASE}/api/apply`, {
-                        method: 'POST',
-                        body: formData
-                    });
+                const now = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur', dateStyle: 'full', timeStyle: 'short' });
+                const position = subject.replace('Application: ', '') || '(Not specified)';
 
-                    let data = {};
-                    const raw = await res.text();
-                    try {
-                        data = raw ? JSON.parse(raw) : {};
-                    } catch (jsonErr) {
-                        console.warn('Apply API returned non-JSON:', raw);
-                        data.error = raw || `Server returned ${res.status}`;
-                    }
+                const bodyLines = [
+                    '================================================================',
+                    '🐰  Pro Bunnys — JOB APPLICATION',
+                    '================================================================',
+                    '',
+                    'You have a new job application!',
+                    '',
+                    '----------------------------------------------------------------',
+                    'APPLICANT DETAILS',
+                    '----------------------------------------------------------------',
+                    'Name     : ' + name,
+                    'Email    : ' + email,
+                    'Position : ' + position,
+                    '',
+                    'MESSAGE',
+                    '----------------------------------------------------------------',
+                    (message || '(No message provided)'),
+                    '',
+                    '----------------------------------------------------------------',
+                    file
+                        ? 'Resume   : ' + file.name 
+                        : '(No resume attached)',
+                    file
+                        ? '(Please attach your resume manually as the email client cannot send files.)'
+                        : '',
+                    '',
+                    '================================================================',
+                    'This email was sent by Pro Bunnys Sdn. Bhd.',
+                    '28, Jalan Tiara 1',
+                    'Usj 2, 47600 Subang Jaya, Selangor',
+                    'Submitted on ' + now + ' (MYT)',
+                    '================================================================',
+                ];
 
-                    if (res.ok && data.ok) {
-                        closeApply();
-                        /* Show success toast */
-                        const toast = document.getElementById('applyToast');
-                        toast.classList.add('show');
-                        setTimeout(() => toast.classList.remove('show'), 5000);
-                    } else {
-                        showError(data.error || `Server error (${res.status}). Please try again.`);
-                    }
+                const mailtoUrl =
+                    'mailto:hello@probunny.net' +
+                    '?subject=' + encodeURIComponent('💼 Job Application — ' + name + ' (' + position + ')') +
+                    '&body='    + encodeURIComponent(bodyLines.join('\n'));
 
-                } catch (err) {
-                    console.error('Apply error:', err);
-                    showError('Cannot reach the server. Please email us directly at hello@probunny.net');
-                } finally {
-                /* Always restore button */
-                sendBtn.disabled          = false;
-                sendSpinner.style.display = 'none';
-                sendIcon.style.display    = 'inline';
-                sendText.textContent      = 'Send Application';
-            }
-        } 
+                const mailLink = document.createElement('a');
+                mailLink.href = mailtoUrl;
+                mailLink.style.display = 'none';
+                document.body.appendChild(mailLink);
+                mailLink.click();
+                document.body.removeChild(mailLink);
+
+                closeApply();
+                const toast = document.getElementById('applyToast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 5000);
+            } 
 
         /* ── Demo Modal Logic ──────────────────────────── */
         const demoModal   = document.getElementById('demoModalOverlay');
@@ -3157,7 +3152,7 @@
             () => clearDemoError('demo_email', 'err_email'));
 
         /* ── Form submit ── */
-        demoForm.addEventListener('submit', async (e) => {
+        demoForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             /* Validate first — stop if any error */
@@ -3172,58 +3167,65 @@
             const entityLabels = { JMB: 'Joint Management Body (JMB)', MC: 'Management Corporation (MC)', RA: 'Residents Association (RA)', PMC: 'Property Management Company (PMC)', Developer: 'Property Developer' };
             const entityLine = propType ? (entityLabels[propType] || propType) : '—';
  
-            const fullMessage = ['[DEMO REQUEST]', message].filter(Boolean).join('\n');
+            const now = new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur', dateStyle: 'full', timeStyle: 'short' });
 
-            demoBtnText.textContent = 'Sending...';
-            demoSpinner.style.display = 'block';
-            document.getElementById('demoSubmitBtn').disabled = true;
+            const bodyLines = [
+                '===================================================================',
+                '🐰  Pro Bunnys — DEMO REQUEST',
+                '===================================================================',
+                '',
+                'You have a new demo booking!',
+                '',
+                'Someone has sent a message via the Probunnys website contact form.',
+                'Here are the details:',
+                '',
+                '-------------------------------------------------------------------',
+                'CONTACT DETAILS',
+                '-------------------------------------------------------------------',
+                'Name        : ' + name,
+                'Phone       : ' + phone,
+                'Email       : ' + email,
+                'Entity Type : ' + entityLine,
+                '',
+                'MESSAGE',
+                '-------------------------------------------------------------------',
+                (message || '(No message provided)'),
+                '',
+                '===================================================================',
+                'This email was sent by Pro Bunnys Sdn. Bhd.',
+                '28, Jalan Tiara 1',
+                'Usj 2, 47600 Subang Jaya, Selangor',
+                'Submitted on ' + now + ' (MYT)',
+                '===================================================================',
+            ];
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        from_name: name, 
-                        phone: phone,
-                        reply_to: email, 
-                        entity_type: entityLine,
-                        message: fullMessage, 
-                        recaptcha: 'bypass' 
-                    })
-                });
+            const mailtoUrl =
+                'mailto:hello@probunny.net' +
+                '?subject=' + encodeURIComponent('🐰 Demo Request — ' + name + ' (' + entityLine + ')') +
+                '&body='    + encodeURIComponent(bodyLines.join('\n'));
 
-                const data = await response.json();
+            const mailLink = document.createElement('a');
+            mailLink.href = mailtoUrl;
+            mailLink.style.display = 'none';
+            document.body.appendChild(mailLink);
+            mailLink.click();
+            document.body.removeChild(mailLink);
 
-                if (data.ok) {
-                    showDemoToast('toastSuccess');
-                    demoForm.reset();
-                    clearAllDemoErrors();
+            showDemoToast('toastSuccess');
+            demoForm.reset();
+            clearAllDemoErrors();
 
-                    const propLabel = document.getElementById('propLabel');
-                    const propHidden = document.getElementById('prop_type_hidden');
-                    const propTrigger = document.getElementById('propTrigger'); 
+            const propLabel   = document.getElementById('propLabel');
+            const propHidden  = document.getElementById('prop_type_hidden');
+            const propTrigger = document.getElementById('propTrigger');
+            if (propLabel)   propLabel.textContent = 'Select entity type...';
+            if (propHidden)  propHidden.value = '';
+            if (propTrigger) propTrigger.classList.remove('has-value');
+            document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
 
-                    if (propLabel) propLabel.textContent = 'Select entity type...';
-                    if (propHidden) propHidden.value = '';
-                    if (propTrigger) propTrigger.classList.remove('has-value');
-
-                    document.querySelectorAll('#propSelect .option').forEach(o => o.classList.remove('selected'));
-                    setTimeout(closeDemoModal, 2000);
-                } else {
-                    const errEl = document.getElementById('toastErrorMsg');
-                    if (errEl) errEl.textContent = data.error || 'Failed to send request.';
-                    showDemoToast('toastError');
-                }
-            } catch (error) {
-                const errEl = document.getElementById('toastErrorMsg');
-                if (errEl) errEl.textContent = 'Network error. Please try again.';
-                showDemoToast('toastError');
-            } finally {
-                demoBtnText.textContent = 'Book your demo now';
-                demoSpinner.style.display = 'none';
-                document.getElementById('demoSubmitBtn').disabled = false;
-            }
+            setTimeout(closeDemoModal, 2000);
         });
+
 
         (function () {
             const cs = document.getElementById('propSelect');
