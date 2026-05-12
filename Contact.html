@@ -767,6 +767,24 @@
                .option.selected .opt-check {
                     opacity: 1;
                }
+
+               .input-wrapper {
+                    position: relative;
+               }
+                .input-wrapper .valid-icon {
+                    position: absolute;
+                    right: 14px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #16a34a;
+                    font-size: .9rem;
+                    display: none;
+                    pointer-events: none;
+                }
+                .form-control.is-valid {
+                    border-color: #16a34a !important;
+                    box-shadow: 0 0 0 3px rgba(22,163,74,0.12) !important;
+                }
         </style>
     </head>
     <body>
@@ -849,7 +867,10 @@
                         <form id="contactForm" novalidate>
                             <div class="mb-3">
                                 <label class="form-label" for="from_name">Name*</label>
-                                <input type="text" id="from_name" name="from_name" class="form-control" placeholder="Your full name" required>
+                                <div class="input-wrapper">
+                                    <input type="text" id="from_name" name="from_name" class="form-control" placeholder="Your full name" required>
+                                    <i class="fas fa-circle-check valid-icon" id="vi_name"></i>
+                                </div>
                                 <div class="field-error" id="err_name">
                                     <i class="fas fa-circle-exclamation"></i>
                                     <span>Please enter your full name.</span>
@@ -857,9 +878,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="phone">Phone Number*</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789" required 
+                                <div class="input-wrapper">
+                                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="+60 12-345 6789" required 
                                     pattern="^\+60\s\d{2}-\d{3}\s\d{4}$" title="Format: +60 12-345 6789">
-                                
+                                    <i class="fas fa-circle-check valid-icon" id="vi_phone"></i>
+                                </div>
                                     <div class="field-error" id="err_phone">
                                         <i class="fas fa-circle-exclamation"></i>
                                         <span>Please enter a valid phone number.</span>
@@ -867,7 +890,10 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="reply_to">Business Email*</label>
-                                <input type="email" id="reply_to" name="reply_to" class="form-control" placeholder="you@company.com" required>
+                                <div class="input-wrapper">
+                                    <input type="email" id="reply_to" name="reply_to" class="form-control" placeholder="you@company.com" required>
+                                    <i class="fas fa-circle-check valid-icon" id="vi_email"></i>
+                                </div>
                                 <div class="field-error" id="err_email">
                                     <i class="fas fa-circle-exclamation"></i>
                                     <span>Please enter a valid email address.</span>
@@ -883,7 +909,10 @@
                                         aria-haspopup="listbox" aria-expanded="false">
                                     
                                         <span id="contactEntityLabel">Select entity type...</span>
-                                        <i class="fas fa-chevron-down cs-chevron"></i>
+                                        <div style="display: flex;align-items: center; gap:6px;">
+                                            <i class="fas fa-circle-check" id="vi_entity" style="color:#16a34a;font-size:.9rem;display:none;"></i>
+                                            <i class="fas fa-chevron-down cs-chevron"></i>
+                                        </div>
                                     </div>
                                     <div class="select-options" role="listbox">
                                         <div class="option" data-value="JMB" role="option">
@@ -1263,7 +1292,17 @@
 
                 trigger.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    cs.classList.contains('active') ? closeSelect() : openSelect();
+                    if (cs.classList.contains('active')) {
+                        closeSelect();
+                    } else {
+                        trigger.style.borderColor = '';
+                        trigger.style.boxShadow = '';
+                        const viEntity = document.getElementById('vi_entity');
+                        if (viEntity) viEntity.style.display = 'none';
+                        const errEntity = document.getElementById('err_entity_type');
+                        if (errEntity) errEntity.classList.remove('show');
+                        openSelect();
+                    }
                 });
 
                 trigger.addEventListener('keydown', (e) => {
@@ -1325,11 +1364,24 @@
                 }
             }
 
-            function clearError(fieldId, errorId){
+            function clearError(fieldId, errorId, iconId){
                 const input = document.getElementById(fieldId);
                 const err = document.getElementById(errorId);
+                const icon = document.getElementById(iconId);
                 if (input) input.classList.remove('is-invalid');
+                if (input) input.classLits.remove('is-valid');
                 if (err) err.classList.remove('show');
+                if (icon) icon.style.display = 'none';
+            }
+
+            function markValid(fieldId, iconId = null) {
+                const input = document.getElementById(fieldId);
+                const icon = document.getElementById(iconId);
+                if (input) {
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
+                }
+                if (icon) icon.style.display = 'block';
             }
 
             function onRecaptchaSuccess() {
@@ -1345,7 +1397,7 @@
                 if (!name || name.length < 2) {
                     showError('from_name', 'err_name', 'Please enter your full name (min 2 characters).');
                     valid = false;
-                } else clearError('from_name', 'err_name');
+                } else markValid('from_name', 'vi_name');
 
                 const phone = document.getElementById('phone').value.trim();
                 const phoneRegex = /^\+60\s\d{2}-\d{3}\s\d{4}$/;
@@ -1355,7 +1407,7 @@
                 } else if (!phoneRegex.test(phone)) {
                     showError('phone', 'err_phone', 'Format: +60 12-345 6789');
                     valid = false;
-                } else clearError('phone', 'err_phone');
+                } else markValid('phone', 'vi_phone');
 
                 const email = document.getElementById('reply_to').value.trim();
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1365,7 +1417,7 @@
                 } else if (!emailRegex.test(email)){
                     showError('reply_to', 'err_email', 'Please enter a valid email address.');
                     valid = false;
-                } else clearError('reply_to', 'err_email');
+                } else markValid('reply_to', 'vi_email');
 
                 const entityVal = document.getElementById('entity_type').value.trim();
                 const errEntity = document.getElementById('err_entity_type');
@@ -1380,9 +1432,11 @@
                 } else {
                     if (errEntity) errEntity.classList.remove('show');
                     if (entityTrigger) {
-                        entityTrigger.style.borderColor = '';
-                        entityTrigger.style.boxShadow = '';
+                        entityTrigger.style.borderColor = '#16a34a';
+                        entityTrigger.style.boxShadow = '0 0 0 3px rgba(22, 163, 74, 0.12)';
                     }
+                    const viEntity = document.getElementById('vi_entity');
+                    if (viEntity) viEntity.style.display = 'inline';
                 }
 
                 const recaptchaResponse = grecaptcha.getResponse();
@@ -1457,19 +1511,28 @@
                 if (contactHidden)  contactHidden.value = '';
                 if (contactTrigger) contactTrigger.classList.remove('has-value');
                 document.querySelectorAll('#contactEntitySelect .option').forEach(o => o.classList.remove('selected'));
+
+                const viEntity = document.getElementById('vi_entity');
+                if (viEntity) viEntity.style.display = 'none';
+                if (contactTrigger) {
+                    contactTrigger.style.borderColor = '';
+                    contactTrigger.style.boxShadow = '';
+                }
                 showToast('toastSuccess');
             });
 
             const fields = [
-                { input: 'from_name', err: 'err_name' },
-                { input: 'phone', err: 'err_phone' },
-                { input: 'reply_to', err: 'err_email' },
+                { input: 'from_name', err: 'err_name', icon: 'vi_name' },
+                { input: 'phone', err: 'err_phone', icon: 'vi_phone' },
+                { input: 'reply_to', err: 'err_email', icon: 'vi_email' },
                 { input: 'message', err: 'err_message' }
             ];
 
             fields.forEach(f => {
                 const el = document.getElementById(f.input);
-                if (el) el.addEventListener('input', () => clearError(f.input, f.err));
+                if (el) el.addEventListener('input', () => {
+                    clearError(f.input, f.err, f.icon);
+                });
             });
 
             /* ── Demo Modal Logic ──────────────────────────── */
@@ -1742,6 +1805,9 @@
 
                     label.textContent = opt.textContent;
                     hidden.value = opt.dataset.value;
+
+                    trigger.style.borderColor = '';
+                    trigger.style.boxShadow = '';
 
                     trigger.classList.add('has-value');
 
