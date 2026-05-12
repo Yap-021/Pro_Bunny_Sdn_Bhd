@@ -2173,6 +2173,8 @@
             () => clearDemoError('demo_name', 'err_name'));
         document.getElementById('demo_email').addEventListener('input',
             () => clearDemoError('demo_email', 'err_email'));
+        document.getElementById('demo_phone').addEventListener('input',
+            () => clearDemoError('demo_phone', 'err_demo_phone'));
 
         /* ── Form submit ── */
         demoForm.addEventListener('submit', (e) => {

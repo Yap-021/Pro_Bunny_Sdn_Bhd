@@ -2943,6 +2943,12 @@
                 () => clearDemoError('demo_email', 'err_email'));
         }
 
+        const demoPhoneInput = document.getElementById('demo_phone');
+        if (demoPhoneInput) {
+            demoPhoneInput.addEventListener('input',
+                () => clearDemoError('demo_phone', 'err_phone'));
+        }
+
         /* ── Form submit ── */
         if (demoForm) {
             demoForm.addEventListener('submit', (e) => {

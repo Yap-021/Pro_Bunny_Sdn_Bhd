@@ -1224,8 +1224,8 @@
             const API_BASE = '';
 
             /* ── Malaysia mobile: auto-format to match pattern +60 XX-XXX XXXX ── */
-            function initPhoneAutoFormat() {
-                const phoneEl = document.getElementById('phone');
+            function initPhoneAutoFormat(inputId = 'phone') {
+                const phoneEl = document.getElementById(inputId);
                 if (!phoneEl) return;
 
                 function formatFromDigits(allDigits) {
@@ -1625,6 +1625,8 @@
             () => clearDemoError('demo_name', 'err_demo_name'));
         document.getElementById('demo_email').addEventListener('input',
             () => clearDemoError('demo_email', 'err_demo_email'));
+        document.getElementById('demo_phone').addEventListener('input',
+            () => clearDemoError('demo_phone', 'err_demo_phone'));
 
         /* ── Form submit ── */
         demoForm.addEventListener('submit', (e) => {
