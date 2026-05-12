@@ -1104,7 +1104,10 @@
                                 Name
                                 <span style="color:#dc2626;">*</span>
                             </label>
-                            <input type="text" id="demo_name" name="name" placeholder="Your full name" autocomplete="name">
+                            <div class="input-wrapper">
+                                <input type="text" id="demo_name" name="name" placeholder="Your full name" autocomplete="name">
+                                <i class="fas fa-circle-check valid-icon" id="vi_demo_name"></i>
+                            </div>
                             <div class="field-error" id="err_demo_name">
                                 <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
                                 <span>Please enter your full name.</span>
@@ -1115,7 +1118,10 @@
                             <label for="demo_phone">Mobile No
                                 <span style="color:#dc2626;">*</span>
                             </label>
-                            <input type="tel" id="demo_phone" name="phone" placeholder="+60 12-345 6789" autocomplete="tel">
+                            <div class="input-wrapper">
+                                <input type="tel" id="demo_phone" name="phone" placeholder="+60 12-345 6789" autocomplete="tel">
+                                <i class="fas fa-circle-check valid-icon" id="vi_demo_phone"></i>
+                            </div>
                             <div class="field-error" id="err_demo_phone">
                                 <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
                                 <span>Please enter a valid mobile number.</span>
@@ -1126,7 +1132,10 @@
                             <label for="demo_email">Email
                                 <span style="color:#dc2626;">*</span>
                             </label>
-                            <input type="email" id="demo_email" name="email" placeholder="name@company.com" autocomplete="email">
+                            <div class="input-wrapper">
+                                <input type="email" id="demo_email" name="email" placeholder="name@company.com" autocomplete="email">
+                                <i class="fas fa-circle-check valid-icon" id="vi_demo_email"></i>
+                            </div>
                             <div class="field-error" id="err_demo_email">
                                 <i class="fas fa-circle-exclamation" style="font-size:.72rem;"></i>
                                 <span>Please enter a valid email address.</span>
@@ -1580,19 +1589,24 @@
                 }
             }
 
-            function clearDemoError(inputId, errorId) {
+            function clearDemoError(inputId, errorId, iconId) {
                 const input = document.getElementById(inputId);
                 const err   = document.getElementById(errorId);
+                const icon = document.getElementById(iconId);
                 if (input) input.classList.remove('is-invalid');
+                if (input) input.classList.remove('is-valid');
                 if (err) err.classList.remove('show');
+                if (icon) icon.style.display = 'none';
             }
 
-            function markDemoValid(inputId) {
+            function markDemoValid(inputId, iconId = null) {
                 const input = document.getElementById(inputId);
+                const icon = document.getElementById(iconId);
                 if (input) {
                     input.classList.remove('is-invalid');
                     input.classList.add('is-valid');
                 }
+                if (icon) icon.style.display = 'block';;
             }
 
             function clearAllDemoErrors() {
@@ -1608,6 +1622,10 @@
                 ['err_demo_name','err_demo_phone','err_demo_email','err_prop_type'].forEach(id => {
                     const el = document.getElementById(id);
                     if (el) el.classList.remove('show');
+                });
+                ['vi_demo_name','vi_demo_phone','vi_demo_email'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.style.display = 'none';
                 });
 
                 clearDemoErrorForSelect();
@@ -1625,7 +1643,7 @@
                     showDemoError('demo_name', 'err_demo_name', 'Please enter your full name.');
                     valid = false;
                 } else {
-                    markDemoValid('demo_name');
+                    markDemoValid('demo_name', 'vi_demo_name');
                 }
 
                 /* Phone */
@@ -1637,7 +1655,7 @@
                     showDemoError('demo_phone', 'err_demo_phone', 'Format must be: +60 12-345 6789');
                     valid = false;
                 } else {
-                    markDemoValid('demo_phone');
+                    markDemoValid('demo_phone', 'vi_demo_phone');
                 }
 
                 /* Email */
@@ -1649,7 +1667,7 @@
                     showDemoError('demo_email', 'err_demo_email', 'Please enter a valid email address.');
                     valid = false;
                 } else {
-                    markDemoValid('demo_email');
+                    markDemoValid('demo_email', 'vi_demo_email');
                 }
 
                 if (!propType) {
@@ -1685,11 +1703,11 @@
 
         /* Clear errors while typing */
         document.getElementById('demo_name').addEventListener('input',
-            () => clearDemoError('demo_name', 'err_demo_name'));
+            () => clearDemoError('demo_name', 'err_demo_name', 'vi_demo_name'));
         document.getElementById('demo_email').addEventListener('input',
-            () => clearDemoError('demo_email', 'err_demo_email'));
+            () => clearDemoError('demo_email', 'err_demo_email', 'vi_demo_email'));
         document.getElementById('demo_phone').addEventListener('input',
-            () => clearDemoError('demo_phone', 'err_demo_phone'));
+            () => clearDemoError('demo_phone', 'err_demo_phone', 'vi_demo_phone'));
 
         /* ── Form submit ── */
         demoForm.addEventListener('submit', (e) => {
