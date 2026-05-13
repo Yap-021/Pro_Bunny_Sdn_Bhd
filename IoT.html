@@ -257,16 +257,6 @@
                     overflow: hidden;
                 }
 
-                /* Animated grid lines */
-                .hero-grid {
-                    position: absolute;
-                    inset: 0;
-                    pointer-events: none;
-                    background-image: linear-gradient(rgba(0,155,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,155,255,.07) 1px, transparent 1px);
-                    background-size: 52px 52px;
-                    animation: gridDrift 20s linear infinite;
-                }
-
                 @keyframes gridDrift {
                     0% {
                         background-position: 0 0;
@@ -1252,9 +1242,6 @@
              HERO — dark tech grid
         ═══════════════════════════════════════════════════════════ -->
         <section class="hero">
-            <div class="hero-grid"></div>
-            <div class="hero-glow-1"></div>
-            <div class="hero-glow-2"></div>
 
             <div class="container position-relative" style="z-index:1;">
 
@@ -1553,7 +1540,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 reveal" style="transition-delay:.12s">
-                            <img src="IoT/M&E_Facilities.png" alt="M&E Facilities" style="width:100%;height:auto;object-fit:contain;border-radius:var(--r-md);border:0;display:block;" />
+                            <img src="IoT/M&E_Facilities.jpg" type="image/jpeg" alt="M&E Facilities" style="width:100%;height:auto;object-fit:contain;border-radius:var(--r-md);border:0;display:block;" />
                         </div>
                     </div>
                 </div>
